@@ -9,7 +9,7 @@ using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Styling;
 using Avalonia.VisualTree;
-
+using AvaloniaUI.Ribbon.Contracts;
 using System;
 using System.Collections;
 using System.Collections.Generic;

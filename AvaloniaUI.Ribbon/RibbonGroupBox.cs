@@ -1,31 +1,26 @@
 ﻿using Avalonia;
 using Avalonia.Controls.Primitives;
 
+using AvaloniaUI.Ribbon.Models;
+
 using System;
 using System.Windows.Input;
 
 namespace AvaloniaUI.Ribbon
 {
-    public enum GroupDisplayMode
-    {
-        Large,
-        Small/*,
-        Flyout*/
-    }
-
     public class RibbonGroupBox : HeaderedItemsControl
     {
         public static readonly DirectProperty<RibbonGroupBox, ICommand> CommandProperty;
         public static readonly StyledProperty<object> CommandParameterProperty = AvaloniaProperty.Register<RibbonGroupBox, object>(nameof(CommandParameter));
         public static readonly StyledProperty<GroupDisplayMode> DisplayModeProperty = StyledProperty<RibbonGroupBox>.Register<RibbonGroupBox, GroupDisplayMode>(nameof(DisplayMode), GroupDisplayMode.Small);
-        
+
         public GroupDisplayMode DisplayMode
         {
             get => GetValue(DisplayModeProperty);
             set => SetValue(DisplayModeProperty, value);
         }
 
-        ICommand _command;
+        private ICommand _command;
 
         static RibbonGroupBox()
         {
@@ -35,8 +30,6 @@ namespace AvaloniaUI.Ribbon
 
             CommandProperty = AvaloniaProperty.RegisterDirect<RibbonGroupBox, ICommand>(nameof(Command), button => button.Command, (button, command) => button.Command = command, enableDataValidation: true);
         }
-
-        
 
         protected override Type StyleKeyOverride => typeof(RibbonGroupBox);
 
@@ -65,6 +58,7 @@ namespace AvaloniaUI.Ribbon
         }
 
         public event EventHandler Rearranged;
+
         public event EventHandler Remeasured;
     }
 }

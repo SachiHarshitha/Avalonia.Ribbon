@@ -1,18 +1,16 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
-using Avalonia.Styling;
+using Avalonia.Interactivity;
+
 using System;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Timers;
 using System.Windows.Input;
-using Avalonia.Controls.Metadata;
-using Avalonia.Interactivity;
 
 namespace AvaloniaUI.Ribbon
 {
-
     [TemplatePart("PART_ContentButton", typeof(Button))]
     public class RibbonMenuItem : HeaderedItemsControl
     {
@@ -71,13 +69,11 @@ namespace AvaloniaUI.Ribbon
 
         public static readonly StyledProperty<ICommand> CommandProperty = Button.CommandProperty.AddOwner<RibbonMenuItem>();
 
-
         public ICommand Command
         {
             get => GetValue(CommandProperty);
-            set => SetValue(CommandProperty,value);
+            set => SetValue(CommandProperty, value);
         }
-
 
         public static readonly StyledProperty<object> CommandParameterProperty = Button.CommandParameterProperty.AddOwner<RibbonMenuItem>();
 

@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
+
+using AvaloniaUI.Ribbon.Contracts;
+using AvaloniaUI.Ribbon.Models;
+
+using System;
 
 namespace AvaloniaUI.Ribbon
 {
     public static class RibbonControlHelper<T> where T : Layoutable
     {
-        static readonly AvaloniaProperty<RibbonControlSize> SizeProperty = AvaloniaProperty.Register<TemplatedControl, RibbonControlSize>("Size", RibbonControlSize.Large, coerce: CoerceSize);
-        static readonly AvaloniaProperty<RibbonControlSize> MinSizeProperty = AvaloniaProperty.Register<TemplatedControl, RibbonControlSize>("MinSize", RibbonControlSize.Small);
-        static readonly AvaloniaProperty<RibbonControlSize> MaxSizeProperty = AvaloniaProperty.Register<TemplatedControl, RibbonControlSize>("MaxSize", RibbonControlSize.Large);
+        private static readonly AvaloniaProperty<RibbonControlSize> SizeProperty = AvaloniaProperty.Register<TemplatedControl, RibbonControlSize>("Size", RibbonControlSize.Large, coerce: CoerceSize);
+        private static readonly AvaloniaProperty<RibbonControlSize> MinSizeProperty = AvaloniaProperty.Register<TemplatedControl, RibbonControlSize>("MinSize", RibbonControlSize.Small);
+        private static readonly AvaloniaProperty<RibbonControlSize> MaxSizeProperty = AvaloniaProperty.Register<TemplatedControl, RibbonControlSize>("MaxSize", RibbonControlSize.Large);
 
         private static RibbonControlSize CoerceSize(AvaloniaObject obj, RibbonControlSize val)
         {
@@ -28,14 +30,11 @@ namespace AvaloniaUI.Ribbon
                 throw new Exception("obj must be an IRibbonControl!");
         }
 
-
         public static void SetProperties(out AvaloniaProperty<RibbonControlSize> size, out AvaloniaProperty<RibbonControlSize> minSize, out AvaloniaProperty<RibbonControlSize> maxSize)
         {
             size = SizeProperty;
             minSize = MinSizeProperty;
             maxSize = MaxSizeProperty;
-            
-            
 
             minSize.Changed.AddClassHandler<T>((sender, args) =>
             {

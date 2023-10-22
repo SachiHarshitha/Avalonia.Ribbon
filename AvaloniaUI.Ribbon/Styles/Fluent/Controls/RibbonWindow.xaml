@@ -1,98 +1,119 @@
 ﻿<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon"
-    xmlns:col="clr-namespace:System.Collections">
-  <Styles.Resources>
-    <local:WindowIconToImageConverter x:Key="WindowIconToImageConverter"/>
-    <!--local:DoubleBindingsToPointConverter x:Key="DoubleBindingsToPointConverter"/>
+    xmlns:col="clr-namespace:System.Collections"
+    xmlns:converters="clr-namespace:AvaloniaUI.Ribbon.Converters;assembly=AvaloniaUI.Ribbon"
+    xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
+	<Styles.Resources>
+		<converters:WindowIconToImageConverter x:Key="WindowIconToImageConverter" />
+		<!--local:DoubleBindingsToPointConverter x:Key="DoubleBindingsToPointConverter" />
     <local:DoubleArithmeticConverter x:Key="DoubleArithmeticConverter"/-->
-  </Styles.Resources>
-  <Style Selector="local|RibbonWindow">
-    <Setter Property="BorderBrush">
-      <SolidColorBrush Color="{DynamicResource SystemAccentColor}" Opacity="0.75"/>
-    </Setter>
-    <Setter Property="TitleBarBackground">
-      <SolidColorBrush Color="{DynamicResource SystemAccentColor}" Opacity="0.75"/>
-    </Setter>
-    <Setter Property="TitleBarForeground" Value="{DynamicResource SystemControlForegroundChromeWhiteBrush}" />
-    <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAltHighBrush}"/> 
-    <!--SystemControlBackgroundAltHighBrush-->
-    <Setter Property="TransparencyLevelHint" Value="AcrylicBlur" />
-    <Setter Property="TransparencyBackgroundFallback" Value="{DynamicResource SystemControlBackgroundAccentBrush}" />
-    <Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}"/>
-    <Setter Property="Template">
-      <ControlTemplate>
-        <Panel>
-          <Border Name="PART_TransparencyFallback" IsHitTestVisible="False" />
-          <Border Background="{TemplateBinding Background}" IsHitTestVisible="False" />
-          <Panel Background="Transparent" Margin="{TemplateBinding WindowDecorationMargin}" />
-          <VisualLayerManager>
-            <VisualLayerManager.ChromeOverlayLayer>
-              
-            </VisualLayerManager.ChromeOverlayLayer>
-            <DockPanel>
-              <Grid DockPanel.Dock="Top">
-                <TitleBar x:Name="PART_TitleBar" Background="{TemplateBinding TitleBarBackground}" Foreground="{TemplateBinding TitleBarForeground}"/>
-                <ContentPresenter x:Name="PART_QuickAccessToolbarPresenter" 
-                                  Content="{TemplateBinding QuickAccessToolbar}" 
-                                  HorizontalAlignment="Left" 
-                                  VerticalAlignment="Top"/>
-              </Grid>
-              <Grid RowDefinitions="Auto, Auto, Auto">
-                <ContentPresenter Grid.Row="0" 
-                                  x:Name="PART_RibbonPresenter" 
-                                  Content="{TemplateBinding Ribbon}"
-                                  VerticalAlignment="Top"/>
-                <ContentPresenter Grid.Row="2" Name="PART_ContentPresenter"
-                                  ContentTemplate="{TemplateBinding ContentTemplate}"
-                                  Content="{TemplateBinding Content}"
-                                  Margin="{TemplateBinding Padding}"
-                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-              </Grid>
-             
-            </DockPanel>
-          </VisualLayerManager>
-        </Panel>
-      </ControlTemplate>
-    </Setter>
-  </Style>
-  <Style Selector="TitleBar">
-    <Setter Property="Template">
-      <ControlTemplate>
-        <Panel HorizontalAlignment="{TemplateBinding HorizontalAlignment}" 
-               VerticalAlignment="Stretch">
-          <Panel x:Name="PART_MouseTracker" 
-                 Height="1" 
-                 VerticalAlignment="Top" />
-          <Panel x:Name="PART_Container">
-            <Panel x:Name="PART_PictureBar" Background="#01000000" VerticalAlignment="Center" >
-              <Image Classes="IconImage" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" Source="{Binding Icon, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource WindowIconToImageConverter}}" MaxWidth="16" MaxHeight="16" Margin="9,0" IsHitTestVisible="False"/>
-            </Panel>
-            <Border x:Name="PART_Background"
-                    Background="{TemplateBinding Background}"
-                    IsHitTestVisible="False" ZIndex="-1"/>
-            <CaptionButtons x:Name="PART_CaptionButtons"
-                            VerticalAlignment="Top" 
+	</Styles.Resources>
+	<Style Selector="local|RibbonWindow">
+		<Setter Property="BorderBrush">
+			<SolidColorBrush Opacity="0.75" Color="{DynamicResource SystemAccentColor}" />
+		</Setter>
+		<Setter Property="TitleBarBackground">
+			<SolidColorBrush Opacity="0.75" Color="{DynamicResource SystemAccentColor}" />
+		</Setter>
+		<Setter Property="TitleBarForeground" Value="{DynamicResource SystemControlForegroundChromeWhiteBrush}" />
+		<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAltHighBrush}" />
+		<!--  SystemControlBackgroundAltHighBrush  -->
+		<Setter Property="TransparencyLevelHint" Value="AcrylicBlur" />
+		<Setter Property="TransparencyBackgroundFallback" Value="{DynamicResource SystemControlBackgroundAccentBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Panel>
+					<Border Name="PART_TransparencyFallback" IsHitTestVisible="False" />
+					<Border Background="{TemplateBinding Background}" IsHitTestVisible="False" />
+					<Panel Margin="{TemplateBinding WindowDecorationMargin}" Background="Transparent" />
+					<VisualLayerManager>
+						<VisualLayerManager.ChromeOverlayLayer />
+						<DockPanel>
+							<Grid DockPanel.Dock="Top">
+								<TitleBar
+                                    x:Name="PART_TitleBar"
+                                    Background="{TemplateBinding TitleBarBackground}"
+                                    Foreground="{TemplateBinding TitleBarForeground}" />
+								<ContentPresenter
+                                    x:Name="PART_QuickAccessToolbarPresenter"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Content="{TemplateBinding QuickAccessToolbar}" />
+							</Grid>
+							<Grid RowDefinitions="Auto, Auto, Auto">
+								<ContentPresenter
+                                    x:Name="PART_RibbonPresenter"
+                                    Grid.Row="0"
+                                    VerticalAlignment="Top"
+                                    Content="{TemplateBinding Ribbon}" />
+								<ContentPresenter
+                                    Name="PART_ContentPresenter"
+                                    Grid.Row="2"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
+							</Grid>
+						</DockPanel>
+					</VisualLayerManager>
+				</Panel>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+	<Style Selector="TitleBar">
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Panel HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="Stretch">
+					<Panel
+                        x:Name="PART_MouseTracker"
+                        Height="1"
+                        VerticalAlignment="Top" />
+					<Panel x:Name="PART_Container">
+						<Panel
+                            x:Name="PART_PictureBar"
+                            VerticalAlignment="Center"
+                            Background="#01000000">
+							<Image
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                MaxWidth="16"
+                                MaxHeight="16"
+                                Margin="9,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Classes="IconImage"
+                                IsHitTestVisible="False"
+                                Source="{Binding Icon, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource WindowIconToImageConverter}}" />
+						</Panel>
+						<Border
+                            x:Name="PART_Background"
+                            Background="{TemplateBinding Background}"
+                            IsHitTestVisible="False"
+                            ZIndex="-1" />
+						<CaptionButtons
+                            x:Name="PART_CaptionButtons"
                             HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
                             Foreground="{TemplateBinding Foreground}" />
-          </Panel>
-        </Panel>
-      </ControlTemplate>
-    </Setter>
-  </Style>
-  <!--<Grid>
+					</Panel>
+				</Panel>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+	<!--<Grid>
           <Border Classes="OuterBorder">
             <Grid x:Name="WindowGrid">
               <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
               </Grid.RowDefinitions>
               <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
               </Grid.ColumnDefinitions>
               <VisualLayerManager>
                 <VisualLayerManager.ChromeOverlayLayer>
@@ -100,252 +121,246 @@
                     <Border x:Name="TitlebarFill" Background="{TemplateBinding TitleBarBackground}" IsHitTestVisible="False" Grid.Row="0" Grid.ColumnSpan="2" />
                     <Grid x:Name="CaptionButtons" ColumnDefinitions="*,*,*" Grid.Row="0" Grid.ColumnSpan="2" Width="135" Height="{Binding #PART_TitleBar.Height}" IsVisible="{Binding #PART_TitleBar.IsVisible}" VerticalAlignment="Top">
                       <Button Name="PART_MinimizeButton">
-                        <Rectangle Width="10" Height="1"/>
+                        <Rectangle Width="10" Height="1" />
                       </Button>
                       <Button Name="PART_MaximizeButton">
                         <Grid>
-                          <Rectangle Width="10" Height="10"/>
+                          <Rectangle Width="10" Height="10" />
                           <Grid Width="10" Height="10">
-                            <Border BorderThickness="1" Width="7" Height="7" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <Border BorderThickness="1" Width="7" Height="7" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
                             <Grid Width="7" Height="7" HorizontalAlignment="Right" VerticalAlignment="Top">
-                              <Border BorderThickness="0,1,1,0"/>
-                              <Rectangle HorizontalAlignment="Left" VerticalAlignment="Top" Width="2" Height="3"/>
-                              <Rectangle HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="3" Height="2"/>
+                              <Border BorderThickness="0,1,1,0" />
+                              <Rectangle HorizontalAlignment="Left" VerticalAlignment="Top" Width="2" Height="3" />
+                              <Rectangle HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="3" Height="2" />
                             </Grid>
                           </Grid>
                         </Grid>
                       </Button>
                       <Button x:Name="PART_CloseButton">
-                        <Path Data="M 0 0 L 10 10 M 10 0 L 0 10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Path Data="M 0 0 L 10 10 M 10 0 L 0 10" HorizontalAlignment="Center" VerticalAlignment="Center" />
                       </Button>
                     </Grid>
                     <Panel x:Name="PART_TitleBar" Grid.Row="0" Grid.ColumnSpan="2" Background="#01000000" VerticalAlignment="Top">
-                      <Image Classes="IconImage" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" Source="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource WindowIconToImageConverter}}" MaxWidth="16" MaxHeight="16" Margin="9,0" IsHitTestVisible="False"/>
+                      <Image Classes="IconImage" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" Source="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource WindowIconToImageConverter}}" MaxWidth="16" MaxHeight="16" Margin="9,0" IsHitTestVisible="False" />
                     </Panel>
                   </Grid>
                 </VisualLayerManager.ChromeOverlayLayer>
               </VisualLayerManager>
-              
-              <ContentPresenter x:Name="PART_ContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Background="{TemplateBinding Background}" CornerRadius="0,0,3,3"/>
-              <ContentPresenter x:Name="PART_RibbonPresenter" Content="{TemplateBinding Ribbon}"/>
-             
-              <ContentPresenter x:Name="PART_QuickAccessToolbarPresenter" Content="{TemplateBinding QuickAccessToolbar}" Grid.Row="0" Grid.ColumnSpan="2" Height="33" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-              
-              
+
+              <ContentPresenter x:Name="PART_ContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Background="{TemplateBinding Background}" CornerRadius="0,0,3,3" />
+              <ContentPresenter x:Name="PART_RibbonPresenter" Content="{TemplateBinding Ribbon}" />
+
+              <ContentPresenter x:Name="PART_QuickAccessToolbarPresenter" Content="{TemplateBinding QuickAccessToolbar}" Grid.Row="0" Grid.ColumnSpan="2" Height="33" HorizontalAlignment="Left" VerticalAlignment="Top" />
             </Grid>
           </Border>
           <Grid Name="ResizeGrid" ColumnDefinitions="8,*,8" RowDefinitions="8,*,8">
-            <Border Name="TopLeft"/>
+            <Border Name="TopLeft" />
             <Border
                 Name="TopRight"
-                Grid.Column="2"/>
+                Grid.Column="2" />
             <Border
                 Name="BottomLeft"
-                Grid.Row="2"/>
+                Grid.Row="2" />
             <Border
                 Name="BottomRight"
                 Grid.Row="2"
-                Grid.Column="2"/>
+                Grid.Column="2" />
             <Border
                 Name="Top"
-                Grid.Column="1"/>
+                Grid.Column="1" />
             <Border
                 Name="Right_top"
                 Grid.Row="0"
-                Grid.Column="2"/>
+                Grid.Column="2" />
             <Border
                 Name="Right_mid"
                 Grid.Row="0"
-                Grid.Column="2"/>
+                Grid.Column="2" />
             <Border
                 Name="Right_bottom"
                 Grid.Row="1"
-                Grid.Column="2"/>
+                Grid.Column="2" />
             <Border
                 Name="Bottom"
                 Grid.Row="2"
-                Grid.Column="1"/>
+                Grid.Column="1" />
             <Border
                 Name="Left_top"
-                Grid.Row="0"/>
+                Grid.Row="0" />
             <Border
                 Name="Left_mid"
-                Grid.Row="0"/>
+                Grid.Row="0" />
             <Border
                 Name="Left_bottom"
-                Grid.Row="1"/>
+                Grid.Row="1" />
           </Grid>
         </Grid>-->
-  
-  <Style Selector="local|RibbonWindow[SystemDecorations=Full] /template/ Image#IconImage">
-    <Setter Property="IsVisible" Value="False"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[SystemDecorations=Full] /template/ Panel#PART_TitleBar">
-    <Setter Property="IsVisible" Value="False"/>
-    <Setter Property="Height" Value="0"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[SystemDecorations=None] /template/ Panel#PART_TitleBar">
-    <Setter Property="Height" Value="33"/>
-  </Style>
 
+	<Style Selector="local|RibbonWindow[SystemDecorations=Full] /template/ Image#IconImage">
+		<Setter Property="IsVisible" Value="False" />
+	</Style>
+	<Style Selector="local|RibbonWindow[SystemDecorations=Full] /template/ Panel#PART_TitleBar">
+		<Setter Property="IsVisible" Value="False" />
+		<Setter Property="Height" Value="0" />
+	</Style>
+	<Style Selector="local|RibbonWindow[SystemDecorations=None] /template/ Panel#PART_TitleBar">
+		<Setter Property="Height" Value="33" />
+	</Style>
 
-  <Style Selector="local|RibbonWindow[Orientation=Horizontal] /template/ ContentPresenter#PART_RibbonPresenter">
-    <Setter Property="Grid.Row" Value="0"/>
-    <Setter Property="Grid.RowSpan" Value="2"/>
-    <Setter Property="Grid.ColumnSpan" Value="2"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[Orientation=Vertical] /template/ ContentPresenter#PART_RibbonPresenter">
-    <Setter Property="Grid.Row" Value="1"/>
-    <Setter Property="Grid.RowSpan" Value="2"/>
-  </Style>
+	<Style Selector="local|RibbonWindow[Orientation=Horizontal] /template/ ContentPresenter#PART_RibbonPresenter">
+		<Setter Property="Grid.Row" Value="0" />
+		<Setter Property="Grid.RowSpan" Value="2" />
+		<Setter Property="Grid.ColumnSpan" Value="2" />
+	</Style>
+	<Style Selector="local|RibbonWindow[Orientation=Vertical] /template/ ContentPresenter#PART_RibbonPresenter">
+		<Setter Property="Grid.Row" Value="1" />
+		<Setter Property="Grid.RowSpan" Value="2" />
+	</Style>
 
-  <Style Selector="local|RibbonWindow[Orientation=Horizontal] /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Grid.Row" Value="2"/>
-    <Setter Property="Grid.ColumnSpan" Value="2"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[Orientation=Vertical] /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Grid.Row" Value="1"/>
-    <Setter Property="Grid.RowSpan" Value="2"/>
-    <Setter Property="Grid.Column" Value="1"/>
-  </Style>
-  <!--Style Selector="local|RibbonWindow /template/ Rectangle#TitlebarFill2">
-    <Setter Property="IsVisible" Value="False"/>
+	<Style Selector="local|RibbonWindow[Orientation=Horizontal] /template/ ContentPresenter#PART_ContentPresenter">
+		<Setter Property="Grid.Row" Value="2" />
+		<Setter Property="Grid.ColumnSpan" Value="2" />
+	</Style>
+	<Style Selector="local|RibbonWindow[Orientation=Vertical] /template/ ContentPresenter#PART_ContentPresenter">
+		<Setter Property="Grid.Row" Value="1" />
+		<Setter Property="Grid.RowSpan" Value="2" />
+		<Setter Property="Grid.Column" Value="1" />
+	</Style>
+	<!--Style Selector="local|RibbonWindow /template/ Rectangle#TitlebarFill2">
+    <Setter Property="IsVisible" Value="False" />
   </Style>
   <Style Selector="local|RibbonWindow[SystemDecorations=Full][Orientation=Vertical] /template/ Rectangle#TitlebarFill2">
-    <Setter Property="IsVisible" Value="True"/>
+    <Setter Property="IsVisible" Value="True" />
   </Style-->
-  
-  
-  <Style Selector="local|RibbonWindow[LeftSideCaptionButtons=False] /template/ Grid#CaptionButtons">
-    <Setter Property="HorizontalAlignment" Value="Right"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[LeftSideCaptionButtons=False] /template/ Grid#CaptionButtons Button#PART_MinimizeButton">
-    <Setter Property="Grid.Column" Value="0"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[LeftSideCaptionButtons=False] /template/ Grid#CaptionButtons Button#PART_MaximizeButton">
-    <Setter Property="Grid.Column" Value="1"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[LeftSideCaptionButtons=False] /template/ Grid#CaptionButtons Button#PART_CloseButton">
-    <Setter Property="Grid.Column" Value="2"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[LeftSideCaptionButtons=False][SystemDecorations=None] /template/ ContentPresenter#PART_QuickAccessToolbarPresenter">
-    <Setter Property="Margin" Value="30,0,0,0"/>
-  </Style>
-  
-  <Style Selector="local|RibbonWindow[LeftSideCaptionButtons=True] /template/ Grid#CaptionButtons">
-    <Setter Property="HorizontalAlignment" Value="Left"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[LeftSideCaptionButtons=True] /template/ Grid#CaptionButtons Button#PART_MinimizeButton">
-    <Setter Property="Grid.Column" Value="1"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[LeftSideCaptionButtons=True] /template/ Grid#CaptionButtons Button#PART_MaximizeButton">
-    <Setter Property="Grid.Column" Value="2"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[LeftSideCaptionButtons=True] /template/ Grid#CaptionButtons Button#PART_CloseButton">
-    <Setter Property="Grid.Column" Value="0"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[LeftSideCaptionButtons=True][SystemDecorations=None] /template/ ContentPresenter#PART_QuickAccessToolbarPresenter">
-    <Setter Property="Margin" Value="135,0,0,0"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[LeftSideCaptionButtons=True] /template/ Image#IconImage">
-    <Setter Property="IsVisible" Value="False"/>
-  </Style>
-  
-  <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button">
-    <Setter Property="Width" Value="45" />
+
+	<Style Selector="local|RibbonWindow[LeftSideCaptionButtons=False] /template/ Grid#CaptionButtons">
+		<Setter Property="HorizontalAlignment" Value="Right" />
+	</Style>
+	<Style Selector="local|RibbonWindow[LeftSideCaptionButtons=False] /template/ Grid#CaptionButtons Button#PART_MinimizeButton">
+		<Setter Property="Grid.Column" Value="0" />
+	</Style>
+	<Style Selector="local|RibbonWindow[LeftSideCaptionButtons=False] /template/ Grid#CaptionButtons Button#PART_MaximizeButton">
+		<Setter Property="Grid.Column" Value="1" />
+	</Style>
+	<Style Selector="local|RibbonWindow[LeftSideCaptionButtons=False] /template/ Grid#CaptionButtons Button#PART_CloseButton">
+		<Setter Property="Grid.Column" Value="2" />
+	</Style>
+	<Style Selector="local|RibbonWindow[LeftSideCaptionButtons=False][SystemDecorations=None] /template/ ContentPresenter#PART_QuickAccessToolbarPresenter">
+		<Setter Property="Margin" Value="30,0,0,0" />
+	</Style>
+
+	<Style Selector="local|RibbonWindow[LeftSideCaptionButtons=True] /template/ Grid#CaptionButtons">
+		<Setter Property="HorizontalAlignment" Value="Left" />
+	</Style>
+	<Style Selector="local|RibbonWindow[LeftSideCaptionButtons=True] /template/ Grid#CaptionButtons Button#PART_MinimizeButton">
+		<Setter Property="Grid.Column" Value="1" />
+	</Style>
+	<Style Selector="local|RibbonWindow[LeftSideCaptionButtons=True] /template/ Grid#CaptionButtons Button#PART_MaximizeButton">
+		<Setter Property="Grid.Column" Value="2" />
+	</Style>
+	<Style Selector="local|RibbonWindow[LeftSideCaptionButtons=True] /template/ Grid#CaptionButtons Button#PART_CloseButton">
+		<Setter Property="Grid.Column" Value="0" />
+	</Style>
+	<Style Selector="local|RibbonWindow[LeftSideCaptionButtons=True][SystemDecorations=None] /template/ ContentPresenter#PART_QuickAccessToolbarPresenter">
+		<Setter Property="Margin" Value="135,0,0,0" />
+	</Style>
+	<Style Selector="local|RibbonWindow[LeftSideCaptionButtons=True] /template/ Image#IconImage">
+		<Setter Property="IsVisible" Value="False" />
+	</Style>
+
+	<Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button">
+		<Setter Property="Width" Value="45" />
+		<Setter Property="Height" Value="34" />
+		<Setter Property="VerticalAlignment" Value="Top" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="BorderBrush" Value="Transparent" />
+		<Setter Property="Focusable" Value="False" />
+		<Setter Property="BorderThickness" Value="0" />
+	</Style>
+	<Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button:not(:pointerover):not(:pressed)">
+		<Setter Property="Foreground" Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RibbonWindow}}" />
+	</Style>
+	<Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
+	</Style>
+	<Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button:pressed  /template/ ContentPresenter#PART_ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource ThemeControlHighBrush}" />
+	</Style>
+	<Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button &gt; Path">
+		<Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" />
+		<Setter Property="StrokeThickness" Value="1" />
+	</Style>
+	<Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button:not(:pointerover):not(:pressed):disabled">
+		<Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+	</Style>
+	<Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button#PART_MinimizeButton &gt; Rectangle">
+		<Setter Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" />
+	</Style>
+	<Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button#PART_MaximizeButton Rectangle">
+		<Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" />
+		<Setter Property="StrokeThickness" Value="1" />
+	</Style>
+	<Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button#PART_MaximizeButton &gt; Grid &gt; Grid Border">
+		<Setter Property="BorderBrush" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" />
+	</Style>
+	<Style Selector="local|RibbonWindow[WindowState=Maximized] /template/ Grid#CaptionButtons Button#PART_MaximizeButton &gt; Grid &gt; Rectangle">
+		<Setter Property="IsVisible" Value="False" />
+	</Style>
+	<Style Selector="local|RibbonWindow[WindowState=Normal] /template/ Grid#CaptionButtons Button#PART_MaximizeButton &gt; Grid &gt; Grid">
+		<Setter Property="IsVisible" Value="False" />
+	</Style>
+	<Style Selector="local|RibbonWindow[WindowState=Minimized] /template/ Grid#CaptionButtons Button#PART_MaximizeButton &gt; Grid &gt; Grid">
+		<Setter Property="IsVisible" Value="False" />
+	</Style>
+	<Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button#PART_MaximizeButton &gt; Grid &gt; Grid &gt; Rectangle">
+		<Setter Property="Stroke" Value="Transparent" />
+		<Setter Property="StrokeThickness" Value="0" />
+		<Setter Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" />
+	</Style>
+	<Style Selector="local|RibbonWindow[IsActive=false] /template/ Grid#CaptionButtons Button:not(:pointerover):not(:pressed)">
+		<Setter Property="Opacity" Value="0.5" />
+	</Style>
+
+	<Style Selector="local|RibbonWindow /template/ Image.IconImage:not(Image[Width=0])">
+		<Setter Property="Margin" Value="0,0,5,0" />
+	</Style>
+	<Style Selector="local|RibbonWindow[SystemDecorations=None] /template/ Border.OuterBorder">
+		<Setter Property="BorderBrush" Value="{TemplateBinding BorderBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
+	</Style>
+	<Style Selector="local|RibbonWindow[SystemDecorations=None][WindowState=Normal] /template/ Border.OuterBorder">
+		<Setter Property="CornerRadius" Value="4" />
+	</Style>
+	<Style Selector="local|RibbonWindow[SystemDecorations=None] /template/ Border#TitlebarFill">
+		<Setter Property="CornerRadius" Value="3,3,0,0" />
+	</Style>
+	<Style Selector="local|RibbonWindow[WindowState=Maximized] /template/ Border.OuterBorder">
+		<Setter Property="BorderThickness" Value="0" />
+	</Style>
+	<!--Style Selector="local|RibbonWindow[SystemDecorations=None] /template/ Rectangle#RowDefinitionsHelper">
     <Setter Property="Height" Value="34" />
-    <Setter Property="VerticalAlignment" Value="Top"/>
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="Transparent" />
-    <Setter Property="Focusable" Value="False"/>
-    <Setter Property="BorderThickness" Value="0"/>
-  </Style>
-  <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button:not(:pointerover):not(:pressed)">
-    <Setter Property="Foreground" Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RibbonWindow}}"/>
-  </Style>
-  <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
-  </Style>
-  <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button:pressed  /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Background" Value="{DynamicResource ThemeControlHighBrush}"/>
-  </Style>
-  <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button > Path">
-    <Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
-    <Setter Property="StrokeThickness" Value="1"/>
-  </Style>
-  <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button:not(:pointerover):not(:pressed):disabled">
-    <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
-  </Style>
-  <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button#PART_MinimizeButton > Rectangle">
-    <Setter Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
-  </Style>
-  <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button#PART_MaximizeButton Rectangle">
-    <Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
-    <Setter Property="StrokeThickness" Value="1"/>
-  </Style>
-  <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button#PART_MaximizeButton > Grid > Grid Border">
-    <Setter Property="BorderBrush" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[WindowState=Maximized] /template/ Grid#CaptionButtons Button#PART_MaximizeButton > Grid > Rectangle">
-    <Setter Property="IsVisible" Value="False"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[WindowState=Normal] /template/ Grid#CaptionButtons Button#PART_MaximizeButton > Grid > Grid">
-    <Setter Property="IsVisible" Value="False"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[WindowState=Minimized] /template/ Grid#CaptionButtons Button#PART_MaximizeButton > Grid > Grid">
-    <Setter Property="IsVisible" Value="False"/>
-  </Style>
-  <Style Selector="local|RibbonWindow /template/ Grid#CaptionButtons Button#PART_MaximizeButton > Grid > Grid > Rectangle">
-    <Setter Property="Stroke" Value="Transparent"/>
-    <Setter Property="StrokeThickness" Value="0"/>
-    <Setter Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[IsActive=false] /template/ Grid#CaptionButtons Button:not(:pointerover):not(:pressed)">
-    <Setter Property="Opacity" Value="0.5"/>
-  </Style>
-
-
-
-  <Style Selector="local|RibbonWindow /template/ Image.IconImage:not(Image[Width=0])">
-    <Setter Property="Margin" Value="0,0,5,0"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[SystemDecorations=None] /template/ Border.OuterBorder">
-    <Setter Property="BorderBrush" Value="{TemplateBinding BorderBrush}"/>
-    <Setter Property="BorderThickness" Value="1"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[SystemDecorations=None][WindowState=Normal] /template/ Border.OuterBorder">
-    <Setter Property="CornerRadius" Value="4"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[SystemDecorations=None] /template/ Border#TitlebarFill">
-    <Setter Property="CornerRadius" Value="3,3,0,0"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[WindowState=Maximized] /template/ Border.OuterBorder">
-    <Setter Property="BorderThickness" Value="0"/>
-  </Style>
-  <!--Style Selector="local|RibbonWindow[SystemDecorations=None] /template/ Rectangle#RowDefinitionsHelper">
-    <Setter Property="Height" Value="34"/>
   </Style>
   <Style Selector="local|RibbonWindow[SystemDecorations=Full] /template/ Rectangle#RowDefinitionsHelper">
-    <Setter Property="Height" Value="0"/>
+    <Setter Property="Height" Value="0" />
   </Style-->
-  <Style Selector="local|RibbonWindow[SystemDecorations=Full] /template/ Panel#PART_TitleBar">
-    <Setter Property="IsVisible" Value="False"/>
-  </Style>
-  <Style Selector="local|RibbonWindow /template/ Grid#ResizeGrid Border">
-    <Setter Property="Background" Value="#01000000"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[WindowState=Maximized] /template/ Grid#ResizeGrid">
-    <Setter Property="IsVisible" Value="False"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[SystemDecorations=Full] /template/ Grid#ResizeGrid">
-    <Setter Property="IsVisible" Value="False"/>
-  </Style>
-  <Style Selector="local|RibbonWindow[IsActive=false]">
-    <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
-    <Setter Property="TitleBarBackground" Value="{DynamicResource ThemeControlMidHighBrush}" />
-  </Style>
-  <Style Selector="local|RibbonWindow[IsActive=false] /template/ TextBlock#TitleTextBlock">
-    <Setter Property="Opacity" Value="0.5"/>
-  </Style>
+	<Style Selector="local|RibbonWindow[SystemDecorations=Full] /template/ Panel#PART_TitleBar">
+		<Setter Property="IsVisible" Value="False" />
+	</Style>
+	<Style Selector="local|RibbonWindow /template/ Grid#ResizeGrid Border">
+		<Setter Property="Background" Value="#01000000" />
+	</Style>
+	<Style Selector="local|RibbonWindow[WindowState=Maximized] /template/ Grid#ResizeGrid">
+		<Setter Property="IsVisible" Value="False" />
+	</Style>
+	<Style Selector="local|RibbonWindow[SystemDecorations=Full] /template/ Grid#ResizeGrid">
+		<Setter Property="IsVisible" Value="False" />
+	</Style>
+	<Style Selector="local|RibbonWindow[IsActive=false]">
+		<Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
+		<Setter Property="TitleBarBackground" Value="{DynamicResource ThemeControlMidHighBrush}" />
+	</Style>
+	<Style Selector="local|RibbonWindow[IsActive=false] /template/ TextBlock#TitleTextBlock">
+		<Setter Property="Opacity" Value="0.5" />
+	</Style>
 </Styles>

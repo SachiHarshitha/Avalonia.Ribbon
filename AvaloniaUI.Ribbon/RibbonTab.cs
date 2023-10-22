@@ -1,14 +1,14 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Collections;
 using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.Metadata;
-using Avalonia.Styling;
+
+using AvaloniaUI.Ribbon.Contracts;
+using AvaloniaUI.Ribbon.Helpers;
+
 using System;
-using System.Collections;
-using System.Diagnostics;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace AvaloniaUI.Ribbon
 {
@@ -20,6 +20,7 @@ namespace AvaloniaUI.Ribbon
 
         private ObservableCollection<RibbonGroupBox> _groups = new ObservableCollection<RibbonGroupBox>();
         /*[Content]*/
+
         public ObservableCollection<RibbonGroupBox> Groups
         {
             get { return _groups; }
@@ -27,6 +28,7 @@ namespace AvaloniaUI.Ribbon
         }
 
         public static readonly StyledProperty<bool> IsContextualProperty = AvaloniaProperty.Register<RibbonTab, bool>(nameof(IsContextual), false);
+
         public bool IsContextual
         {
             get => GetValue(IsContextualProperty);
@@ -69,15 +71,16 @@ namespace AvaloniaUI.Ribbon
             LostFocus += (sneder, args) => KeyTip.SetShowChildKeyTipKeys(this, false);
         }
 
-        Ribbon _ribbon;
-        IKeyTipHandler _prev;
+        private Ribbon _ribbon;
+        private IKeyTipHandler _prev;
+
         public void ActivateKeyTips(Ribbon ribbon, IKeyTipHandler prev)
         {
             _ribbon = ribbon;
             _prev = prev;
             foreach (RibbonGroupBox g in Groups)
                 Debug.WriteLine("GROUP KEYS: " + KeyTip.GetKeyTipKeys(g));
-            
+
             Focus();
             KeyTip.SetShowChildKeyTipKeys(this, true);
             KeyDown += RibbonTab_KeyDown;

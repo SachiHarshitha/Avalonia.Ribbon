@@ -1,19 +1,19 @@
 ﻿using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Collections;
+using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Templates;
 using Avalonia.Styling;
+using Avalonia.Threading;
+
+using AvaloniaUI.Ribbon.Contracts;
+
 using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Timers;
-using Avalonia.Controls.Metadata;
-using Avalonia.Threading;
-using Avalonia.Controls.Templates;
-using Avalonia.VisualTree;
-using System.Runtime.CompilerServices;
-using Avalonia.Platform;
 
 namespace AvaloniaUI.Ribbon
 {

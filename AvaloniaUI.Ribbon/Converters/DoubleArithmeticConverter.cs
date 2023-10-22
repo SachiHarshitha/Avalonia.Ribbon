@@ -1,17 +1,4 @@
-using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Controls.Presenters;
-using Avalonia.Controls.Primitives;
-using Avalonia.Data.Converters;
-using Avalonia.Input;
-using Avalonia.Styling;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-
-namespace AvaloniaUI.Ribbon
+namespace AvaloniaUI.Ribbon.Converters
 {
     /*public enum ArithmeticOperation
     {
@@ -27,7 +14,7 @@ namespace AvaloniaUI.Ribbon
         {
             double result = (double)value;
             DoubleArithmetics param = null;
-            
+
             if (parameter is DoubleArithmetics aris)
                 param = aris;
             else if (parameter is DoubleArithmetic ari)
@@ -79,5 +66,4 @@ namespace AvaloniaUI.Ribbon
     }
 
     public class DoubleArithmetics : List<DoubleArithmetic>{}*/
-
 }

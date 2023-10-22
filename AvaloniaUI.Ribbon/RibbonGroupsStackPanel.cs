@@ -3,12 +3,12 @@ using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.LogicalTree;
 using Avalonia.Threading;
+
+using AvaloniaUI.Ribbon.Models;
+
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 
 namespace AvaloniaUI.Ribbon
 {
@@ -44,23 +44,23 @@ namespace AvaloniaUI.Ribbon
             base.OnAttachedToLogicalTree(e);
             /*Measure(Bounds.Size);
             Arrange(Bounds);*/
-            
+
             SizeControls();
         }
 
         protected override void LogicalChildrenCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             base.LogicalChildrenCollectionChanged(sender, e);
-            
+
             /*foreach (RibbonGroupBox box in Children.OfType<RibbonGroupBox>())
                 box.DisplayMode = GroupDisplayMode.Small;*/
-            
+
             Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
             //Measure(size);
             SizeControls(size);
             SizeControls();
         }
-        
+
         private void SizeControls()
         {
             SizeControls(Bounds.Size);
@@ -76,7 +76,7 @@ namespace AvaloniaUI.Ribbon
                 while (GetChildrenTotalHeight() >= newSize.Height)
                 {
                     var largeChildren = children.Where(x => x.DisplayMode == GroupDisplayMode.Large);
-                    
+
                     if (largeChildren.Count() > 0)
                     {
                         var firstLargeChild = largeChildren.First();
@@ -96,7 +96,7 @@ namespace AvaloniaUI.Ribbon
                 while (GetChildrenTotalHeight() < newSize.Height)
                 {
                     var nonLargeChildren = children.Where(x => x.DisplayMode != GroupDisplayMode.Large);
-                    
+
                     if (nonLargeChildren.Count() > 0)
                     {
                         var lastNonLargeChild = nonLargeChildren.Last();
@@ -122,7 +122,7 @@ namespace AvaloniaUI.Ribbon
                 while (GetChildrenTotalWidth() >= newSize.Width)
                 {
                     var largeChildren = children.Where(x => x.DisplayMode == GroupDisplayMode.Large);
-                    
+
                     if (largeChildren.Count() > 0)
                     {
                         var firstLargeChild = largeChildren.First();
@@ -142,7 +142,7 @@ namespace AvaloniaUI.Ribbon
                 while (GetChildrenTotalWidth() < newSize.Width)
                 {
                     var nonLargeChildren = children.Where(x => x.DisplayMode != GroupDisplayMode.Large);
-                    
+
                     if (nonLargeChildren.Count() > 0)
                     {
                         var lastNonLargeChild = nonLargeChildren.Last();
@@ -164,7 +164,7 @@ namespace AvaloniaUI.Ribbon
             }
         }
 
-        double GetChildrenTotalWidth()
+        private double GetChildrenTotalWidth()
         {
             var children = Children.OfType<RibbonGroupBox>(); //.Reverse().Where(x => x is RibbonGroupBox).Cast<RibbonGroupBox>();
             double totalWidth = 0;
@@ -188,7 +188,7 @@ namespace AvaloniaUI.Ribbon
             return totalWidth;
         }
 
-        double GetChildrenTotalHeight()
+        private double GetChildrenTotalHeight()
         {
             var children = Children.OfType<RibbonGroupBox>(); //.Where(x => x is RibbonGroupBox).Cast<RibbonGroupBox>();
             double totalHeight = 0;

@@ -1,10 +1,9 @@
 ﻿using Avalonia.Data.Converters;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 
-namespace AvaloniaUI.Ribbon
+using System;
+using System.Globalization;
+
+namespace AvaloniaUI.Ribbon.Converters
 {
     public class IsNullConverter : IValueConverter
     {

@@ -1,11 +1,11 @@
 ﻿using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
-using Avalonia.Styling;
+
+using AvaloniaUI.Ribbon.Contracts;
+using AvaloniaUI.Ribbon.Models;
+
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AvaloniaUI.Ribbon
 {
@@ -18,8 +18,8 @@ namespace AvaloniaUI.Ribbon
         public static readonly StyledProperty<IControlTemplate> LargeIconProperty = RibbonButton.LargeIconProperty.AddOwner<RibbonToggleButton>();
         public static readonly StyledProperty<IControlTemplate> QuickAccessIconProperty = RibbonButton.QuickAccessIconProperty.AddOwner<RibbonToggleButton>();
 
-
         public static readonly StyledProperty<bool> CanAddToQuickAccessProperty = RibbonButton.CanAddToQuickAccessProperty.AddOwner<RibbonToggleButton>();
+
         public bool CanAddToQuickAccess
         {
             get => GetValue(CanAddToQuickAccessProperty);
@@ -31,8 +31,6 @@ namespace AvaloniaUI.Ribbon
             RibbonControlHelper<RibbonToggleButton>.SetProperties(out SizeProperty, out MinSizeProperty, out MaxSizeProperty);
             ToggleButton.FocusableProperty.OverrideDefaultValue<RibbonToggleButton>(false);
         }
-
-       
 
         protected override Type StyleKeyOverride => typeof(RibbonToggleButton);
 
@@ -47,13 +45,12 @@ namespace AvaloniaUI.Ribbon
             get => GetValue(LargeIconProperty);
             set => SetValue(LargeIconProperty, value);
         }
-        
+
         public IControlTemplate QuickAccessIcon
         {
             get => GetValue(QuickAccessIconProperty);
             set => SetValue(QuickAccessIconProperty, value);
         }
-
 
         public RibbonControlSize Size
         {
@@ -74,6 +71,7 @@ namespace AvaloniaUI.Ribbon
         }
 
         public static readonly StyledProperty<IControlTemplate> QuickAccessTemplateProperty = AvaloniaProperty.Register<RibbonButton, IControlTemplate>(nameof(Template));
+
         public IControlTemplate QuickAccessTemplate
         {
             get => GetValue(QuickAccessTemplateProperty);

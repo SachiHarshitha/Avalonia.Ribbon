@@ -1,41 +1,7 @@
-﻿using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Input;
-using Avalonia.Interactivity;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Avalonia.Controls;
 
-namespace AvaloniaUI.Ribbon
+namespace AvaloniaUI.Ribbon.Helpers
 {
-    public enum RibbonControlSize
-    {
-        Small,
-        Medium,
-        Large
-    }
-
-    public interface IRibbonControl
-    {
-        RibbonControlSize Size
-        {
-            get;
-            set;
-        }
-
-        RibbonControlSize MinSize
-        {
-            get;
-            set;
-        }
-
-        RibbonControlSize MaxSize
-        {
-            get;
-            set;
-        }
-    }
-
     public static class RibbonControlExtensions
     {
         public static Ribbon GetParentRibbon(Control control)
@@ -48,7 +14,7 @@ namespace AvaloniaUI.Ribbon
                 /*if (parentRbn == null)
                     break;*
             }
-            
+
             if (parentRbn is Ribbon ribbon)
                 return ribbon;
             else

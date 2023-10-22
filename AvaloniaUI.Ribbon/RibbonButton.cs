@@ -1,15 +1,16 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using Avalonia.Media.Imaging;
-using Avalonia.Styling;
+
+using AvaloniaUI.Ribbon.Contracts;
+using AvaloniaUI.Ribbon.Models;
+
 using System;
 
 namespace AvaloniaUI.Ribbon
 {
     public class RibbonButton : Button, IRibbonControl, ICanAddToQuickAccess
     {
-
         public static readonly AvaloniaProperty<RibbonControlSize> SizeProperty;
         public static readonly AvaloniaProperty<RibbonControlSize> MinSizeProperty;
         public static readonly AvaloniaProperty<RibbonControlSize> MaxSizeProperty;
@@ -18,6 +19,7 @@ namespace AvaloniaUI.Ribbon
         public static readonly StyledProperty<IControlTemplate> QuickAccessIconProperty = AvaloniaProperty.Register<RibbonButton, IControlTemplate>(nameof(QuickAccessIcon));
 
         public static readonly StyledProperty<bool> CanAddToQuickAccessProperty = AvaloniaProperty.Register<RibbonButton, bool>(nameof(CanAddToQuickAccess), true);
+
         public bool CanAddToQuickAccess
         {
             get => GetValue(CanAddToQuickAccessProperty);
@@ -43,13 +45,12 @@ namespace AvaloniaUI.Ribbon
             get => GetValue(LargeIconProperty);
             set => SetValue(LargeIconProperty, value);
         }
-        
+
         public IControlTemplate QuickAccessIcon
         {
             get => GetValue(QuickAccessIconProperty);
             set => SetValue(QuickAccessIconProperty, value);
         }
-
 
         public RibbonControlSize Size
         {
@@ -70,11 +71,11 @@ namespace AvaloniaUI.Ribbon
         }
 
         public static readonly StyledProperty<IControlTemplate> QuickAccessTemplateProperty = AvaloniaProperty.Register<RibbonButton, IControlTemplate>(nameof(Template));
+
         public IControlTemplate QuickAccessTemplate
         {
             get => GetValue(QuickAccessTemplateProperty);
             set => SetValue(QuickAccessTemplateProperty, value);
         }
     }
-
 }

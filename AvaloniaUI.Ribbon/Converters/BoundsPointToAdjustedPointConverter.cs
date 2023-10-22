@@ -1,32 +1,25 @@
 using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Controls.Presenters;
-using Avalonia.Controls.Primitives;
 using Avalonia.Data.Converters;
-using Avalonia.Input;
-using Avalonia.Styling;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 
-namespace AvaloniaUI.Ribbon
+using System;
+using System.Globalization;
+
+namespace AvaloniaUI.Ribbon.Converters
 {
     /*public class DoubleBindingsToPointConverter : IMultiValueConverter
     {
         public object Convert(IList<object> values, Type targetType, object parameter, CultureInfo culture)
         {
             string[] paramParts = parameter.ToString().Split(',');
-            
+
             double x = 0;
             double y = 0;
-
 
             if (!double.TryParse(paramParts[0], out x))
             {
                 x = (double)values[0];
             }
-            
+
             if (!double.TryParse(paramParts[1], out y))
             {
                 y = (double)values[1];
@@ -43,7 +36,7 @@ namespace AvaloniaUI.Ribbon
             double x = 0;
             double y = 0;
 
-            if ((value is Rect rect) && (parameter != null))
+            if (value is Rect rect && parameter != null)
             {
                 string[] paramParts = parameter.ToString().Replace(" ", string.Empty).Split(',');
 
@@ -55,7 +48,7 @@ namespace AvaloniaUI.Ribbon
                     x = rect.Width;
                 else if (ptX == 'C')
                     x = rect.Width / 2;
-                
+
                 if (ptY == 'B')
                     y = rect.Height;
                 else if (ptY == 'C')
@@ -63,17 +56,14 @@ namespace AvaloniaUI.Ribbon
 
                 /*x = rect.Width;
                 y = rect.Height;*/
-                
+
                 if (double.TryParse(paramParts[0], out double xAdjust))
                     x += xAdjust;
-                
+
                 if (double.TryParse(paramParts[1], out double yAdjust))
                     y += yAdjust;
-                
-                
             }
 
-            
             return new Point(x, y);
         }
 

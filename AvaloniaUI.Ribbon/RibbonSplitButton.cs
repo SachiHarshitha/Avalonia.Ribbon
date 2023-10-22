@@ -1,7 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Media.Imaging;
-using Avalonia.Styling;
+
 using System;
 using System.Windows.Input;
 
@@ -34,7 +33,7 @@ namespace AvaloniaUI.Ribbon
             set => SetValue(CommandParameterProperty, value);
         }
     }
-    
+
     /*public class RibbonSplitButton : ComboBox, IStyleable, IRibbonControl
     {
         public static readonly StyledProperty<object> ContentProperty;
@@ -79,7 +78,6 @@ namespace AvaloniaUI.Ribbon
             get => GetValue(LargeIconProperty);
             set => SetValue(LargeIconProperty, value);
         }
-
 
         public RibbonControlSize Size
         {
