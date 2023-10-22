@@ -71,10 +71,10 @@ namespace AvaloniaUI.Ribbon
             LostFocus += (sneder, args) => KeyTip.SetShowChildKeyTipKeys(this, false);
         }
 
-        private Ribbon _ribbon;
+        private IRibbon _ribbon;
         private IKeyTipHandler _prev;
 
-        public void ActivateKeyTips(Ribbon ribbon, IKeyTipHandler prev)
+        public void ActivateKeyTips(IRibbon ribbon, IKeyTipHandler prev)
         {
             _ribbon = ribbon;
             _prev = prev;

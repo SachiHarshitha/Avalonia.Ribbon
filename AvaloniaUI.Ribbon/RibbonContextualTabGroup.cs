@@ -1,16 +1,12 @@
 using Avalonia;
-using Avalonia.Collections;
-using Avalonia.Input;
-using Avalonia.Interactivity;
-using Avalonia.Metadata;
-using Avalonia.Styling;
-using System;
-using System.Linq;
-using System.Collections;
-using System.Diagnostics;
 using Avalonia.Controls.Primitives;
-using System.Collections.Specialized;
+using Avalonia.Styling;
+
 using AvaloniaUI.Ribbon.Helpers;
+
+using System;
+using System.Collections.Specialized;
+using System.Linq;
 
 namespace AvaloniaUI.Ribbon
 {
@@ -41,7 +37,7 @@ namespace AvaloniaUI.Ribbon
 
         private void SwitchToNextVisibleTab()
         {
-            Ribbon rbn = RibbonControlExtensions.GetParentRibbon(this);
+            var rbn = RibbonControlExtensions.GetParentRibbon(this);
             if ((rbn != null) && Items.Contains(rbn.SelectedItem))
             {
                 int selIndex = rbn.SelectedIndex;

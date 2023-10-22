@@ -9,7 +9,9 @@ using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Styling;
 using Avalonia.VisualTree;
+
 using AvaloniaUI.Ribbon.Contracts;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,7 +29,7 @@ namespace AvaloniaUI.Ribbon
     [TemplatePart("PART_PinLastHoveredControlToQuickAccess", typeof(MenuItem))]
     [TemplatePart("PART_ContentAreaContextMenu", typeof(ContextMenu))]
     [TemplatePart("PART_CollapseRibbon", typeof(MenuItem))]
-    public class Ribbon : TabControl, IKeyTipHandler
+    public class Ribbon : TabControl, IRibbon
     {
         #region Static Properties
 
@@ -187,13 +189,13 @@ namespace AvaloniaUI.Ribbon
             set => SetAndRaise(TabsProperty, ref _tabs, value);
         }
 
-        #endregion Properties
-
         protected override Type StyleKeyOverride => typeof(Ribbon);
+
+        #endregion Properties
 
         #region Methods
 
-        public void ActivateKeyTips(Ribbon ribbon, IKeyTipHandler prev)
+        public void ActivateKeyTips(IRibbon ribbon, IKeyTipHandler prev)
         {
             foreach (RibbonTab t in Items)
                 KeyTip.GetKeyTipKeys(t);

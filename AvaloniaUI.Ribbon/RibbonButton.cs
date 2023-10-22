@@ -11,20 +11,18 @@ namespace AvaloniaUI.Ribbon
 {
     public class RibbonButton : Button, IRibbonControl, ICanAddToQuickAccess
     {
-        public static readonly AvaloniaProperty<RibbonControlSize> SizeProperty;
-        public static readonly AvaloniaProperty<RibbonControlSize> MinSizeProperty;
-        public static readonly AvaloniaProperty<RibbonControlSize> MaxSizeProperty;
-        public static readonly StyledProperty<IControlTemplate> IconProperty = AvaloniaProperty.Register<RibbonButton, IControlTemplate>(nameof(Icon));
-        public static readonly StyledProperty<IControlTemplate> LargeIconProperty = AvaloniaProperty.Register<RibbonButton, IControlTemplate>(nameof(LargeIcon));
-        public static readonly StyledProperty<IControlTemplate> QuickAccessIconProperty = AvaloniaProperty.Register<RibbonButton, IControlTemplate>(nameof(QuickAccessIcon));
+        #region Static Properties
 
         public static readonly StyledProperty<bool> CanAddToQuickAccessProperty = AvaloniaProperty.Register<RibbonButton, bool>(nameof(CanAddToQuickAccess), true);
+        public static readonly StyledProperty<IControlTemplate> IconProperty = AvaloniaProperty.Register<RibbonButton, IControlTemplate>(nameof(Icon));
+        public static readonly StyledProperty<IControlTemplate> LargeIconProperty = AvaloniaProperty.Register<RibbonButton, IControlTemplate>(nameof(LargeIcon));
+        public static readonly AvaloniaProperty<RibbonControlSize> MaxSizeProperty;
+        public static readonly AvaloniaProperty<RibbonControlSize> MinSizeProperty;
+        public static readonly StyledProperty<IControlTemplate> QuickAccessIconProperty = AvaloniaProperty.Register<RibbonButton, IControlTemplate>(nameof(QuickAccessIcon));
+        public static readonly StyledProperty<IControlTemplate> QuickAccessTemplateProperty = AvaloniaProperty.Register<RibbonButton, IControlTemplate>(nameof(Template));
+        public static readonly AvaloniaProperty<RibbonControlSize> SizeProperty;
 
-        public bool CanAddToQuickAccess
-        {
-            get => GetValue(CanAddToQuickAccessProperty);
-            set => SetValue(CanAddToQuickAccessProperty, value);
-        }
+        #endregion Static Properties
 
         static RibbonButton()
         {
@@ -32,7 +30,13 @@ namespace AvaloniaUI.Ribbon
             Button.FocusableProperty.OverrideDefaultValue<RibbonButton>(false);
         }
 
-        protected override Type StyleKeyOverride => typeof(RibbonButton);
+        #region Properties
+
+        public bool CanAddToQuickAccess
+        {
+            get => GetValue(CanAddToQuickAccessProperty);
+            set => SetValue(CanAddToQuickAccessProperty, value);
+        }
 
         public IControlTemplate Icon
         {
@@ -46,16 +50,10 @@ namespace AvaloniaUI.Ribbon
             set => SetValue(LargeIconProperty, value);
         }
 
-        public IControlTemplate QuickAccessIcon
+        public RibbonControlSize MaxSize
         {
-            get => GetValue(QuickAccessIconProperty);
-            set => SetValue(QuickAccessIconProperty, value);
-        }
-
-        public RibbonControlSize Size
-        {
-            get => (RibbonControlSize)GetValue(SizeProperty);
-            set => SetValue(SizeProperty, value);
+            get => (RibbonControlSize)GetValue(MaxSizeProperty);
+            set => SetValue(MaxSizeProperty, value);
         }
 
         public RibbonControlSize MinSize
@@ -64,18 +62,26 @@ namespace AvaloniaUI.Ribbon
             set => SetValue(MinSizeProperty, value);
         }
 
-        public RibbonControlSize MaxSize
+        public IControlTemplate QuickAccessIcon
         {
-            get => (RibbonControlSize)GetValue(MaxSizeProperty);
-            set => SetValue(MaxSizeProperty, value);
+            get => GetValue(QuickAccessIconProperty);
+            set => SetValue(QuickAccessIconProperty, value);
         }
-
-        public static readonly StyledProperty<IControlTemplate> QuickAccessTemplateProperty = AvaloniaProperty.Register<RibbonButton, IControlTemplate>(nameof(Template));
 
         public IControlTemplate QuickAccessTemplate
         {
             get => GetValue(QuickAccessTemplateProperty);
             set => SetValue(QuickAccessTemplateProperty, value);
         }
+
+        public RibbonControlSize Size
+        {
+            get => (RibbonControlSize)GetValue(SizeProperty);
+            set => SetValue(SizeProperty, value);
+        }
+
+        protected override Type StyleKeyOverride => typeof(RibbonButton);
+
+        #endregion Properties
     }
 }

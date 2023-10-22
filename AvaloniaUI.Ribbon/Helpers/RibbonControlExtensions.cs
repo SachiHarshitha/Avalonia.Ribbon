@@ -1,12 +1,14 @@
 ﻿using Avalonia.Controls;
 
+using AvaloniaUI.Ribbon.Contracts;
+
 namespace AvaloniaUI.Ribbon.Helpers
 {
     public static class RibbonControlExtensions
     {
-        public static Ribbon GetParentRibbon(Control control)
+        public static IRibbon GetParentRibbon(Control control)
         {
-            return Avalonia.VisualTree.VisualExtensions.FindAncestorOfType<Ribbon>(control, true);
+            return Avalonia.VisualTree.VisualExtensions.FindAncestorOfType<IRibbon>(control, true);
             /*IControl parentRbn = control.Parent;
             while ((!(parentRbn is Ribbon)) && (parentRbn != null))
             {
