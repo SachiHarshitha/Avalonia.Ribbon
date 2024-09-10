@@ -366,7 +366,14 @@ Apart from the above-mentioned global components, the desktop-specific controls 
     ```
 
 ## Change Log
-
+### Update (21/11/2023)
+- Relocate WindowIcontoImageConverter.
+- Solve the issue with the icon to image converter.
+- Optimize Quick access bar design with separators.
+- Optimize Ribbon Window title Height.
+- Update Windows Sample project with quick access toolbar and DecorationsMode Selector.
+- Create 3 types of gallery themes.(Large, Medium. Small)
+  
 ### Update (05/11/2023)
 - Create Interfaces
 - Refactor Code Base
