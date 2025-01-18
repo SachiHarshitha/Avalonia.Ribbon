@@ -34,7 +34,6 @@
                 <Border Classes="RibbonButtonBackgroundBorder">
                     <ToggleButton
                         Name="toggle"
-                        Grid.Row="1"
                         Padding="{TemplateBinding Padding}"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
@@ -207,7 +206,8 @@
     <Style Selector="local|RibbonDropDownButton local|RibbonButton /template/ Image">
         <Setter Property="Margin" Value="0" />
     </Style>
-    <Style Selector="local|RibbonDropDownButton[IsDropDownOpen=False] /template/ ToggleButton#toggle:not(:pointerover):not(:pressed):not(:checked)">
+    <Style
+        Selector="local|RibbonDropDownButton[IsDropDownOpen=False] /template/ ToggleButton#toggle:not(:pointerover):not(:pressed):not(:checked)">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
     </Style>
@@ -234,7 +234,8 @@
         <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
     </Style>
 
-    <Style Selector="local|RibbonDropDownButton /template/ Button#RibbonSplitButtonTopButton:not(:pointerover):not(:pressed)">
+    <Style
+        Selector="local|RibbonDropDownButton /template/ Button#RibbonSplitButtonTopButton:not(:pointerover):not(:pressed)">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
     </Style>

@@ -1,212 +1,270 @@
-﻿using Avalonia;
-using Avalonia.Collections;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Chrome;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
-using Avalonia.Styling;
-using Avalonia.Threading;
+using Avalonia.Interactivity;
+using Avalonia.VisualTree;
 using AvaloniaUI.Ribbon.Contracts;
-using System;
-using System.Collections;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Timers;
 
-namespace AvaloniaUI.Ribbon
+namespace AvaloniaUI.Ribbon;
+
+// TemplatePart attribute specifying the part "MenuPopup" required for this control
+[TemplatePart("MenuPopup", typeof(Popup), IsRequired = true)]
+public sealed class RibbonMenu : ItemsControl, IRibbonMenu
 {
-    [TemplatePart("MenuPopup", typeof(Popup))]
-    public sealed class RibbonMenu : ItemsControl, IRibbonMenu
+    // AvaloniaProperty for TopDockedGroupedItems, a collection of RibbonMenuItem groups
+    public static readonly DirectProperty<RibbonMenu, IEnumerable<IGrouping<string, RibbonMenuItem>>>
+        TopDockedGroupedItemsProperty =
+            AvaloniaProperty.RegisterDirect<RibbonMenu, IEnumerable<IGrouping<string, RibbonMenuItem>>>(
+                nameof(TopDockedGroupedItems),
+                o => o.TopDockedGroupedItems);
+
+    // AvaloniaProperty for BottomDockedGroupedItems, a collection of RibbonMenuItem groups
+    public static readonly DirectProperty<RibbonMenu, IEnumerable<IGrouping<string, RibbonMenuItem>>>
+        BottomDockedGroupedItemsProperty =
+            AvaloniaProperty.RegisterDirect<RibbonMenu, IEnumerable<IGrouping<string, RibbonMenuItem>>>(
+                nameof(BottomDockedGroupedItems),
+                o => o.BottomDockedGroupedItems);
+
+    // Content Property for the RibbonMenu
+    public static readonly StyledProperty<object> ContentProperty =
+        ContentControl.ContentProperty.AddOwner<RibbonMenu>();
+
+    // AvaloniaProperty for the IsMenuOpen state
+    public static readonly StyledProperty<bool> IsMenuOpenProperty =
+        AvaloniaProperty.Register<RibbonMenu, bool>(nameof(IsMenuOpen));
+
+    // AvaloniaProperty for SelectedItemContent
+    public static readonly StyledProperty<object> SelectedItemContentProperty =
+        AvaloniaProperty.Register<RibbonMenu, object>(nameof(SelectedItemContent));
+
+    // AvaloniaProperty for SelectedSubItems
+    public static readonly StyledProperty<object> SelectedSubItemsProperty =
+        AvaloniaProperty.Register<RibbonMenu, object>(nameof(SelectedSubItems));
+
+    // Default panel template used when no other template is specified
+    private static readonly FuncTemplate<Panel> DefaultPanel = new(() => new StackPanel());
+
+    // Private fields to hold the grouped items for top and bottom docks
+    private IEnumerable<IGrouping<string, RibbonMenuItem>> _bottomDockedGroupedItems;
+    private IEnumerable<IGrouping<string, RibbonMenuItem>> _topDockedGroupedItems;
+
+    static RibbonMenu()
     {
-        private IEnumerable _rightColumnItems = new AvaloniaList<object>();
-        private RibbonMenuItem _previousSelectedItem = null;
+        // Class handler for IsMenuOpenProperty when it changes
+        IsMenuOpenProperty.Changed.AddClassHandler<RibbonMenu>((sender, e) => { });
 
-        public static readonly StyledProperty<object> ContentProperty = ContentControl.ContentProperty.AddOwner<RibbonMenu>();
+        // Class handler for ItemsSourceProperty when it changes
+        ItemsSourceProperty.Changed.AddClassHandler<RibbonMenu>((x, e) => x.ItemsChanged(e));
+    }
 
-        public object Content
+    // Public getter and setter for TopDockedGroupedItems
+    public IEnumerable<IGrouping<string, RibbonMenuItem>> TopDockedGroupedItems
+    {
+        get => _topDockedGroupedItems;
+        private set => SetAndRaise(TopDockedGroupedItemsProperty, ref _topDockedGroupedItems, value);
+    }
+
+    // Public getter and setter for BottomDockedGroupedItems
+    public IEnumerable<IGrouping<string, RibbonMenuItem>> BottomDockedGroupedItems
+    {
+        get => _bottomDockedGroupedItems;
+        private set => SetAndRaise(BottomDockedGroupedItemsProperty, ref _bottomDockedGroupedItems, value);
+    }
+
+    // Public getter and setter for Content
+    public object Content
+    {
+        get => GetValue(ContentProperty);
+        set => SetValue(ContentProperty, value);
+    }
+
+    // Public getter and setter for SelectedItemContent
+    public object SelectedItemContent
+    {
+        get => GetValue(SelectedItemContentProperty);
+        set => SetValue(SelectedItemContentProperty, value);
+    }
+
+    // Public getter and setter for SelectedSubItems
+    public object SelectedSubItems
+    {
+        get => GetValue(SelectedSubItemsProperty);
+        set => SetValue(SelectedSubItemsProperty, value);
+    }
+
+    // Public getter and setter for IsMenuOpen
+    public bool IsMenuOpen
+    {
+        get => GetValue(IsMenuOpenProperty);
+        set => SetValue(IsMenuOpenProperty, value);
+    }
+
+    // Constructor: Called when the template is applied
+    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+    {
+        base.OnApplyTemplate(e);
+
+        // Fetch the Popup named "MenuPopup" from the template
+        var menuPopup = e.NameScope.Find<Popup>("MenuPopup");
+        if (menuPopup != null)
         {
-            get => GetValue(ContentProperty);
-            set => SetValue(ContentProperty, value);
+            // Add event handlers for Popup events
+            menuPopup.Closed -= PopupOnClosed;
+            menuPopup.Closed += PopupOnClosed;
+            menuPopup.Opened -= Popup_Opened;
+            menuPopup.Opened += Popup_Opened;
         }
 
-        public static readonly StyledProperty<bool> IsMenuOpenProperty = AvaloniaProperty.Register<RibbonMenu, bool>(nameof(IsMenuOpen), false);
+        // Update grouped items and reset item hover events
+        UpdateGroupedItems();
+        ResetItemHoverEvents();
+    }
 
-        public bool IsMenuOpen
+    /// <summary>
+    ///     Handles the Popup Opened event.
+    ///     Adjusts the Popup's position and size based on the top level window's size.
+    /// </summary>
+    private void Popup_Opened(object sender, EventArgs e)
+    {
+        var topLevel = TopLevel.GetTopLevel(this);
+        if (topLevel == null) return;
+
+        var menuPopup = sender as Popup;
+        if (menuPopup == null) return;
+
+        var descendants = topLevel.GetVisualDescendants();
+        var titleBar = descendants.FirstOrDefault(x => x is TitleBar);
+        if (titleBar != null)
+            menuPopup.Height = topLevel.Bounds.Height - titleBar.Bounds.Height;
+
+        var ribbon = descendants.FirstOrDefault(x => x is Ribbon);
+        if (ribbon != null) return;
+
+        // Adjust positioning based on ribbon and popup coordinates
+        var buttonPoint = ribbon.PointToScreen(ribbon.Bounds.TopLeft);
+        var popupPoint = menuPopup.PointToScreen(menuPopup.Bounds.TopLeft);
+        var xDif = buttonPoint.X - popupPoint.X;
+        var difference = buttonPoint.Y - popupPoint.Y;
+
+        var toggle = descendants.FirstOrDefault(x => x.Name == "MenuPopupToggle");
+        if (toggle == null) return;
+        menuPopup.HorizontalOffset = -1 * toggle.Bounds.Width;
+    }
+
+    /// <summary>
+    ///     Handles the Popup Closed event.
+    /// </summary>
+    private void PopupOnClosed(object sender, EventArgs e)
+    {
+    }
+
+    // Called when the items collection changes
+    private void ItemsChanged(AvaloniaPropertyChangedEventArgs args)
+    {
+        UpdateGroupedItems();
+        ResetItemHoverEvents();
+
+        // Unsubscribe from old collection changes, if applicable
+        if (args.OldValue is INotifyCollectionChanged oldSource)
+            oldSource.CollectionChanged -= ItemsCollectionChanged;
+        if (args.NewValue is INotifyCollectionChanged newSource)
+            newSource.CollectionChanged += ItemsCollectionChanged;
+    }
+
+    // Resets item hover events for each item
+    private void ResetItemHoverEvents()
+    {
+        foreach (var item in Items.OfType<RibbonMenuItem>())
         {
-            get => GetValue(IsMenuOpenProperty);
-            set => SetValue(IsMenuOpenProperty, value);
+            item.Click -= Item_Clicked;
+            item.Click += Item_Clicked;
         }
+    }
 
-        public static readonly StyledProperty<object> SelectedSubItemsProperty = AvaloniaProperty.Register<RibbonMenu, object>(nameof(SelectedSubItems));
+    /// <summary>
+    ///     Handles the Item Clicked event.
+    ///     Updates the selected item content based on the clicked item.
+    /// </summary>
+    private void Item_Clicked(object sender, RoutedEventArgs e)
+    {
+        var item = sender as RibbonMenuItem;
+        if (item == null) return;
 
-        public object SelectedSubItems
+        SelectedItemContent = item.Content;
+    }
+
+    // Updates grouped items based on top-docked and bottom-docked criteria
+    private void UpdateGroupedItems()
+    {
+        // Group items for the TopDocked section
+        TopDockedGroupedItems = Items.OfType<RibbonMenuItem>()
+            .Where(x => x.IsTopDocked && !x.IsBottomDocked)
+            .GroupBy(x => string.IsNullOrWhiteSpace(x.Group) ? "Ungrouped" : x.Group)
+            .ToList();
+
+        // Group items for the BottomDocked section
+        BottomDockedGroupedItems = Items.OfType<RibbonMenuItem>()
+            .Where(x => x.IsBottomDocked)
+            .GroupBy(x => string.IsNullOrWhiteSpace(x.Group) ? "Ungrouped" : x.Group)
+            .ToList();
+
+        // Set flags for the last item in each group
+        try
         {
-            get => GetValue(SelectedSubItemsProperty);
-            set => SetValue(SelectedSubItemsProperty, value);
+            SetIsLastItemFlag(TopDockedGroupedItems, false); // Top docked groups
+            SetIsLastItemFlag(BottomDockedGroupedItems, true); // Bottom docked groups
         }
-
-        public static readonly StyledProperty<bool> HasSelectedItemProperty = AvaloniaProperty.Register<RibbonMenu, bool>(nameof(HasSelectedItem), false);
-
-        public bool HasSelectedItem
+        catch (Exception e)
         {
-            get => GetValue(HasSelectedItemProperty);
-            set => SetValue(HasSelectedItemProperty, value);
+            Console.WriteLine(e);
         }
+    }
 
-        public static readonly StyledProperty<string> RightColumnHeaderProperty = AvaloniaProperty.Register<RibbonMenu, string>(nameof(RightColumnHeader));
+    // Resets the selection state for all items
+    private void ResetSelection()
+    {
+        foreach (var item in Items.OfType<RibbonMenuItem>()) item.IsSelected = false;
+    }
 
-        public string RightColumnHeader
+    // Handles collection changes for the items
+    private void ItemsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+    {
+        ResetItemHoverEvents();
+    }
+
+    // Sets the IsLastItem flag for items in the grouped collection
+    private void SetIsLastItemFlag(IEnumerable<IGrouping<string, RibbonMenuItem>> groupedItems, bool isBottomDocked)
+    {
+        var groupList = groupedItems.ToList();
+
+        // Iterate over each group
+        for (var groupIndex = 0; groupIndex < groupList.Count; groupIndex++)
         {
-            get => GetValue(RightColumnHeaderProperty);
-            set => SetValue(RightColumnHeaderProperty, value);
+            var group = groupList[groupIndex];
+            var itemList = group.ToList();
+
+            // Set the IsLastItem flag for each item in the group
+            for (var itemIndex = 0; itemIndex < itemList.Count; itemIndex++)
+                itemList[itemIndex].IsLastItem = itemIndex == itemList.Count - 1;
+
+            // If it's the last group and it's in the bottom docked section, hide the group
+            if (isBottomDocked && groupIndex == groupList.Count - 1)
+                foreach (var item in itemList)
+                    item.IsLastItem = false; // Set visibility flag for the last group in the bottom dock
         }
+    }
 
-        public static readonly DirectProperty<RibbonMenu, IEnumerable> RightColumnItemsProperty = AvaloniaProperty.RegisterDirect<RibbonMenu, IEnumerable>(nameof(RightColumnItems), o => o.RightColumnItems, (o, v) => o.RightColumnItems = v);
-
-        public IEnumerable RightColumnItems
-        {
-            get => _rightColumnItems;
-            set => SetAndRaise(RightColumnItemsProperty, ref _rightColumnItems, value);
-        }
-
-        private static readonly FuncTemplate<Panel> DefaultPanel = new FuncTemplate<Panel>(() => new StackPanel());
-
-        public static readonly StyledProperty<ITemplate<Panel>> RightColumnItemsPanelProperty = AvaloniaProperty.Register<RibbonMenu, ITemplate<Panel>>(nameof(RightColumnItemsPanel), DefaultPanel);
-
-        public ITemplate<Panel> RightColumnItemsPanel
-        {
-            get => GetValue(RightColumnItemsPanelProperty);
-            set => SetValue(RightColumnItemsPanelProperty, value);
-        }
-
-        public static readonly StyledProperty<IDataTemplate> RightColumnItemTemplateProperty = AvaloniaProperty.Register<RibbonMenu, IDataTemplate>(nameof(RightColumnItemTemplate));
-
-        public IDataTemplate RightColumnItemTemplate
-        {
-            get => GetValue(RightColumnItemTemplateProperty);
-            set => SetValue(RightColumnItemTemplateProperty, value);
-        }
-
-        static RibbonMenu()
-        {
-            IsMenuOpenProperty.Changed.AddClassHandler<RibbonMenu>(new Action<RibbonMenu, AvaloniaPropertyChangedEventArgs>((sender, e) =>
-            {
-                if (e.NewValue is bool boolean)
-                {
-                    if (boolean)
-                    {
-                        //sender.Focus();
-                    }
-                    else
-                    {
-                        sender.SelectedSubItems = null;
-                        sender.HasSelectedItem = false;
-
-                        if (sender._previousSelectedItem != null)
-                            sender._previousSelectedItem.IsSelected = false;
-                    }
-                }
-            }));
-
-            ItemsSourceProperty.Changed.AddClassHandler<RibbonMenu>((x, e) => x.ItemsChanged(e));
-        }
-
-        public RibbonMenu()
-        {
-            /*LostFocus += (_, _) =>
-            {
-                IsMenuOpen = false;
-            };*/
-            /*this.FindAncestorOfType<VisualLayerManager>()*/
-        }
-
-        protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
-        {
-            base.OnApplyTemplate(e);
-            var popup = e.NameScope.Find<Popup>("MenuPopup");
-            popup.Closed += PopupOnClosed;
-        }
-
-        private void PopupOnClosed(object sender, EventArgs e)
-        {
-        }
-
-        private void ItemsChanged(AvaloniaPropertyChangedEventArgs args)
-        {
-            ResetItemHoverEvents();
-
-            if (args.OldValue is INotifyCollectionChanged oldSource)
-                oldSource.CollectionChanged -= ItemsCollectionChanged;
-            if (args.NewValue is INotifyCollectionChanged newSource)
-            {
-                newSource.CollectionChanged += ItemsCollectionChanged;
-            }
-        }
-
-        private void ItemsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            ResetItemHoverEvents();
-        }
-
-        private void ResetItemHoverEvents()
-        {
-            foreach (RibbonMenuItem item in Items.OfType<RibbonMenuItem>())
-            {
-                item.PointerEntered -= Item_PointerEnter;
-                item.PointerEntered += Item_PointerEnter;
-            }
-        }
-
-        private void Item_PointerEnter(object sender, Avalonia.Input.PointerEventArgs e)
-        {
-            if ((sender is RibbonMenuItem item))
-            {
-                int counter = 0;
-                Timer timer = new Timer(1);
-                timer.Elapsed += (sneder, args) =>
-                {
-                    if (counter < 25)
-                        counter++;
-                    else
-                    {
-                        Dispatcher.UIThread.Post(() =>
-                        {
-                            if (item.IsPointerOver)
-                            {
-                                if (item.HasItems)
-                                {
-                                    SelectedSubItems = item.Items;
-                                    HasSelectedItem = true;
-
-                                    item.IsSelected = true;
-
-                                    if (_previousSelectedItem != null)
-                                        _previousSelectedItem.IsSelected = false;
-
-                                    _previousSelectedItem = item;
-                                }
-                                else
-                                {
-                                    SelectedSubItems = null;
-                                    HasSelectedItem = false;
-
-                                    if (_previousSelectedItem != null)
-                                        _previousSelectedItem.IsSelected = false;
-                                }
-                            }
-                        });
-
-                        timer.Stop();
-                    }
-                };
-                timer.Start();
-            }
-        }
-
-        ~RibbonMenu()
-        {
-            if (ItemsSource is INotifyCollectionChanged collectionChanged)
-                collectionChanged.CollectionChanged -= ItemsCollectionChanged;
-        }
+    // Destructor: Removes event handlers when the RibbonMenu is destroyed
+    ~RibbonMenu()
+    {
+        if (ItemsSource is INotifyCollectionChanged collectionChanged)
+            collectionChanged.CollectionChanged -= ItemsCollectionChanged;
     }
 }

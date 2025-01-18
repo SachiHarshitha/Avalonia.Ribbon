@@ -52,7 +52,7 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:pointerover /template/ Border#BackgroundBorder">
-            <Setter Property="Background" Value="{DynamicResource MenuFlyoutItemBackgroundPointerOver}" />	  
+            <Setter Property="Background" Value="{DynamicResource MenuFlyoutItemBackgroundPointerOver}" />
         </Style>
     </Style>
 

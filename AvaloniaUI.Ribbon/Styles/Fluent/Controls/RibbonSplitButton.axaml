@@ -50,7 +50,6 @@
                         </Button>
                         <ToggleButton
                             Name="toggle"
-                            Grid.Row="1"
                             Padding="9,0,9,9"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
@@ -239,24 +238,29 @@
         </Setter>
     </Style>
 
-    <Style Selector="local|RibbonSplitButton:not(local|RibbonSplitButton[Size=Large]) /template/ Button#RibbonSplitButtonTopButton /template/ ContentPresenter#PART_ContentPresenter">
+    <Style
+        Selector="local|RibbonSplitButton:not(local|RibbonSplitButton[Size=Large]) /template/ Button#RibbonSplitButtonTopButton /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="CornerRadius" Value="2,0,0,2" />
     </Style>
-    <Style Selector="local|RibbonSplitButton[Size=Large] /template/ Button#RibbonSplitButtonTopButton /template/ ContentPresenter#PART_ContentPresenter">
+    <Style
+        Selector="local|RibbonSplitButton[Size=Large] /template/ Button#RibbonSplitButtonTopButton /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="CornerRadius" Value="3,2,0,0" />
     </Style>
 
-    <Style Selector="local|RibbonSplitButton:not(local|RibbonSplitButton[Size=Large]) /template/ ToggleButton#toggle /template/ ContentPresenter#PART_ContentPresenter">
+    <Style
+        Selector="local|RibbonSplitButton:not(local|RibbonSplitButton[Size=Large]) /template/ ToggleButton#toggle /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="CornerRadius" Value="0,2,2,0" />
     </Style>
-    <Style Selector="local|RibbonSplitButton[Size=Large] /template/ ToggleButton#toggle /template/ ContentPresenter#PART_ContentPresenter">
+    <Style
+        Selector="local|RibbonSplitButton[Size=Large] /template/ ToggleButton#toggle /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="CornerRadius" Value="0,0,2,2" />
     </Style>
 
     <Style Selector="local|RibbonSplitButton local|RibbonButton /template/ Image">
         <Setter Property="Margin" Value="0" />
     </Style>
-    <Style Selector="local|RibbonSplitButton[IsDropDownOpen=False] /template/ ToggleButton#toggle:not(:pointerover):not(:pressed):not(:checked)">
+    <Style
+        Selector="local|RibbonSplitButton[IsDropDownOpen=False] /template/ ToggleButton#toggle:not(:pointerover):not(:pressed):not(:checked)">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
     </Style>
@@ -284,7 +288,8 @@
         <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
     </Style>
 
-    <Style Selector="local|RibbonSplitButton /template/ Button#RibbonSplitButtonTopButton:not(:pointerover):not(:pressed)">
+    <Style
+        Selector="local|RibbonSplitButton /template/ Button#RibbonSplitButtonTopButton:not(:pointerover):not(:pressed)">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
     </Style>

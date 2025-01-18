@@ -10,7 +10,6 @@
 		<Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
 		<Setter Property="Height" Value="34" />
 		<Setter Property="Content" Value="{DynamicResource AvaloniaRibbon.File}" />
-		<Setter Property="RightColumnHeader" Value="{DynamicResource AvaloniaRibbon.Recent}" />
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Panel>
@@ -44,17 +43,8 @@
                                     Name="MenuRightColumnDockPanel"
                                     Width="200"
                                     DockPanel.Dock="Right">
-									<Grid
-                                        Height="34"
-                                        DockPanel.Dock="Top"
-                                        IsVisible="{Binding !HasSelectedItem, RelativeSource={RelativeSource Mode=TemplatedParent}}">
-										<TextBlock
-                                            Margin="10,0"
-                                            VerticalAlignment="Center"
-                                            FontWeight="SemiBold"
-                                            Text="{TemplateBinding RightColumnHeader}" />
-									</Grid>
-									<Panel>
+									<ContentPresenter Content="{TemplateBinding SelectedItemContent}" />
+									<!--<Panel>
 										<ItemsControl
                                             x:Name="PART_RightColumnItemsPresenter"
                                             IsVisible="{Binding !HasSelectedItem, RelativeSource={RelativeSource Mode=TemplatedParent}}"
@@ -65,7 +55,7 @@
                                             x:Name="SelectedSubItemsPresenter"
                                             IsVisible="{TemplateBinding HasSelectedItem}"
                                             ItemsSource="{TemplateBinding SelectedSubItems}" />
-									</Panel>
+									</Panel>-->
 									<!--  ListBox Classes="RibbonMenuPlacesList" Items="{Binding MenuPlacesItems, RelativeSource={RelativeSource Mode=TemplatedParent}}"/  -->
 								</DockPanel>
 								<DockPanel>
@@ -139,12 +129,6 @@
 		<Setter Property="Template">
 			<ControlTemplate>
 				<DockPanel>
-					<ToggleButton
-                        DockPanel.Dock="Right"
-                        IsChecked="{TemplateBinding IsSelected}"
-                        IsVisible="{TemplateBinding HasItems}">
-						<Path Data="M0,0 L0,3 1.5,4.5 0,6 0,9 4.5,4.5 z" Fill="{Binding $parent[ToggleButton].Foreground}" />
-					</ToggleButton>
 					<Button
                         x:Name="PART_ContentButton"
                         VerticalAlignment="Center"

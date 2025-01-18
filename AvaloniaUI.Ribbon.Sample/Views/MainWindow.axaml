@@ -449,59 +449,59 @@
 				</Button>
 			</windows:DesktopRibbon.HelpPaneContent>
 			<windows:DesktopRibbon.Menu>
-				<ribbon:RibbonMenu
+				<RibbonMenu
                     Width="50"
                     ribbon:KeyTip.KeyTipKeys="F">
-					<ribbon:RibbonMenuItem Header="Item 1">
-						<ribbon:RibbonMenuItem.Icon>
+					<RibbonMenuItem Header="New" Group="File" IsTopDocked="True">
+						<RibbonMenuItem.Icon>
 							<Rectangle
                                 Width="32"
                                 Height="32"
                                 Fill="Red" />
-						</ribbon:RibbonMenuItem.Icon>
-					</ribbon:RibbonMenuItem>
-					<ribbon:RibbonMenuItem Header="Item 2">
-						<ribbon:RibbonMenuItem.Icon>
+						</RibbonMenuItem.Icon>
+						<RibbonMenuItem.Content></RibbonMenuItem.Content>
+					</RibbonMenuItem>
+					<RibbonMenuItem Header="Open" Group="File" IsTopDocked="True">
+						<RibbonMenuItem.Icon>
 							<Rectangle
                                 Width="32"
                                 Height="32"
                                 Fill="Green" />
-						</ribbon:RibbonMenuItem.Icon>
-						</ribbon:RibbonMenuItem>
-					<!--ribbon:RibbonMenu.MenuPlacesItems>
-                        <ListBoxItem Content="Place 1" />
-                        <ListBoxItem Content="Place 2" />
-                        <ListBoxItem Content="Place 3" />
-                    </ribbon:RibbonMenu.MenuPlacesItems-->
-					<ribbon:RibbonMenuItem Header="Purple">
-						<ribbon:RibbonMenuItem.Icon>
+						</RibbonMenuItem.Icon>
+						<RibbonMenuItem.Content>
+							<DockPanel>
+								<TabControl DockPanel.Dock="Top">
+									<TabItem Header="TEST" />
+								</TabControl>
+							</DockPanel>
+						</RibbonMenuItem.Content>
+					</RibbonMenuItem>
+					<RibbonMenuItem Header="Export">
+						<RibbonMenuItem.Icon>
 							<Rectangle
                                 Width="32"
                                 Height="32"
                                 Fill="Purple" />
-						</ribbon:RibbonMenuItem.Icon>
-					</ribbon:RibbonMenuItem>
-					<ribbon:RibbonMenuItem Header="Brown">
-						<ribbon:RibbonMenuItem.Icon>
+						</RibbonMenuItem.Icon>
+					</RibbonMenuItem>
+					<RibbonMenuItem Header="Exit" IsBottomDocked="True">
+						<RibbonMenuItem.Icon>
 							<Rectangle
                                 Width="32"
                                 Height="32"
                                 Fill="Brown" />
-						</ribbon:RibbonMenuItem.Icon>
-						<ribbon:RibbonMenuItem.Content>
-							<TextBlock>Recent Items</TextBlock>
-						</ribbon:RibbonMenuItem.Content>
-					</ribbon:RibbonMenuItem>
-				</ribbon:RibbonMenu>
+						</RibbonMenuItem.Icon>
+					</RibbonMenuItem>
+				</RibbonMenu>
 			</windows:DesktopRibbon.Menu>
 			<windows:DesktopRibbon.Tabs>
-				<ribbon:RibbonTab ribbon:KeyTip.KeyTipKeys="B" Header="Button Controls">
-					<ribbon:RibbonTab.Groups>
-						<ribbon:RibbonGroupBox
+				<RibbonTab ribbon:KeyTip.KeyTipKeys="B" Header="Button Controls">
+					<RibbonTab.Groups>
+						<RibbonGroupBox
                             ribbon:KeyTip.KeyTipKeys="S"
                             Command="{Binding OnClickCommand}"
                             Header="SplitButtonControls">
-							<ribbon:SplitButtonControl
+							<SplitButtonControl
                                 x:Name="RibbonSplitButton1"
                                 Content="Large"
                                 Icon="{DynamicResource Icon1}"
@@ -509,7 +509,7 @@
                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}"
                                 Size="Large"
                                 Theme="{StaticResource LargeSplitButton}">
-								<ribbon:SplitButtonControl.Flyout>
+								<SplitButtonControl.Flyout>
 									<MenuFlyout Placement="Bottom">
 										<MenuItem Header="Item 1">
 											<MenuItem Header="Subitem 1" />
@@ -519,16 +519,16 @@
 										<MenuItem Header="Item 2" InputGesture="Ctrl+A" />
 										<MenuItem Header="Item 3" />
 									</MenuFlyout>
-								</ribbon:SplitButtonControl.Flyout>
-							</ribbon:SplitButtonControl>
-							<ribbon:SplitButtonControl
+								</SplitButtonControl.Flyout>
+							</SplitButtonControl>
+							<SplitButtonControl
                                 x:Name="RibbonSplitButton2"
                                 Content="Medium"
                                 Icon="{DynamicResource Icon2}"
                                 LargeIcon="{DynamicResource Icon2Large}"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 Theme="{StaticResource MediumSplitButton}" />
-							<ribbon:SplitButtonControl
+							<SplitButtonControl
                                 x:Name="RibbonSplitButton3"
                                 Icon="{DynamicResource Icon2}"
                                 LargeIcon="{DynamicResource Icon2Large}"
@@ -537,65 +537,65 @@
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 Theme="{StaticResource SmallSplitButton}"
                                 ToolTip.Tip="Small" />
-						</ribbon:RibbonGroupBox>
+						</RibbonGroupBox>
 
-						<ribbon:RibbonGroupBox
+						<RibbonGroupBox
                             ribbon:KeyTip.KeyTipKeys="B"
                             Command="{Binding OnClickCommand}"
                             Header="RibbonButtons">
-							<ribbon:RibbonButton
+							<RibbonButton
                                 Content="Large"
                                 Icon="{DynamicResource Icon1}"
                                 LargeIcon="{DynamicResource Icon1Large}"
                                 MaxSize="Large"
                                 MinSize="Large"
                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 Content="Medium"
                                 Icon="{DynamicResource Icon2}"
                                 LargeIcon="{DynamicResource Icon2Large}"
                                 MaxSize="Medium"
                                 MinSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 Icon="{DynamicResource Icon2}"
                                 LargeIcon="{DynamicResource Icon2Large}"
                                 MaxSize="Small"
                                 MinSize="Small"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Small" />
-						</ribbon:RibbonGroupBox>
-						<ribbon:RibbonGroupBox
+						</RibbonGroupBox>
+						<RibbonGroupBox
                             ribbon:KeyTip.KeyTipKeys="T"
                             Command="{Binding OnClickCommand}"
                             Header="RibbonToggleButtons">
-							<ribbon:RibbonToggleButton
+							<RibbonToggleButton
                                 Content="Large"
                                 Icon="{DynamicResource Icon1}"
                                 LargeIcon="{DynamicResource Icon1Large}"
                                 MaxSize="Large"
                                 MinSize="Large"
                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
-							<ribbon:RibbonToggleButton
+							<RibbonToggleButton
                                 Content="Medium"
                                 Icon="{DynamicResource Icon2}"
                                 LargeIcon="{DynamicResource Icon2Large}"
                                 MaxSize="Medium"
                                 MinSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
-							<ribbon:RibbonToggleButton
+							<RibbonToggleButton
                                 Icon="{DynamicResource Icon2}"
                                 LargeIcon="{DynamicResource Icon2Large}"
                                 MaxSize="Small"
                                 MinSize="Small"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Small" />
-						</ribbon:RibbonGroupBox>
-						<ribbon:RibbonGroupBox
+						</RibbonGroupBox>
+						<RibbonGroupBox
                             ribbon:KeyTip.KeyTipKeys="S"
                             Command="{Binding OnClickCommand}"
                             Header="RibbonDropDownButtons">
-							<ribbon:RibbonDropDownButton
+							<RibbonDropDownButton
                                 x:Name="LargeRibbonDropDownButton"
                                 Content="Large"
                                 Icon="{DynamicResource Icon1}"
@@ -603,34 +603,34 @@
                                 MaxSize="Large"
                                 MinSize="Large"
                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}">
-								<ribbon:RibbonDropDownItem
+								<RibbonDropDownItem
                                     Command="{Binding OnClickCommand}"
                                     CommandParameter="RibbonDropDownButton Item 1"
                                     Text="Item 1">
-									<ribbon:RibbonDropDownItem.Icon>
+									<RibbonDropDownItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Red" />
 										</ControlTemplate>
-									</ribbon:RibbonDropDownItem.Icon>
-								</ribbon:RibbonDropDownItem>
-								<ribbon:RibbonDropDownItem
+									</RibbonDropDownItem.Icon>
+								</RibbonDropDownItem>
+								<RibbonDropDownItem
                                     Command="{Binding OnClickCommand}"
                                     CommandParameter="RibbonDropDownButton Item 2"
                                     Text="Item 2">
-									<ribbon:RibbonDropDownItem.Icon>
+									<RibbonDropDownItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Green" />
 										</ControlTemplate>
-									</ribbon:RibbonDropDownItem.Icon>
-								</ribbon:RibbonDropDownItem>
-							</ribbon:RibbonDropDownButton>
-							<ribbon:RibbonDropDownButton
+									</RibbonDropDownItem.Icon>
+								</RibbonDropDownItem>
+							</RibbonDropDownButton>
+							<RibbonDropDownButton
                                 Content="Medium"
                                 Icon="{DynamicResource Icon2}"
                                 ItemsSource="{Binding #LargeRibbonDropDownButton.Items}"
@@ -638,7 +638,7 @@
                                 MaxSize="Medium"
                                 MinSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
-							<ribbon:RibbonDropDownButton
+							<RibbonDropDownButton
                                 Icon="{DynamicResource Icon2}"
                                 ItemsSource="{Binding #LargeRibbonDropDownButton.Items}"
                                 LargeIcon="{DynamicResource Icon2Large}"
@@ -646,16 +646,16 @@
                                 MinSize="Small"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Small" />
-						</ribbon:RibbonGroupBox>
-					</ribbon:RibbonTab.Groups>
-				</ribbon:RibbonTab>
-				<ribbon:RibbonTab ribbon:KeyTip.KeyTipKeys="H" Header="Home">
-					<ribbon:RibbonTab.Groups>
-						<ribbon:RibbonGroupBox
+						</RibbonGroupBox>
+					</RibbonTab.Groups>
+				</RibbonTab>
+				<RibbonTab ribbon:KeyTip.KeyTipKeys="H" Header="Home">
+					<RibbonTab.Groups>
+						<RibbonGroupBox
                             ribbon:KeyTip.KeyTipKeys="D1"
                             Command="{Binding OnClickCommand}"
                             Header="Test Group 1">
-							<ribbon:RibbonButton
+							<RibbonButton
                                 x:Name="RibbonButton1"
                                 ribbon:KeyTip.KeyTipKeys="A"
                                 CanAddToQuickAccess="True"
@@ -665,7 +665,7 @@
                                 MinSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}"
                                 ToolTip.Tip="Button 1" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 x:Name="RibbonButton2"
                                 ribbon:KeyTip.KeyTipKeys="B"
                                 Content="Button 2"
@@ -674,7 +674,7 @@
                                 MinSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 2" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 x:Name="RibbonButton3"
                                 ribbon:KeyTip.KeyTipKeys="C"
                                 Content="Button 3"
@@ -683,9 +683,9 @@
                                 MinSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 3" />
-						</ribbon:RibbonGroupBox>
-						<ribbon:RibbonGroupBox ribbon:KeyTip.KeyTipKeys="D2" Header="Test Group 2">
-							<ribbon:RibbonButton
+						</RibbonGroupBox>
+						<RibbonGroupBox ribbon:KeyTip.KeyTipKeys="D2" Header="Test Group 2">
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="D"
                                 Content="Button 4"
                                 Icon="{DynamicResource Icon2}"
@@ -693,7 +693,7 @@
                                 MaxSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 4" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="E"
                                 Content="Button 5"
                                 Icon="{DynamicResource Icon1}"
@@ -701,7 +701,7 @@
                                 MaxSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}"
                                 ToolTip.Tip="Button 5" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="F"
                                 Content="Button 6"
                                 Icon="{DynamicResource Icon2}"
@@ -710,7 +710,7 @@
                                 MinSize="Small"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 6" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="G"
                                 Content="Button 7"
                                 Icon="{DynamicResource Icon2}"
@@ -719,9 +719,9 @@
                                 MinSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 7" />
-						</ribbon:RibbonGroupBox>
-						<ribbon:RibbonGroupBox ribbon:KeyTip.KeyTipKeys="D3" Header="Test Group 3">
-							<ribbon:RibbonButton
+						</RibbonGroupBox>
+						<RibbonGroupBox ribbon:KeyTip.KeyTipKeys="D3" Header="Test Group 3">
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="H"
                                 Content="Button 8"
                                 Icon="{DynamicResource Icon2}"
@@ -729,7 +729,7 @@
                                 MaxSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 8" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="I"
                                 Content="Button 9"
                                 Icon="{DynamicResource Icon1}"
@@ -737,7 +737,7 @@
                                 MaxSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}"
                                 ToolTip.Tip="Button 9" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="J"
                                 Content="Button 10"
                                 Icon="{DynamicResource Icon2}"
@@ -746,13 +746,13 @@
                                 MinSize="Small"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 10" />
-						</ribbon:RibbonGroupBox>
+						</RibbonGroupBox>
 
-						<ribbon:RibbonGroupBox
+						<RibbonGroupBox
                             ribbon:KeyTip.KeyTipKeys="D1"
                             Command="{Binding OnClickCommand}"
                             Header="Test Group 4">
-							<ribbon:RibbonButton
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="A"
                                 Content="Button 11"
                                 Icon="{DynamicResource Icon1}"
@@ -760,7 +760,7 @@
                                 MinSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}"
                                 ToolTip.Tip="Button 11" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="B"
                                 Content="Button 12"
                                 Icon="{DynamicResource Icon2}"
@@ -768,7 +768,7 @@
                                 MinSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 12" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="C"
                                 Content="Button 13"
                                 Icon="{DynamicResource Icon2}"
@@ -776,9 +776,9 @@
                                 MinSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 13" />
-						</ribbon:RibbonGroupBox>
-						<ribbon:RibbonGroupBox ribbon:KeyTip.KeyTipKeys="D2" Header="Test Group 5">
-							<ribbon:RibbonButton
+						</RibbonGroupBox>
+						<RibbonGroupBox ribbon:KeyTip.KeyTipKeys="D2" Header="Test Group 5">
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="D"
                                 Content="Button 14"
                                 Icon="{DynamicResource Icon2}"
@@ -786,7 +786,7 @@
                                 MaxSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 14" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="E"
                                 Content="Button 15"
                                 Icon="{DynamicResource Icon1}"
@@ -794,7 +794,7 @@
                                 MaxSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}"
                                 ToolTip.Tip="Button 15" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="F"
                                 Content="Button 16"
                                 Icon="{DynamicResource Icon2}"
@@ -803,7 +803,7 @@
                                 MinSize="Small"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 16" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="G"
                                 Content="Button 17"
                                 Icon="{DynamicResource Icon2}"
@@ -812,9 +812,9 @@
                                 MinSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 17" />
-						</ribbon:RibbonGroupBox>
-						<ribbon:RibbonGroupBox ribbon:KeyTip.KeyTipKeys="D3" Header="Test Group 6">
-							<ribbon:RibbonButton
+						</RibbonGroupBox>
+						<RibbonGroupBox ribbon:KeyTip.KeyTipKeys="D3" Header="Test Group 6">
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="H"
                                 Content="Button 18"
                                 Icon="{DynamicResource Icon2}"
@@ -822,7 +822,7 @@
                                 MaxSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 18" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="I"
                                 Content="Button 19"
                                 Icon="{DynamicResource Icon1}"
@@ -830,7 +830,7 @@
                                 MaxSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}"
                                 ToolTip.Tip="Button 19" />
-							<ribbon:RibbonButton
+							<RibbonButton
                                 ribbon:KeyTip.KeyTipKeys="J"
                                 Content="Button 20"
                                 Icon="{DynamicResource Icon2}"
@@ -839,407 +839,407 @@
                                 MinSize="Small"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                 ToolTip.Tip="Button 20" />
-						</ribbon:RibbonGroupBox>
-					</ribbon:RibbonTab.Groups>
-				</ribbon:RibbonTab>
+						</RibbonGroupBox>
+					</RibbonTab.Groups>
+				</RibbonTab>
 
-				<ribbon:RibbonTab ribbon:KeyTip.KeyTipKeys="G" Header="Galleries">
-					<ribbon:RibbonTab.Groups>
-						<ribbon:RibbonGroupBox
+				<RibbonTab ribbon:KeyTip.KeyTipKeys="G" Header="Galleries">
+					<RibbonTab.Groups>
+						<RibbonGroupBox
                             ribbon:KeyTip.KeyTipKeys="L"
                             Command="{Binding OnClickCommand}"
                             Header="Large gallery">
-							<ribbon:Gallery Theme="{StaticResource LargeGallery}">
-								<ribbon:GalleryItem Content="Item 1">
-									<ribbon:GalleryItem.LargeIcon>
+							<Gallery Theme="{StaticResource LargeGallery}">
+								<GalleryItem Content="Item 1">
+									<GalleryItem.LargeIcon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="32"
                                                 Height="32"
                                                 Fill="Red" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.LargeIcon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 2">
-									<ribbon:GalleryItem.LargeIcon>
+									</GalleryItem.LargeIcon>
+								</GalleryItem>
+								<GalleryItem Content="Item 2">
+									<GalleryItem.LargeIcon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="32"
                                                 Height="32"
                                                 Fill="OrangeRed" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.LargeIcon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 3">
-									<ribbon:GalleryItem.LargeIcon>
+									</GalleryItem.LargeIcon>
+								</GalleryItem>
+								<GalleryItem Content="Item 3">
+									<GalleryItem.LargeIcon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="32"
                                                 Height="32"
                                                 Fill="Orange" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.LargeIcon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 4">
-									<ribbon:GalleryItem.LargeIcon>
+									</GalleryItem.LargeIcon>
+								</GalleryItem>
+								<GalleryItem Content="Item 4">
+									<GalleryItem.LargeIcon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="32"
                                                 Height="32"
                                                 Fill="Yellow" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.LargeIcon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 5">
-									<ribbon:GalleryItem.LargeIcon>
+									</GalleryItem.LargeIcon>
+								</GalleryItem>
+								<GalleryItem Content="Item 5">
+									<GalleryItem.LargeIcon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="32"
                                                 Height="32"
                                                 Fill="GreenYellow" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.LargeIcon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 6">
-									<ribbon:GalleryItem.LargeIcon>
+									</GalleryItem.LargeIcon>
+								</GalleryItem>
+								<GalleryItem Content="Item 6">
+									<GalleryItem.LargeIcon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="32"
                                                 Height="32"
                                                 Fill="YellowGreen" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.LargeIcon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 7">
-									<ribbon:GalleryItem.LargeIcon>
+									</GalleryItem.LargeIcon>
+								</GalleryItem>
+								<GalleryItem Content="Item 7">
+									<GalleryItem.LargeIcon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="32"
                                                 Height="32"
                                                 Fill="Green" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.LargeIcon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 8">
-									<ribbon:GalleryItem.LargeIcon>
+									</GalleryItem.LargeIcon>
+								</GalleryItem>
+								<GalleryItem Content="Item 8">
+									<GalleryItem.LargeIcon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="32"
                                                 Height="32"
                                                 Fill="Turquoise" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.LargeIcon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 9">
-									<ribbon:GalleryItem.LargeIcon>
+									</GalleryItem.LargeIcon>
+								</GalleryItem>
+								<GalleryItem Content="Item 9">
+									<GalleryItem.LargeIcon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="32"
                                                 Height="32"
                                                 Fill="Cyan" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.LargeIcon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 10">
-									<ribbon:GalleryItem.LargeIcon>
+									</GalleryItem.LargeIcon>
+								</GalleryItem>
+								<GalleryItem Content="Item 10">
+									<GalleryItem.LargeIcon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="32"
                                                 Height="32"
                                                 Fill="SkyBlue" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.LargeIcon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 11">
-									<ribbon:GalleryItem.LargeIcon>
+									</GalleryItem.LargeIcon>
+								</GalleryItem>
+								<GalleryItem Content="Item 11">
+									<GalleryItem.LargeIcon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="32"
                                                 Height="32"
                                                 Fill="Blue" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.LargeIcon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 12">
-									<ribbon:GalleryItem.LargeIcon>
+									</GalleryItem.LargeIcon>
+								</GalleryItem>
+								<GalleryItem Content="Item 12">
+									<GalleryItem.LargeIcon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="32"
                                                 Height="32"
                                                 Fill="BlueViolet" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.LargeIcon>
-								</ribbon:GalleryItem>
-							</ribbon:Gallery>
-						</ribbon:RibbonGroupBox>
-						<ribbon:RibbonGroupBox ribbon:KeyTip.KeyTipKeys="M" Header="Medium gallery">
-							<ribbon:Gallery Theme="{StaticResource MediumGallery}">
-								<ribbon:GalleryItem Content="Item 1">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.LargeIcon>
+								</GalleryItem>
+							</Gallery>
+						</RibbonGroupBox>
+						<RibbonGroupBox ribbon:KeyTip.KeyTipKeys="M" Header="Medium gallery">
+							<Gallery Theme="{StaticResource MediumGallery}">
+								<GalleryItem Content="Item 1">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Red" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 2">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 2">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="OrangeRed" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 3">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 3">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Orange" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 4">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 4">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Yellow" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 5">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 5">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="GreenYellow" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 6">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 6">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="YellowGreen" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 7">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 7">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Green" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 8">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 8">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Turquoise" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 9">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 9">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Cyan" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 10">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 10">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="SkyBlue" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 11">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 11">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Blue" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 12">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 12">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="BlueViolet" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-							</ribbon:Gallery>
-						</ribbon:RibbonGroupBox>
-						<ribbon:RibbonGroupBox ribbon:KeyTip.KeyTipKeys="S" Header="Small gallery">
-							<ribbon:Gallery Theme="{StaticResource SmallGallery}">
-								<ribbon:GalleryItem Content="Item 1">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+							</Gallery>
+						</RibbonGroupBox>
+						<RibbonGroupBox ribbon:KeyTip.KeyTipKeys="S" Header="Small gallery">
+							<Gallery Theme="{StaticResource SmallGallery}">
+								<GalleryItem Content="Item 1">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Red" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 2">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 2">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="OrangeRed" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 3">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 3">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Orange" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 4">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 4">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Yellow" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 5">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 5">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="GreenYellow" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 6">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 6">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="YellowGreen" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 7">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 7">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Green" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 8">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 8">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Turquoise" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 9">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 9">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Cyan" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 10">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 10">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="SkyBlue" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 11">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 11">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="Blue" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-								<ribbon:GalleryItem Content="Item 12">
-									<ribbon:GalleryItem.Icon>
+									</GalleryItem.Icon>
+								</GalleryItem>
+								<GalleryItem Content="Item 12">
+									<GalleryItem.Icon>
 										<ControlTemplate>
 											<Rectangle
                                                 Width="16"
                                                 Height="16"
                                                 Fill="BlueViolet" />
 										</ControlTemplate>
-									</ribbon:GalleryItem.Icon>
-								</ribbon:GalleryItem>
-							</ribbon:Gallery>
-						</ribbon:RibbonGroupBox>
-					</ribbon:RibbonTab.Groups>
-				</ribbon:RibbonTab>
+									</GalleryItem.Icon>
+								</GalleryItem>
+							</Gallery>
+						</RibbonGroupBox>
+					</RibbonTab.Groups>
+				</RibbonTab>
 
-				<ribbon:RibbonTab Header="Invisible tab" IsVisible="False" />
-				<ribbon:RibbonContextualTabGroup
+				<RibbonTab Header="Invisible tab" IsVisible="False" />
+				<RibbonContextualTabGroup
                     Background="Red"
                     Header="Contextual Group 1"
                     IsVisible="{Binding ShowContextualGroup1, Mode=OneWay}">
-					<ribbon:RibbonTab ribbon:KeyTip.KeyTipKeys="T" Header="Test A">
-						<ribbon:RibbonTab.Groups>
-							<ribbon:RibbonGroupBox
+					<RibbonTab ribbon:KeyTip.KeyTipKeys="T" Header="Test A">
+						<RibbonTab.Groups>
+							<RibbonGroupBox
                                 ribbon:KeyTip.KeyTipKeys="D1"
                                 Command="{Binding OnClickCommand}"
                                 Header="Test Group">
-								<ribbon:RibbonButton
+								<RibbonButton
                                     ribbon:KeyTip.KeyTipKeys="A"
                                     Content="On"
                                     MinSize="Large"
                                     ToolTip.Tip="On">
-									<ribbon:RibbonButton.LargeIcon>
+									<RibbonButton.LargeIcon>
 										<ControlTemplate>
 											<Panel Width="32" Height="32">
 												<Ellipse
@@ -1266,8 +1266,8 @@
                                                     Fill="{Binding $parent[TemplatedControl].Foreground}" />
 											</Panel>
 										</ControlTemplate>
-									</ribbon:RibbonButton.LargeIcon>
-									<ribbon:RibbonButton.QuickAccessIcon>
+									</RibbonButton.LargeIcon>
+									<RibbonButton.QuickAccessIcon>
 										<ControlTemplate>
 											<Panel Width="16" Height="16">
 												<Ellipse
@@ -1294,14 +1294,14 @@
                                                     Fill="{Binding $parent[TemplatedControl].Foreground}" />
 											</Panel>
 										</ControlTemplate>
-									</ribbon:RibbonButton.QuickAccessIcon>
-								</ribbon:RibbonButton>
-								<ribbon:RibbonButton
+									</RibbonButton.QuickAccessIcon>
+								</RibbonButton>
+								<RibbonButton
                                     ribbon:KeyTip.KeyTipKeys="B"
                                     Content="Off"
                                     MinSize="Large"
                                     ToolTip.Tip="Off">
-									<ribbon:RibbonButton.LargeIcon>
+									<RibbonButton.LargeIcon>
 										<ControlTemplate>
 											<Panel Width="32" Height="32">
 												<Ellipse Stroke="{Binding $parent[TemplatedControl].Foreground}" StrokeThickness="4" />
@@ -1311,8 +1311,8 @@
                                                     Fill="{Binding $parent[TemplatedControl].Foreground}" />
 											</Panel>
 										</ControlTemplate>
-									</ribbon:RibbonButton.LargeIcon>
-									<ribbon:RibbonButton.QuickAccessIcon>
+									</RibbonButton.LargeIcon>
+									<RibbonButton.QuickAccessIcon>
 										<ControlTemplate>
 											<Panel Width="16" Height="16">
 												<Ellipse Stroke="{Binding $parent[TemplatedControl].Foreground}" StrokeThickness="2" />
@@ -1322,24 +1322,24 @@
                                                     Fill="{Binding $parent[TemplatedControl].Foreground}" />
 											</Panel>
 										</ControlTemplate>
-									</ribbon:RibbonButton.QuickAccessIcon>
-								</ribbon:RibbonButton>
-							</ribbon:RibbonGroupBox>
-						</ribbon:RibbonTab.Groups>
-					</ribbon:RibbonTab>
-					<ribbon:RibbonTab ribbon:KeyTip.KeyTipKeys="Q" Header="Test B">
-						<ribbon:RibbonTab.Groups>
-							<ribbon:RibbonGroupBox
+									</RibbonButton.QuickAccessIcon>
+								</RibbonButton>
+							</RibbonGroupBox>
+						</RibbonTab.Groups>
+					</RibbonTab>
+					<RibbonTab ribbon:KeyTip.KeyTipKeys="Q" Header="Test B">
+						<RibbonTab.Groups>
+							<RibbonGroupBox
                                 ribbon:KeyTip.KeyTipKeys="D1"
                                 Command="{Binding OnClickCommand}"
                                 Header="Group">
-								<ribbon:RibbonButton
+								<RibbonButton
                                     ribbon:KeyTip.KeyTipKeys="Y"
                                     Content="Yes"
                                     MinSize="Large"
                                     QuickAccessIcon="{Binding Icon, RelativeSource={RelativeSource Mode=Self}}"
                                     ToolTip.Tip="Yes">
-									<ribbon:RibbonButton.LargeIcon>
+									<RibbonButton.LargeIcon>
 										<ControlTemplate>
 											<Path
                                                 Width="32"
@@ -1348,8 +1348,8 @@
                                                 Stroke="{Binding $parent[TemplatedControl].Foreground}"
                                                 StrokeThickness="4" />
 										</ControlTemplate>
-									</ribbon:RibbonButton.LargeIcon>
-									<ribbon:RibbonButton.Icon>
+									</RibbonButton.LargeIcon>
+									<RibbonButton.Icon>
 										<ControlTemplate>
 											<Path
                                                 Width="16"
@@ -1358,15 +1358,15 @@
                                                 Stroke="{Binding $parent[TemplatedControl].Foreground}"
                                                 StrokeThickness="2" />
 										</ControlTemplate>
-									</ribbon:RibbonButton.Icon>
-								</ribbon:RibbonButton>
-								<ribbon:RibbonButton
+									</RibbonButton.Icon>
+								</RibbonButton>
+								<RibbonButton
                                     ribbon:KeyTip.KeyTipKeys="N"
                                     Content="No"
                                     MinSize="Large"
                                     QuickAccessIcon="{Binding Icon, RelativeSource={RelativeSource Mode=Self}}"
                                     ToolTip.Tip="No">
-									<ribbon:RibbonButton.LargeIcon>
+									<RibbonButton.LargeIcon>
 										<ControlTemplate>
 											<Path
                                                 Width="32"
@@ -1375,8 +1375,8 @@
                                                 Stroke="{Binding $parent[TemplatedControl].Foreground}"
                                                 StrokeThickness="4" />
 										</ControlTemplate>
-									</ribbon:RibbonButton.LargeIcon>
-									<ribbon:RibbonButton.Icon>
+									</RibbonButton.LargeIcon>
+									<RibbonButton.Icon>
 										<ControlTemplate>
 											<Path
                                                 Width="16"
@@ -1385,23 +1385,23 @@
                                                 Stroke="{Binding $parent[TemplatedControl].Foreground}"
                                                 StrokeThickness="2" />
 										</ControlTemplate>
-									</ribbon:RibbonButton.Icon>
-								</ribbon:RibbonButton>
-							</ribbon:RibbonGroupBox>
-						</ribbon:RibbonTab.Groups>
-					</ribbon:RibbonTab>
-					<ribbon:RibbonTab ribbon:KeyTip.KeyTipKeys="N" Header="Test C">
-						<ribbon:RibbonTab.Groups>
-							<ribbon:RibbonGroupBox
+									</RibbonButton.Icon>
+								</RibbonButton>
+							</RibbonGroupBox>
+						</RibbonTab.Groups>
+					</RibbonTab>
+					<RibbonTab ribbon:KeyTip.KeyTipKeys="N" Header="Test C">
+						<RibbonTab.Groups>
+							<RibbonGroupBox
                                 ribbon:KeyTip.KeyTipKeys="D1"
                                 Command="{Binding OnClickCommand}"
                                 Header="Test Group lel">
-								<ribbon:RibbonButton
+								<RibbonButton
                                     ribbon:KeyTip.KeyTipKeys="A"
                                     Content="Non't"
                                     MinSize="Large"
                                     ToolTip.Tip="Non't">
-									<ribbon:RibbonButton.LargeIcon>
+									<RibbonButton.LargeIcon>
 										<ControlTemplate>
 											<Panel Width="32" Height="32">
 												<Ellipse
@@ -1428,8 +1428,8 @@
                                                     Fill="{Binding $parent[TemplatedControl].Foreground}" />
 											</Panel>
 										</ControlTemplate>
-									</ribbon:RibbonButton.LargeIcon>
-									<ribbon:RibbonButton.QuickAccessIcon>
+									</RibbonButton.LargeIcon>
+									<RibbonButton.QuickAccessIcon>
 										<ControlTemplate>
 											<Panel Width="16" Height="16">
 												<Ellipse
@@ -1456,14 +1456,14 @@
                                                     Fill="{Binding $parent[TemplatedControl].Foreground}" />
 											</Panel>
 										</ControlTemplate>
-									</ribbon:RibbonButton.QuickAccessIcon>
-								</ribbon:RibbonButton>
-								<ribbon:RibbonButton
+									</RibbonButton.QuickAccessIcon>
+								</RibbonButton>
+								<RibbonButton
                                     ribbon:KeyTip.KeyTipKeys="B"
                                     Content="Yesn't"
                                     MinSize="Large"
                                     ToolTip.Tip="Yesn't">
-									<ribbon:RibbonButton.LargeIcon>
+									<RibbonButton.LargeIcon>
 										<ControlTemplate>
 											<Panel Width="32" Height="32">
 												<Ellipse Stroke="{Binding $parent[TemplatedControl].Foreground}" StrokeThickness="4" />
@@ -1473,8 +1473,8 @@
                                                     Fill="{Binding $parent[TemplatedControl].Foreground}" />
 											</Panel>
 										</ControlTemplate>
-									</ribbon:RibbonButton.LargeIcon>
-									<ribbon:RibbonButton.QuickAccessIcon>
+									</RibbonButton.LargeIcon>
+									<RibbonButton.QuickAccessIcon>
 										<ControlTemplate>
 											<Panel Width="16" Height="16">
 												<Ellipse Stroke="{Binding $parent[TemplatedControl].Foreground}" StrokeThickness="2" />
@@ -1484,23 +1484,23 @@
                                                     Fill="{Binding $parent[TemplatedControl].Foreground}" />
 											</Panel>
 										</ControlTemplate>
-									</ribbon:RibbonButton.QuickAccessIcon>
-								</ribbon:RibbonButton>
-							</ribbon:RibbonGroupBox>
-						</ribbon:RibbonTab.Groups>
-					</ribbon:RibbonTab>
-				</ribbon:RibbonContextualTabGroup>
-				<ribbon:RibbonContextualTabGroup
+									</RibbonButton.QuickAccessIcon>
+								</RibbonButton>
+							</RibbonGroupBox>
+						</RibbonTab.Groups>
+					</RibbonTab>
+				</RibbonContextualTabGroup>
+				<RibbonContextualTabGroup
                     Background="Green"
                     Header="Contextual Group 2"
                     IsVisible="{Binding ShowContextualGroup2}">
-					<ribbon:RibbonTab ribbon:KeyTip.KeyTipKeys="T" Header="This tab's name is really long">
-						<ribbon:RibbonTab.Groups>
-							<ribbon:RibbonGroupBox
+					<RibbonTab ribbon:KeyTip.KeyTipKeys="T" Header="This tab's name is really long">
+						<RibbonTab.Groups>
+							<RibbonGroupBox
                                 ribbon:KeyTip.KeyTipKeys="D1"
                                 Command="{Binding OnClickCommand}"
                                 Header="Another bloody group">
-								<ribbon:RibbonButton
+								<RibbonButton
                                     ribbon:KeyTip.KeyTipKeys="A"
                                     Content="Button 1"
                                     Icon="{DynamicResource Icon1}"
@@ -1508,7 +1508,7 @@
                                     MinSize="Medium"
                                     QuickAccessIcon="{DynamicResource Icon1QuickAccess}"
                                     ToolTip.Tip="Button 1" />
-								<ribbon:RibbonButton
+								<RibbonButton
                                     ribbon:KeyTip.KeyTipKeys="B"
                                     Content="Button 2"
                                     Icon="{DynamicResource Icon2}"
@@ -1516,7 +1516,7 @@
                                     MinSize="Medium"
                                     QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                     ToolTip.Tip="Button 2" />
-								<ribbon:RibbonButton
+								<RibbonButton
                                     ribbon:KeyTip.KeyTipKeys="C"
                                     Content="Button 3"
                                     Icon="{DynamicResource Icon2}"
@@ -1524,21 +1524,21 @@
                                     MinSize="Medium"
                                     QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
                                     ToolTip.Tip="Button 3" />
-							</ribbon:RibbonGroupBox>
-						</ribbon:RibbonTab.Groups>
-					</ribbon:RibbonTab>
-				</ribbon:RibbonContextualTabGroup>
-				<ribbon:RibbonContextualTabGroup
+							</RibbonGroupBox>
+						</RibbonTab.Groups>
+					</RibbonTab>
+				</RibbonContextualTabGroup>
+				<RibbonContextualTabGroup
                     Background="Yellow"
                     Header="Contextual Group 3 with a very long name"
                     IsVisible="{Binding ShowContextualGroup3}">
-					<ribbon:RibbonTab ribbon:KeyTip.KeyTipKeys="T" Header="lol">
-						<ribbon:RibbonTab.Groups>
-							<ribbon:RibbonGroupBox
+					<RibbonTab ribbon:KeyTip.KeyTipKeys="T" Header="lol">
+						<RibbonTab.Groups>
+							<RibbonGroupBox
                                 ribbon:KeyTip.KeyTipKeys="D1"
                                 Command="{Binding OnClickCommand}"
                                 Header="lmao">
-								<ribbon:RibbonButton
+								<RibbonButton
                                     ribbon:KeyTip.KeyTipKeys="N"
                                     Content="no u"
                                     Icon="{DynamicResource Icon1}"
@@ -1546,10 +1546,10 @@
                                     MinSize="Small"
                                     QuickAccessIcon="{DynamicResource Icon1QuickAccess}"
                                     ToolTip.Tip="no u" />
-							</ribbon:RibbonGroupBox>
-						</ribbon:RibbonTab.Groups>
-					</ribbon:RibbonTab>
-				</ribbon:RibbonContextualTabGroup>
+							</RibbonGroupBox>
+						</RibbonTab.Groups>
+					</RibbonTab>
+				</RibbonContextualTabGroup>
 			</windows:DesktopRibbon.Tabs>
 		</windows:DesktopRibbon>
 
