@@ -1,10 +1,9 @@
-﻿using Avalonia;
+﻿using System.Linq;
+using Avalonia;
 using Avalonia.Controls;
-
+using Avalonia.Layout;
 using AvaloniaUI.Ribbon.Contracts;
 using AvaloniaUI.Ribbon.Models;
-
-using System.Linq;
 
 namespace AvaloniaUI.Ribbon
 {
@@ -28,11 +27,13 @@ namespace AvaloniaUI.Ribbon
                 var children2 = sneder.Children.Where(x => x is IRibbonControl);
                 if (((GroupDisplayMode)args.NewValue) == GroupDisplayMode.Large)
                 {
+                    sneder.Orientation = Orientation.Horizontal;
                     foreach (IRibbonControl ctrl in children2)
                         ctrl.Size = ctrl.MaxSize;
                 }
                 else if (((GroupDisplayMode)args.NewValue) == GroupDisplayMode.Small)
                 {
+                    sneder.Orientation = Orientation.Vertical;
                     foreach (IRibbonControl ctrl in children2)
                         ctrl.Size = ctrl.MinSize;
                 }
