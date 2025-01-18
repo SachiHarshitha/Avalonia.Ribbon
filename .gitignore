@@ -11,6 +11,8 @@
 /node_modules
 /wwwroot/node_modules
 
+# CodeMaid
+CodeMaid.config
 
 ### OpenFrameworks+VisualStudio ###
 # ignore generated binaries

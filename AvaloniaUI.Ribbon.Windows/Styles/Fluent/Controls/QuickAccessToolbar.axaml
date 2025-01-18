@@ -4,24 +4,24 @@
     xmlns:col="clr-namespace:System.Collections"
     xmlns:local="clr-namespace:AvaloniaUI.Ribbon.Windows;assembly=AvaloniaUI.Ribbon.Windows"
     xmlns:sys="clr-namespace:System;assembly=netstandard"
-	x:DataType="local:QuickAccessToolbar"
-    xmlns:windows="clr-namespace:AvaloniaUI.Ribbon.Windows;assembly=AvaloniaUI.Ribbon.Windows">
-	<Style Selector="local|QuickAccessToolbar">
-		<Setter Property="Height" Value="30" />
-		<Setter Property="VerticalAlignment" Value="Center" />
-		<Setter Property="Margin" Value="0" />
-		<Setter Property="Template">
-			<ControlTemplate>
-				<DockPanel>
-					<ToggleButton
+    xmlns:windows="clr-namespace:AvaloniaUI.Ribbon.Windows;assembly=AvaloniaUI.Ribbon.Windows"
+    x:DataType="local:QuickAccessToolbar">
+    <Style Selector="local|QuickAccessToolbar">
+        <Setter Property="Height" Value="30" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DockPanel>
+                    <ToggleButton
                         x:Name="PART_MoreButton"
                         VerticalAlignment="Stretch"
                         DockPanel.Dock="Right">
-						<ToggleButton.ContextMenu>
-							<ContextMenu PlacementMode="Bottom">
-								<ContextMenu.Template>
-									<ControlTemplate>
-										<Border
+                        <ToggleButton.ContextMenu>
+                            <ContextMenu Placement="Bottom">
+                                <ContextMenu.Template>
+                                    <ControlTemplate>
+                                        <Border
                                             MinHeight="{TemplateBinding MinHeight}"
                                             MaxWidth="{TemplateBinding MaxWidth}"
                                             Padding="{TemplateBinding Padding}"
@@ -30,61 +30,61 @@
                                             BorderBrush="{TemplateBinding BorderBrush}"
                                             BorderThickness="{TemplateBinding BorderThickness}"
                                             CornerRadius="{DynamicResource OverlayCornerRadius}">
-											<DockPanel>
-												<Border
+                                            <DockPanel>
+                                                <Border
                                                     Height="30"
                                                     Padding="15,0"
                                                     DockPanel.Dock="Top">
-													<TextBlock
+                                                    <TextBlock
                                                         HorizontalAlignment="Left"
                                                         VerticalAlignment="Center"
                                                         FontWeight="DemiBold"
                                                         Text="{DynamicResource AvaloniaRibbon.CustomizeQAT}" />
-												</Border>
-												<ScrollViewer Classes="menuscroller">
-													<ItemsPresenter
+                                                </Border>
+                                                <ScrollViewer Classes="menuscroller">
+                                                    <ItemsPresenter
                                                         Name="PART_ItemsPresenter"
                                                         Margin="{DynamicResource MenuFlyoutScrollerMargin}"
                                                         Grid.IsSharedSizeScope="True"
                                                         ItemsPanel="{TemplateBinding ItemsPanel}"
                                                         KeyboardNavigation.TabNavigation="Continue" />
-												</ScrollViewer>
-											</DockPanel>
-										</Border>
-									</ControlTemplate>
-								</ContextMenu.Template>
-								<ContextMenu.Styles>
-									<Style Selector="MenuItem:not(.quickAccessFixedItem)">
-										<Setter Property="Command" Value="{Binding $parent[local:QuickAccessToolbar].MoreFlyoutMenuItemCommand}" />
-										<Setter Property="CommandParameter" Value="{Binding Item}" />
-										<Setter Property="local:QuickAccessToolbar.IsChecked" Value="{Binding IsChecked}" />
-									</Style>
-									<Style Selector="MenuItem">
-										<Setter Property="Template" Value="{DynamicResource CheckableMenuItemControlTemplate}" />
-									</Style>
-								</ContextMenu.Styles>
-								<ContextMenu.DataTemplates>
-									<DataTemplate DataType="{x:Type local:QuickAccessRecommendation}">
-										<TextBlock Text="{Binding Item.Content}" />
-									</DataTemplate>
-								</ContextMenu.DataTemplates>
-							</ContextMenu>
-						</ToggleButton.ContextMenu>
-						<!--StackPanel Orientation="Vertical" Spacing="4">
+                                                </ScrollViewer>
+                                            </DockPanel>
+                                        </Border>
+                                    </ControlTemplate>
+                                </ContextMenu.Template>
+                                <ContextMenu.Styles>
+                                    <Style Selector="MenuItem:not(.quickAccessFixedItem)">
+                                        <Setter Property="Command" Value="{Binding $parent[local:QuickAccessToolbar].MoreFlyoutMenuItemCommand}" />
+                                        <Setter Property="CommandParameter" Value="{Binding Item}" />
+                                        <Setter Property="local:QuickAccessToolbar.IsChecked" Value="{Binding IsChecked}" />
+                                    </Style>
+                                    <Style Selector="MenuItem">
+                                        <Setter Property="Template" Value="{DynamicResource CheckableMenuItemControlTemplate}" />
+                                    </Style>
+                                </ContextMenu.Styles>
+                                <ContextMenu.DataTemplates>
+                                    <DataTemplate DataType="{x:Type local:QuickAccessRecommendation}">
+                                        <TextBlock Text="{Binding Item.Content}" />
+                                    </DataTemplate>
+                                </ContextMenu.DataTemplates>
+                            </ContextMenu>
+                        </ToggleButton.ContextMenu>
+                        <!--StackPanel Orientation="Vertical" Spacing="4">
               <Rectangle Width="9" Height="2" Fill="{Binding $parent[ToggleButton].Foreground}" />
               <Path Data="M0,0 L3,0 4.5,1.5 6,0 9,0 4.5,4.5 z" Fill="{Binding $parent[ToggleButton].Foreground}" />
             </StackPanel-->
-						<StackPanel
+                        <StackPanel
                             Width="7"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Vertical"
                             Spacing="2">
-							<Rectangle
+                            <Rectangle
                                 Height="1"
                                 HorizontalAlignment="Stretch"
                                 Fill="{Binding $parent[ToggleButton].Foreground}" />
-							<Path
+                            <Path
                                 Width="7"
                                 Height="3"
                                 HorizontalAlignment="Center"
@@ -92,55 +92,62 @@
                                 Data="M 0.5 0 L 3.5 3 L 6.5 0"
                                 Stroke="{Binding $parent[ToggleButton].Foreground}"
                                 StrokeThickness="1" />
-						</StackPanel>
-					</ToggleButton>
-					<ItemsControl VerticalAlignment="Stretch" ItemsSource="{TemplateBinding ItemsSource}">
-						<ItemsControl.ItemsPanel>
-							<ItemsPanelTemplate>
-								<StackPanel Orientation="Horizontal" />
-							</ItemsPanelTemplate>
-						</ItemsControl.ItemsPanel>
-					</ItemsControl>
-				</DockPanel>
-			</ControlTemplate>
-		</Setter>
-	</Style>
-	<Style Selector="local|QuickAccessToolbar /template/ ToggleButton#PART_MoreButton:not(:pointerover):not(:pressed)">
-		<Setter Property="Background" Value="Transparent" />
-		<Setter Property="BorderBrush" Value="Transparent" />
-	</Style>
-	<Style Selector="windows|RibbonWindow local|QuickAccessToolbar /template/ ToggleButton#PART_MoreButton:not(:pointerover):not(:pressed):not(:checked)">
-		<Setter Property="Foreground" Value="{Binding $parent[local:RibbonWindow].TitleBarForeground}" />
-	</Style>
-	<Style Selector="windows|RibbonWindow[IsActive=False] local|QuickAccessToolbar /template/ ToggleButton#PART_MoreButton:not(:pointerover):not(:pressed):not(:checked) &gt; StackPanel">
-		<Setter Property="Opacity" Value="0.5" />
-	</Style>
+                        </StackPanel>
+                    </ToggleButton>
+                    <ItemsControl VerticalAlignment="Stretch" ItemsSource="{TemplateBinding ItemsSource}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </DockPanel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="local|QuickAccessToolbar /template/ ToggleButton#PART_MoreButton:not(:pointerover):not(:pressed)">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+    </Style>
+    <Style Selector="windows|RibbonWindow local|QuickAccessToolbar /template/ ToggleButton#PART_MoreButton:not(:pointerover):not(:pressed):not(:checked)">
+        <Setter Property="Foreground" Value="{Binding $parent[local:RibbonWindow].TitleBarForeground}" />
+    </Style>
+    <Style Selector="windows|RibbonWindow[IsActive=False] local|QuickAccessToolbar /template/ ToggleButton#PART_MoreButton:not(:pointerover):not(:pressed):not(:checked) &gt; StackPanel">
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
 
-	<Style Selector="local|QuickAccessItem">
-		<Setter Property="Template">
-			<ControlTemplate>
-				<Grid>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="Auto" />
-					</Grid.ColumnDefinitions>
-					<TemplatedControl Grid.Column="0" Foreground="{Binding $parent[local:RibbonWindow].TitleBarForeground}" DataContext="{TemplateBinding Item}" Template="{Binding Item.QuickAccessTemplate, RelativeSource={RelativeSource Mode=TemplatedParent}}">
-						<TemplatedControl.ContextMenu>
-							<ContextMenu>
-								<MenuItem x:Name="PART_RemoveFromQuickAccessToolbar" Header="Remove from quick access toolbar" />
-							</ContextMenu>
-						</TemplatedControl.ContextMenu>
-					</TemplatedControl>
-					<Border Padding="0"
-							Width="1"
-							Margin="2"
-							Height="20" Grid.Column="1"
-							HorizontalAlignment="Center"
-							BorderBrush="{Binding $parent[local:RibbonWindow].TitleBarForeground}" Opacity="0.5"
-							  BorderThickness="1"
-							  Background="Transparent" />
-				</Grid>
-			</ControlTemplate>
-		</Setter>
-	</Style>
+    <Style Selector="local|QuickAccessItem">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TemplatedControl
+                        Grid.Column="0"
+                        DataContext="{TemplateBinding Item}"
+                        Foreground="{Binding $parent[local:RibbonWindow].TitleBarForeground}"
+                        Template="{Binding Item.QuickAccessTemplate, RelativeSource={RelativeSource Mode=TemplatedParent}}">
+                        <TemplatedControl.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="PART_RemoveFromQuickAccessToolbar" Header="Remove from quick access toolbar" />
+                            </ContextMenu>
+                        </TemplatedControl.ContextMenu>
+                    </TemplatedControl>
+                    <Border
+                        Grid.Column="1"
+                        Width="1"
+                        Height="20"
+                        Margin="2"
+                        Padding="0"
+                        HorizontalAlignment="Center"
+                        Background="Transparent"
+                        BorderBrush="{Binding $parent[local:RibbonWindow].TitleBarForeground}"
+                        BorderThickness="1"
+                        Opacity="0.5" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
 </Styles>

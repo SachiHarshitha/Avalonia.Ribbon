@@ -1,13 +1,10 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Templates;
 
 using AvaloniaUI.Ribbon.Contracts;
 using AvaloniaUI.Ribbon.Helpers;
 using AvaloniaUI.Ribbon.Models;
-
-using System;
 
 namespace AvaloniaUI.Ribbon
 {

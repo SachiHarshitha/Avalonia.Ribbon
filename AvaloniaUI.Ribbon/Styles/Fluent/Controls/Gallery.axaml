@@ -206,7 +206,7 @@
 							</local:GalleryScrollContentPresenter>
 						</DockPanel>
 					</Border>
-					<Popup PlacementMode="Center"
+					<Popup Placement="Center"
                         IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}">
 						<Border x:Name="PART_FlyoutRoot" Background="{DynamicResource ThemeBackgroundBrush}"
                                 BorderBrush="{DynamicResource ThemeBorderMidBrush}"

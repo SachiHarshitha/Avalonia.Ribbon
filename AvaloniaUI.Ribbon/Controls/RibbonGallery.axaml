@@ -1,347 +1,525 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-					xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
 
-	<!-- Add Resources Here -->
+    <!--  Add Resources Here  -->
 
-	<Design.PreviewWith>
-		<Grid Height="90">
-			<local:Gallery>
-				<local:GalleryItem Content="Item 1">
-					<local:GalleryItem.Icon>
-						<ControlTemplate>
-							<Rectangle Width="16" Height="16" Fill="Red" />
-						</ControlTemplate>
-					</local:GalleryItem.Icon>
-				</local:GalleryItem>
-				<local:GalleryItem Content="Item 2">
-					<local:GalleryItem.Icon>
-						<ControlTemplate>
-							<Rectangle Width="16" Height="16" Fill="OrangeRed" />
-						</ControlTemplate>
-					</local:GalleryItem.Icon>
-				</local:GalleryItem>
-				<local:GalleryItem Content="Item 3">
-					<local:GalleryItem.Icon>
-						<ControlTemplate>
-							<Rectangle Width="16" Height="16" Fill="Orange" />
-						</ControlTemplate>
-					</local:GalleryItem.Icon>
-				</local:GalleryItem>
-				<local:GalleryItem Content="Item 4">
-					<local:GalleryItem.Icon>
-						<ControlTemplate>
-							<Rectangle Width="16" Height="16" Fill="Yellow" />
-						</ControlTemplate>
-					</local:GalleryItem.Icon>
-				</local:GalleryItem>
-				<local:GalleryItem Content="Item 5">
-					<local:GalleryItem.Icon>
-						<ControlTemplate>
-							<Rectangle Width="16" Height="16" Fill="GreenYellow" />
-						</ControlTemplate>
-					</local:GalleryItem.Icon>
-				</local:GalleryItem>
-				<local:GalleryItem Content="Item 6">
-					<local:GalleryItem.Icon>
-						<ControlTemplate>
-							<Rectangle Width="16" Height="16" Fill="YellowGreen" />
-						</ControlTemplate>
-					</local:GalleryItem.Icon>
-				</local:GalleryItem>
-				<local:GalleryItem Content="Item 7">
-					<local:GalleryItem.Icon>
-						<ControlTemplate>
-							<Rectangle Width="16" Height="16" Fill="Green" />
-						</ControlTemplate>
-					</local:GalleryItem.Icon>
-				</local:GalleryItem>
-				<local:GalleryItem Content="Item 8">
-					<local:GalleryItem.Icon>
-						<ControlTemplate>
-							<Rectangle Width="16" Height="16" Fill="Turquoise" />
-						</ControlTemplate>
-					</local:GalleryItem.Icon>
-				</local:GalleryItem>
-				<local:GalleryItem Content="Item 9">
-					<local:GalleryItem.Icon>
-						<ControlTemplate>
-							<Rectangle Width="16" Height="16" Fill="Cyan" />
-						</ControlTemplate>
-					</local:GalleryItem.Icon>
-				</local:GalleryItem>
-				<local:GalleryItem Content="Item 10">
-					<local:GalleryItem.Icon>
-						<ControlTemplate>
-							<Rectangle Width="16" Height="16" Fill="SkyBlue" />
-						</ControlTemplate>
-					</local:GalleryItem.Icon>
-				</local:GalleryItem>
-				<local:GalleryItem Content="Item 11">
-					<local:GalleryItem.Icon>
-						<ControlTemplate>
-							<Rectangle Width="16" Height="16" Fill="Blue" />
-						</ControlTemplate>
-					</local:GalleryItem.Icon>
-				</local:GalleryItem>
-				<local:GalleryItem Content="Item 12">
-					<local:GalleryItem.Icon>
-						<ControlTemplate>
-							<Rectangle Width="16" Height="16" Fill="BlueViolet" />
-						</ControlTemplate>
-					</local:GalleryItem.Icon>
-				</local:GalleryItem>
-			</local:Gallery>
-		</Grid>
-	</Design.PreviewWith>
+    <Design.PreviewWith>
+        <Grid Height="90">
+            <local:Gallery>
+                <local:GalleryItem Content="Item 1">
+                    <local:GalleryItem.Icon>
+                        <ControlTemplate>
+                            <Rectangle
+                                Width="16"
+                                Height="16"
+                                Fill="Red" />
+                        </ControlTemplate>
+                    </local:GalleryItem.Icon>
+                </local:GalleryItem>
+                <local:GalleryItem Content="Item 2">
+                    <local:GalleryItem.Icon>
+                        <ControlTemplate>
+                            <Rectangle
+                                Width="16"
+                                Height="16"
+                                Fill="OrangeRed" />
+                        </ControlTemplate>
+                    </local:GalleryItem.Icon>
+                </local:GalleryItem>
+                <local:GalleryItem Content="Item 3">
+                    <local:GalleryItem.Icon>
+                        <ControlTemplate>
+                            <Rectangle
+                                Width="16"
+                                Height="16"
+                                Fill="Orange" />
+                        </ControlTemplate>
+                    </local:GalleryItem.Icon>
+                </local:GalleryItem>
+                <local:GalleryItem Content="Item 4">
+                    <local:GalleryItem.Icon>
+                        <ControlTemplate>
+                            <Rectangle
+                                Width="16"
+                                Height="16"
+                                Fill="Yellow" />
+                        </ControlTemplate>
+                    </local:GalleryItem.Icon>
+                </local:GalleryItem>
+                <local:GalleryItem Content="Item 5">
+                    <local:GalleryItem.Icon>
+                        <ControlTemplate>
+                            <Rectangle
+                                Width="16"
+                                Height="16"
+                                Fill="GreenYellow" />
+                        </ControlTemplate>
+                    </local:GalleryItem.Icon>
+                </local:GalleryItem>
+                <local:GalleryItem Content="Item 6">
+                    <local:GalleryItem.Icon>
+                        <ControlTemplate>
+                            <Rectangle
+                                Width="16"
+                                Height="16"
+                                Fill="YellowGreen" />
+                        </ControlTemplate>
+                    </local:GalleryItem.Icon>
+                </local:GalleryItem>
+                <local:GalleryItem Content="Item 7">
+                    <local:GalleryItem.Icon>
+                        <ControlTemplate>
+                            <Rectangle
+                                Width="16"
+                                Height="16"
+                                Fill="Green" />
+                        </ControlTemplate>
+                    </local:GalleryItem.Icon>
+                </local:GalleryItem>
+                <local:GalleryItem Content="Item 8">
+                    <local:GalleryItem.Icon>
+                        <ControlTemplate>
+                            <Rectangle
+                                Width="16"
+                                Height="16"
+                                Fill="Turquoise" />
+                        </ControlTemplate>
+                    </local:GalleryItem.Icon>
+                </local:GalleryItem>
+                <local:GalleryItem Content="Item 9">
+                    <local:GalleryItem.Icon>
+                        <ControlTemplate>
+                            <Rectangle
+                                Width="16"
+                                Height="16"
+                                Fill="Cyan" />
+                        </ControlTemplate>
+                    </local:GalleryItem.Icon>
+                </local:GalleryItem>
+                <local:GalleryItem Content="Item 10">
+                    <local:GalleryItem.Icon>
+                        <ControlTemplate>
+                            <Rectangle
+                                Width="16"
+                                Height="16"
+                                Fill="SkyBlue" />
+                        </ControlTemplate>
+                    </local:GalleryItem.Icon>
+                </local:GalleryItem>
+                <local:GalleryItem Content="Item 11">
+                    <local:GalleryItem.Icon>
+                        <ControlTemplate>
+                            <Rectangle
+                                Width="16"
+                                Height="16"
+                                Fill="Blue" />
+                        </ControlTemplate>
+                    </local:GalleryItem.Icon>
+                </local:GalleryItem>
+                <local:GalleryItem Content="Item 12">
+                    <local:GalleryItem.Icon>
+                        <ControlTemplate>
+                            <Rectangle
+                                Width="16"
+                                Height="16"
+                                Fill="BlueViolet" />
+                        </ControlTemplate>
+                    </local:GalleryItem.Icon>
+                </local:GalleryItem>
+            </local:Gallery>
+        </Grid>
+    </Design.PreviewWith>
 
-	<ControlTheme x:Key="LargeGallery" TargetType="local:Gallery">
-		<Setter Property="Height" Value="64" />
-		<Setter Property="Width" Value="345" />
-		<Setter Property="Padding" Value="0" />
-		<Setter Property="ItemHeight" Value="62" />
-		<Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
-		<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
-		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-		<Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
-		<Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True" />
-		<Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
-		<Setter Property="Template">
-			<ControlTemplate>
-				<Panel>
-					<Border x:Name="BodyBorder" Background="{TemplateBinding Background}"
-							BorderBrush="{TemplateBinding BorderBrush}"
-							BorderThickness="{TemplateBinding BorderThickness}"
-							CornerRadius="{DynamicResource ControlCornerRadius}">
-						<DockPanel>
-							<!--/ScrollViewer-->
-							<UniformGrid Width="18" Columns="1" DockPanel.Dock="Right">
-								<RepeatButton VerticalAlignment="Stretch"  BorderThickness="1,0,0,1"  HorizontalAlignment="Stretch" Margin="0" Name="PART_UpButton" Focusable="False" Grid.Row="0" CornerRadius="0,3,0,0">
-									<Path Data="M 0 3 L 3 0 L 6 3" Stroke="{Binding $parent[RepeatButton].Foreground}"
-										  StrokeThickness="1" HorizontalAlignment="Center" Width="6" Height="3"
-										  ClipToBounds="True" />
-								</RepeatButton>
-								<RepeatButton VerticalAlignment="Stretch"  BorderThickness="1,0,0,1"  HorizontalAlignment="Stretch" Margin="0" Name="PART_DownButton" Focusable="False" Grid.Row="1" CornerRadius="0">
-									<Path Data="M 0 0 L 3 3 L 6 0" Stroke="{Binding $parent[RepeatButton].Foreground}"
-										  StrokeThickness="1" HorizontalAlignment="Center" Width="6" Height="3"
-										  ClipToBounds="True" />
-								</RepeatButton>
-								<ToggleButton x:Name="PART_FlyoutButton" HorizontalAlignment="Right"
-											  IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}">
-									<StackPanel Width="6" Spacing="1" Orientation="Vertical"
-												HorizontalAlignment="Center" VerticalAlignment="Center">
-										<Rectangle Fill="{Binding $parent[ToggleButton].Foreground}" Height="1"
-												   HorizontalAlignment="Stretch" />
-										<Path Data="M 0 0 L 3 3 L 6 0"
-											  Stroke="{Binding $parent[ToggleButton].Foreground}" StrokeThickness="1"
-											  HorizontalAlignment="Center" Width="6" Height="3" ClipToBounds="True" />
-									</StackPanel>
-								</ToggleButton>
-							</UniformGrid>
-							<local:GalleryScrollContentPresenter x:Name="PART_ScrollContentPresenter"
-																 CanVerticallyScroll="True"
-																 Margin="{TemplateBinding Padding}">
-								<local:GalleryScrollContentPresenter.Content>
-									<ContentControl x:Name="PART_ItemsPresenterHolder" />
-								</local:GalleryScrollContentPresenter.Content>
-							</local:GalleryScrollContentPresenter>
-						</DockPanel>
-					</Border>
-					<Popup PlacementMode="LeftEdgeAlignedTop" HorizontalOffset="{Binding Width, RelativeSource={RelativeSource Mode=TemplatedParent}}"
-							IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}">
-						<Border x:Name="PART_FlyoutRoot"
-								CornerRadius="{DynamicResource ControlCornerRadius}"
-								Background="{TemplateBinding Background}"
-								BorderBrush="{TemplateBinding BorderBrush}"
-								BorderThickness="{DynamicResource ThemeBorderThickness}"
-							Width="{Binding Width, RelativeSource={RelativeSource Mode=TemplatedParent}}">
-							<ScrollViewer x:Name="PART_FlyoutScrollViewer"
-										  Height="300"
-										  Padding="{TemplateBinding Padding}">
-								<ContentControl x:Name="PART_FlyoutItemsPresenterHolder" />
-							</ScrollViewer>
-						</Border>
-					</Popup>
-					<ItemsPresenter x:Name="PART_ItemsPresenter"
-										ItemsPanel="{TemplateBinding ItemsPanel}">
-					</ItemsPresenter>
-				</Panel>
-			</ControlTemplate>
-		</Setter>
-		<Setter Property="ItemsPanel">
-			<ItemsPanelTemplate>
-				<UniformGrid x:Name="GalleryItemsUniformGrid" Columns="3" />
-			</ItemsPanelTemplate>
-		</Setter>
-		<Setter Property="ItemContainerTheme" Value="{StaticResource LargeGalleryItem}" />
-	</ControlTheme>
+    <ControlTheme x:Key="LargeGallery" TargetType="local:Gallery">
+        <Setter Property="Height" Value="64" />
+        <Setter Property="Width" Value="345" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="ItemHeight" Value="62" />
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+        <Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True" />
+        <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Border
+                        x:Name="BodyBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{DynamicResource ControlCornerRadius}">
+                        <DockPanel>
+                            <!--  /ScrollViewer  -->
+                            <UniformGrid
+                                Width="18"
+                                Columns="1"
+                                DockPanel.Dock="Right">
+                                <RepeatButton
+                                    Name="PART_UpButton"
+                                    Grid.Row="0"
+                                    Margin="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    BorderThickness="1,0,0,1"
+                                    CornerRadius="0,3,0,0"
+                                    Focusable="False">
+                                    <Path
+                                        Width="6"
+                                        Height="3"
+                                        HorizontalAlignment="Center"
+                                        ClipToBounds="True"
+                                        Data="M 0 3 L 3 0 L 6 3"
+                                        Stroke="{Binding $parent[RepeatButton].Foreground}"
+                                        StrokeThickness="1" />
+                                </RepeatButton>
+                                <RepeatButton
+                                    Name="PART_DownButton"
+                                    Grid.Row="1"
+                                    Margin="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    BorderThickness="1,0,0,1"
+                                    CornerRadius="0"
+                                    Focusable="False">
+                                    <Path
+                                        Width="6"
+                                        Height="3"
+                                        HorizontalAlignment="Center"
+                                        ClipToBounds="True"
+                                        Data="M 0 0 L 3 3 L 6 0"
+                                        Stroke="{Binding $parent[RepeatButton].Foreground}"
+                                        StrokeThickness="1" />
+                                </RepeatButton>
+                                <ToggleButton
+                                    x:Name="PART_FlyoutButton"
+                                    HorizontalAlignment="Right"
+                                    IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}">
+                                    <StackPanel
+                                        Width="6"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Orientation="Vertical"
+                                        Spacing="1">
+                                        <Rectangle
+                                            Height="1"
+                                            HorizontalAlignment="Stretch"
+                                            Fill="{Binding $parent[ToggleButton].Foreground}" />
+                                        <Path
+                                            Width="6"
+                                            Height="3"
+                                            HorizontalAlignment="Center"
+                                            ClipToBounds="True"
+                                            Data="M 0 0 L 3 3 L 6 0"
+                                            Stroke="{Binding $parent[ToggleButton].Foreground}"
+                                            StrokeThickness="1" />
+                                    </StackPanel>
+                                </ToggleButton>
+                            </UniformGrid>
+                            <local:GalleryScrollContentPresenter
+                                x:Name="PART_ScrollContentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                CanVerticallyScroll="True">
+                                <local:GalleryScrollContentPresenter.Content>
+                                    <ContentControl x:Name="PART_ItemsPresenterHolder" />
+                                </local:GalleryScrollContentPresenter.Content>
+                            </local:GalleryScrollContentPresenter>
+                        </DockPanel>
+                    </Border>
+                    <Popup
+                        HorizontalOffset="{Binding Width, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                        IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                        Placement="LeftEdgeAlignedTop">
+                        <Border
+                            x:Name="PART_FlyoutRoot"
+                            Width="{Binding Width, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{DynamicResource ThemeBorderThickness}"
+                            CornerRadius="{DynamicResource ControlCornerRadius}">
+                            <ScrollViewer
+                                x:Name="PART_FlyoutScrollViewer"
+                                Height="300"
+                                Padding="{TemplateBinding Padding}">
+                                <ContentControl x:Name="PART_FlyoutItemsPresenterHolder" />
+                            </ScrollViewer>
+                        </Border>
+                    </Popup>
+                    <ItemsPresenter x:Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <UniformGrid x:Name="GalleryItemsUniformGrid" Columns="3" />
+            </ItemsPanelTemplate>
+        </Setter>
+        <Setter Property="ItemContainerTheme" Value="{StaticResource LargeGalleryItem}" />
+    </ControlTheme>
 
-	<ControlTheme x:Key="MediumGallery" TargetType="local:Gallery">
-		<Setter Property="Height" Value="64" />
-		<Setter Property="Width" Value="230" />
-		<Setter Property="Padding" Value="0" />
-		<Setter Property="ItemHeight" Value="31" />
-		<Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
-		<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
-		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-		<Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
-		<Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True" />
-		<Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
-		<Setter Property="Template">
-			<ControlTemplate>
-				<Panel>
-					<Border x:Name="BodyBorder" Background="{TemplateBinding Background}"
-							BorderBrush="{TemplateBinding BorderBrush}"
-							BorderThickness="{TemplateBinding BorderThickness}"
-							CornerRadius="{DynamicResource ControlCornerRadius}">
-						<DockPanel>
-							<!--/ScrollViewer-->
-							<UniformGrid Width="18" Columns="1" DockPanel.Dock="Right">
-								<RepeatButton VerticalAlignment="Stretch"  BorderThickness="1,0,0,1"  HorizontalAlignment="Stretch" Margin="0" Name="PART_UpButton" Focusable="False" Grid.Row="0" CornerRadius="0,3,0,0">
-									<Path Data="M 0 3 L 3 0 L 6 3" Stroke="{Binding $parent[RepeatButton].Foreground}"
-										  StrokeThickness="1" HorizontalAlignment="Center" Width="6" Height="3"
-										  ClipToBounds="True" />
-								</RepeatButton>
-								<RepeatButton VerticalAlignment="Stretch"  BorderThickness="1,0,0,1"  HorizontalAlignment="Stretch" Margin="0" Name="PART_DownButton" Focusable="False" Grid.Row="1" CornerRadius="0">
-									<Path Data="M 0 0 L 3 3 L 6 0" Stroke="{Binding $parent[RepeatButton].Foreground}"
-										  StrokeThickness="1" HorizontalAlignment="Center" Width="6" Height="3"
-										  ClipToBounds="True" />
-								</RepeatButton>
-								<ToggleButton x:Name="PART_FlyoutButton" HorizontalAlignment="Right"
-											  IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}">
-									<StackPanel Width="6" Spacing="1" Orientation="Vertical"
-												HorizontalAlignment="Center" VerticalAlignment="Center">
-										<Rectangle Fill="{Binding $parent[ToggleButton].Foreground}" Height="1"
-												   HorizontalAlignment="Stretch" />
-										<Path Data="M 0 0 L 3 3 L 6 0"
-											  Stroke="{Binding $parent[ToggleButton].Foreground}" StrokeThickness="1"
-											  HorizontalAlignment="Center" Width="6" Height="3" ClipToBounds="True" />
-									</StackPanel>
-								</ToggleButton>
-							</UniformGrid>
-							<local:GalleryScrollContentPresenter x:Name="PART_ScrollContentPresenter"
-																 CanVerticallyScroll="True"
-																 Margin="{TemplateBinding Padding}">
-								<local:GalleryScrollContentPresenter.Content>
-									<ContentControl x:Name="PART_ItemsPresenterHolder" />
-								</local:GalleryScrollContentPresenter.Content>
-							</local:GalleryScrollContentPresenter>
-						</DockPanel>
-					</Border>
-					<Popup PlacementMode="LeftEdgeAlignedTop" HorizontalOffset="{Binding Width, RelativeSource={RelativeSource Mode=TemplatedParent}}"
-							IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}">
-						<Border x:Name="PART_FlyoutRoot"
-								CornerRadius="{DynamicResource ControlCornerRadius}"
-								Background="{TemplateBinding Background}"
-								BorderBrush="{DynamicResource SystemControlDisabledChromeDisabledHighBrush}"
-								BorderThickness="{DynamicResource ThemeBorderThickness}"
-							Width="{Binding Width, RelativeSource={RelativeSource Mode=TemplatedParent}}">
-							<ScrollViewer x:Name="PART_FlyoutScrollViewer"
-										  Height="200"
-										  Padding="{TemplateBinding Padding}">
-								<ContentControl x:Name="PART_FlyoutItemsPresenterHolder" />
-							</ScrollViewer>
-						</Border>
-					</Popup>
-					<ItemsPresenter x:Name="PART_ItemsPresenter"
-										ItemsPanel="{TemplateBinding ItemsPanel}">
-					</ItemsPresenter>
-				</Panel>
-			</ControlTemplate>
-		</Setter>
-		<Setter Property="ItemsPanel">
-			<ItemsPanelTemplate>
-				<UniformGrid x:Name="GalleryItemsUniformGrid" Columns="2" />
-			</ItemsPanelTemplate>
-		</Setter>
-		<Setter Property="ItemContainerTheme" Value="{StaticResource MediumGalleryItem}" />
-	</ControlTheme>
+    <ControlTheme x:Key="MediumGallery" TargetType="local:Gallery">
+        <Setter Property="Height" Value="64" />
+        <Setter Property="Width" Value="230" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="ItemHeight" Value="31" />
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+        <Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True" />
+        <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Border
+                        x:Name="BodyBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{DynamicResource ControlCornerRadius}">
+                        <DockPanel>
+                            <!--  /ScrollViewer  -->
+                            <UniformGrid
+                                Width="18"
+                                Columns="1"
+                                DockPanel.Dock="Right">
+                                <RepeatButton
+                                    Name="PART_UpButton"
+                                    Grid.Row="0"
+                                    Margin="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    BorderThickness="1,0,0,1"
+                                    CornerRadius="0,3,0,0"
+                                    Focusable="False">
+                                    <Path
+                                        Width="6"
+                                        Height="3"
+                                        HorizontalAlignment="Center"
+                                        ClipToBounds="True"
+                                        Data="M 0 3 L 3 0 L 6 3"
+                                        Stroke="{Binding $parent[RepeatButton].Foreground}"
+                                        StrokeThickness="1" />
+                                </RepeatButton>
+                                <RepeatButton
+                                    Name="PART_DownButton"
+                                    Grid.Row="1"
+                                    Margin="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    BorderThickness="1,0,0,1"
+                                    CornerRadius="0"
+                                    Focusable="False">
+                                    <Path
+                                        Width="6"
+                                        Height="3"
+                                        HorizontalAlignment="Center"
+                                        ClipToBounds="True"
+                                        Data="M 0 0 L 3 3 L 6 0"
+                                        Stroke="{Binding $parent[RepeatButton].Foreground}"
+                                        StrokeThickness="1" />
+                                </RepeatButton>
+                                <ToggleButton
+                                    x:Name="PART_FlyoutButton"
+                                    HorizontalAlignment="Right"
+                                    IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}">
+                                    <StackPanel
+                                        Width="6"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Orientation="Vertical"
+                                        Spacing="1">
+                                        <Rectangle
+                                            Height="1"
+                                            HorizontalAlignment="Stretch"
+                                            Fill="{Binding $parent[ToggleButton].Foreground}" />
+                                        <Path
+                                            Width="6"
+                                            Height="3"
+                                            HorizontalAlignment="Center"
+                                            ClipToBounds="True"
+                                            Data="M 0 0 L 3 3 L 6 0"
+                                            Stroke="{Binding $parent[ToggleButton].Foreground}"
+                                            StrokeThickness="1" />
+                                    </StackPanel>
+                                </ToggleButton>
+                            </UniformGrid>
+                            <local:GalleryScrollContentPresenter
+                                x:Name="PART_ScrollContentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                CanVerticallyScroll="True">
+                                <local:GalleryScrollContentPresenter.Content>
+                                    <ContentControl x:Name="PART_ItemsPresenterHolder" />
+                                </local:GalleryScrollContentPresenter.Content>
+                            </local:GalleryScrollContentPresenter>
+                        </DockPanel>
+                    </Border>
+                    <Popup
+                        HorizontalOffset="{Binding Width, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                        IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                        Placement="LeftEdgeAlignedTop">
+                        <Border
+                            x:Name="PART_FlyoutRoot"
+                            Width="{Binding Width, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{DynamicResource SystemControlDisabledChromeDisabledHighBrush}"
+                            BorderThickness="{DynamicResource ThemeBorderThickness}"
+                            CornerRadius="{DynamicResource ControlCornerRadius}">
+                            <ScrollViewer
+                                x:Name="PART_FlyoutScrollViewer"
+                                Height="200"
+                                Padding="{TemplateBinding Padding}">
+                                <ContentControl x:Name="PART_FlyoutItemsPresenterHolder" />
+                            </ScrollViewer>
+                        </Border>
+                    </Popup>
+                    <ItemsPresenter x:Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <UniformGrid x:Name="GalleryItemsUniformGrid" Columns="2" />
+            </ItemsPanelTemplate>
+        </Setter>
+        <Setter Property="ItemContainerTheme" Value="{StaticResource MediumGalleryItem}" />
+    </ControlTheme>
 
-	<ControlTheme x:Key="SmallGallery" TargetType="local:Gallery">
-		<Setter Property="Height" Value="64" />
-		<Setter Property="Width" Value="115" />
-		<Setter Property="Padding" Value="0" />
-		<Setter Property="ItemHeight" Value="31" />
-		<Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
-		<Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
-		<Setter Property="BorderBrush" Value="{DynamicResource SystemControlDisabledChromeDisabledHighBrush}" />
-		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-		<Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
-		<Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True" />
-		<Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
-		<Setter Property="Template">
-			<ControlTemplate>
-				<Panel>
-					<Border x:Name="BodyBorder" Background="{TemplateBinding Background}"
-							BorderBrush="{TemplateBinding BorderBrush}"
-							BorderThickness="{TemplateBinding BorderThickness}"
-							CornerRadius="{DynamicResource ControlCornerRadius}">
-						<DockPanel>
-							<!--/ScrollViewer-->
-							<UniformGrid Width="18" Columns="1" DockPanel.Dock="Right">
-								<RepeatButton VerticalAlignment="Stretch"  BorderThickness="1,0,0,1"  HorizontalAlignment="Stretch" Margin="0" Name="PART_UpButton" Focusable="False" Grid.Row="0" CornerRadius="0,3,0,0">
-									<Path Data="M 0 3 L 3 0 L 6 3" Stroke="{Binding $parent[RepeatButton].Foreground}"
-										  StrokeThickness="1" HorizontalAlignment="Center" Width="6" Height="3"
-										  ClipToBounds="True" />
-								</RepeatButton>
-								<RepeatButton VerticalAlignment="Stretch"  BorderThickness="1,0,0,1"  HorizontalAlignment="Stretch" Margin="0" Name="PART_DownButton" Focusable="False" Grid.Row="1" CornerRadius="0">
-									<Path Data="M 0 0 L 3 3 L 6 0" Stroke="{Binding $parent[RepeatButton].Foreground}"
-										  StrokeThickness="1" HorizontalAlignment="Center" Width="6" Height="3"
-										  ClipToBounds="True" />
-								</RepeatButton>
-								<ToggleButton x:Name="PART_FlyoutButton" HorizontalAlignment="Right"
-											  IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}">
-									<StackPanel Width="6" Spacing="1" Orientation="Vertical"
-												HorizontalAlignment="Center" VerticalAlignment="Center">
-										<Rectangle Fill="{Binding $parent[ToggleButton].Foreground}" Height="1"
-												   HorizontalAlignment="Stretch" />
-										<Path Data="M 0 0 L 3 3 L 6 0"
-											  Stroke="{Binding $parent[ToggleButton].Foreground}" StrokeThickness="1"
-											  HorizontalAlignment="Center" Width="6" Height="3" ClipToBounds="True" />
-									</StackPanel>
-								</ToggleButton>
-							</UniformGrid>
-							<local:GalleryScrollContentPresenter x:Name="PART_ScrollContentPresenter"
-																 CanVerticallyScroll="True"
-																 Margin="{TemplateBinding Padding}">
-								<local:GalleryScrollContentPresenter.Content>
-									<ContentControl x:Name="PART_ItemsPresenterHolder" />
-								</local:GalleryScrollContentPresenter.Content>
-							</local:GalleryScrollContentPresenter>
-						</DockPanel>
-					</Border>
-					<Popup PlacementMode="LeftEdgeAlignedTop" HorizontalOffset="{Binding Width, RelativeSource={RelativeSource Mode=TemplatedParent}}"
-							IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}">
-						<Border x:Name="PART_FlyoutRoot"
-								CornerRadius="{DynamicResource ControlCornerRadius}"
-								Background="{TemplateBinding Background}"
-								BorderBrush="{DynamicResource SystemControlDisabledChromeDisabledHighBrush}"
-								BorderThickness="{DynamicResource ThemeBorderThickness}"
-							Width="{Binding Width, RelativeSource={RelativeSource Mode=TemplatedParent}}">
-							<ScrollViewer x:Name="PART_FlyoutScrollViewer"
-										  Height="200"
-										  Padding="{TemplateBinding Padding}">
-								<ContentControl x:Name="PART_FlyoutItemsPresenterHolder" />
-							</ScrollViewer>
-						</Border>
-					</Popup>
-					<ItemsPresenter x:Name="PART_ItemsPresenter"
-										ItemsPanel="{TemplateBinding ItemsPanel}">
-					</ItemsPresenter>
-				</Panel>
-			</ControlTemplate>
-		</Setter>
-		<Setter Property="ItemsPanel">
-			<ItemsPanelTemplate>
-				<UniformGrid x:Name="GalleryItemsUniformGrid" Columns="1" />
-			</ItemsPanelTemplate>
-		</Setter>
-		<Setter Property="ItemContainerTheme" Value="{StaticResource MediumGalleryItem}" />
-	</ControlTheme>
+    <ControlTheme x:Key="SmallGallery" TargetType="local:Gallery">
+        <Setter Property="Height" Value="64" />
+        <Setter Property="Width" Value="115" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="ItemHeight" Value="31" />
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SystemControlDisabledChromeDisabledHighBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+        <Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True" />
+        <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Border
+                        x:Name="BodyBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{DynamicResource ControlCornerRadius}">
+                        <DockPanel>
+                            <!--  /ScrollViewer  -->
+                            <UniformGrid
+                                Width="18"
+                                Columns="1"
+                                DockPanel.Dock="Right">
+                                <RepeatButton
+                                    Name="PART_UpButton"
+                                    Grid.Row="0"
+                                    Margin="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    BorderThickness="1,0,0,1"
+                                    CornerRadius="0,3,0,0"
+                                    Focusable="False">
+                                    <Path
+                                        Width="6"
+                                        Height="3"
+                                        HorizontalAlignment="Center"
+                                        ClipToBounds="True"
+                                        Data="M 0 3 L 3 0 L 6 3"
+                                        Stroke="{Binding $parent[RepeatButton].Foreground}"
+                                        StrokeThickness="1" />
+                                </RepeatButton>
+                                <RepeatButton
+                                    Name="PART_DownButton"
+                                    Grid.Row="1"
+                                    Margin="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    BorderThickness="1,0,0,1"
+                                    CornerRadius="0"
+                                    Focusable="False">
+                                    <Path
+                                        Width="6"
+                                        Height="3"
+                                        HorizontalAlignment="Center"
+                                        ClipToBounds="True"
+                                        Data="M 0 0 L 3 3 L 6 0"
+                                        Stroke="{Binding $parent[RepeatButton].Foreground}"
+                                        StrokeThickness="1" />
+                                </RepeatButton>
+                                <ToggleButton
+                                    x:Name="PART_FlyoutButton"
+                                    HorizontalAlignment="Right"
+                                    IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}">
+                                    <StackPanel
+                                        Width="6"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Orientation="Vertical"
+                                        Spacing="1">
+                                        <Rectangle
+                                            Height="1"
+                                            HorizontalAlignment="Stretch"
+                                            Fill="{Binding $parent[ToggleButton].Foreground}" />
+                                        <Path
+                                            Width="6"
+                                            Height="3"
+                                            HorizontalAlignment="Center"
+                                            ClipToBounds="True"
+                                            Data="M 0 0 L 3 3 L 6 0"
+                                            Stroke="{Binding $parent[ToggleButton].Foreground}"
+                                            StrokeThickness="1" />
+                                    </StackPanel>
+                                </ToggleButton>
+                            </UniformGrid>
+                            <local:GalleryScrollContentPresenter
+                                x:Name="PART_ScrollContentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                CanVerticallyScroll="True">
+                                <local:GalleryScrollContentPresenter.Content>
+                                    <ContentControl x:Name="PART_ItemsPresenterHolder" />
+                                </local:GalleryScrollContentPresenter.Content>
+                            </local:GalleryScrollContentPresenter>
+                        </DockPanel>
+                    </Border>
+                    <Popup
+                        HorizontalOffset="{Binding Width, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                        IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                        Placement="LeftEdgeAlignedTop">
+                        <Border
+                            x:Name="PART_FlyoutRoot"
+                            Width="{Binding Width, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{DynamicResource SystemControlDisabledChromeDisabledHighBrush}"
+                            BorderThickness="{DynamicResource ThemeBorderThickness}"
+                            CornerRadius="{DynamicResource ControlCornerRadius}">
+                            <ScrollViewer
+                                x:Name="PART_FlyoutScrollViewer"
+                                Height="200"
+                                Padding="{TemplateBinding Padding}">
+                                <ContentControl x:Name="PART_FlyoutItemsPresenterHolder" />
+                            </ScrollViewer>
+                        </Border>
+                    </Popup>
+                    <ItemsPresenter x:Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <UniformGrid x:Name="GalleryItemsUniformGrid" Columns="1" />
+            </ItemsPanelTemplate>
+        </Setter>
+        <Setter Property="ItemContainerTheme" Value="{StaticResource MediumGalleryItem}" />
+    </ControlTheme>
 </ResourceDictionary>

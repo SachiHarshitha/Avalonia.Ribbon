@@ -5,13 +5,17 @@
 		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 		<ProjectGuid>{F2F7E655-E83D-4024-B155-CA5FCE3A827B}</ProjectGuid>
 		<OutputType>Library</OutputType>
+		<Authors>Splitwirez, Alban Mazerolles, Rubal Walia, Sachith Liyanagama</Authors>
 		<AppDesignerFolder>Properties</AppDesignerFolder>
 		<RootNamespace>AvaloniaUI.Ribbon.Windows</RootNamespace>
 		<AssemblyName>AvaloniaUI.Ribbon.Windows</AssemblyName>
+		    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageId>AvaloniaUIRibbon.Windoows</PackageId>
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<FileAlignment>512</FileAlignment>
 		<Deterministic>true</Deterministic>
+			<PackageTags>ribbon;avalonia;avaloniaui;avalonia ui;ribbon;ribbonui;ribbon ui;crossplat;crossplatform;cross platform;xplat;xplatform</PackageTags>
 		<NuGetPackageImportStamp>
 		</NuGetPackageImportStamp>
 	</PropertyGroup>
