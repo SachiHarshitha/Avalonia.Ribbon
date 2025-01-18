@@ -1,0 +1,29 @@
+﻿<Application
+    x:Class="AvaloniaUI.Ribbon.Samples.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:AvaloniaUI.Ribbon.Samples"
+    RequestedThemeVariant="Light">
+	<Application.DataTemplates>
+		<local:ViewLocator />
+	</Application.DataTemplates>
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<!--  ResourceInclude Source="avares://AvaloniaUI.Ribbon/Locale/te-st.xaml" /  -->
+				<ResourceInclude Source="avares://AvaloniaUI.Ribbon/Locale/en-ca.axaml" />
+				<ResourceInclude Source="avares://AvaloniaUI.Ribbon/Themes/Accents/Fluent.axaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
+	<Application.Styles>
+		<FluentTheme />
+		<!--<StyleInclude Source="avares://Avalonia.Themes.Fluent/Accents/BaseLight.xaml" />
+        <StyleInclude Source="avares://Avalonia.Themes.Fluent/Accents/Base.xaml" />
+        <StyleInclude Source="avares://Avalonia.Themes.Fluent/Accents/FluentBaseLight.xaml" />
+        <StyleInclude Source="avares://Avalonia.Themes.Fluent/Accents/FluentControlResourcesLight.xaml" />
+        <StyleInclude Source="avares://Avalonia.Themes.Fluent/Controls/FluentControls.xaml" />-->
+		<StyleInclude Source="avares://Avalonia.Themes.Fluent/FluentTheme.xaml" />
+		<StyleInclude Source="avares://AvaloniaUI.Ribbon.Windows/Styles/Fluent/AvaloniaRibbon.axaml" />
+	</Application.Styles>
+</Application>

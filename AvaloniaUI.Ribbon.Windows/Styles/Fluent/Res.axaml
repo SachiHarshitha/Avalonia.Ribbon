@@ -77,7 +77,7 @@
                 IsLightDismissEnabled="True"
                 IsOpen="{TemplateBinding IsSubMenuOpen,
                                          Mode=TwoWay}"
-                PlacementMode="Right"
+                Placement="Right"
                 WindowManagerAddShadowHint="False">
                 <Border
                     MinHeight="{DynamicResource MenuFlyoutThemeMinHeight}"

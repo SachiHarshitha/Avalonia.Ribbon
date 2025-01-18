@@ -11,6 +11,8 @@
 /node_modules
 /wwwroot/node_modules
 
+# CodeMaid
+CodeMaid.config
 
 ### OpenFrameworks+VisualStudio ###
 # ignore generated binaries
@@ -441,3 +443,5 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/dotnetcore,visualstudio,visualstudiocode,openframeworks+visualstudio
+
+.idea/
