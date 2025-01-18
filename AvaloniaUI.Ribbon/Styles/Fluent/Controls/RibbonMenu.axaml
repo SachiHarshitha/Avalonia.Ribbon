@@ -1,171 +1,142 @@
 ﻿<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon"
-    xmlns:sys="clr-namespace:System;assembly=netstandard">
-	<Style Selector="local|RibbonMenu">
-		<Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}" />
-		<Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderLowBrush}" />
-		<Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
-		<Setter Property="Height" Value="30" />
-		<Setter Property="Content" Value="{DynamicResource AvaloniaRibbon.File}" />
-		<Setter Property="RightColumnHeader" Value="{DynamicResource AvaloniaRibbon.Recent}" />
-		<Setter Property="Template">
-			<ControlTemplate>
-				<Panel>
-					<ToggleButton
-                        x:Name="ContentButton"
+    xmlns:converters="clr-namespace:AvaloniaUI.Ribbon.Converters;assembly=AvaloniaUI.Ribbon"
+    xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
+
+    <Style Selector="local|RibbonMenu">
+        <Style.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceInclude Source="RibbonMenuItem.axaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+            <converters:MathAddConverter x:Key="MathAddConverter" />
+        </Style.Resources>
+        
+        
+        <Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderLowBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Header" Value="{DynamicResource AvaloniaRibbon.File}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel x:Name="MenuCanvas">
+                    <ToggleButton
+                        x:Name="MenuPopupToggle"
                         Padding="{TemplateBinding Padding}"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
-						Foreground="{TemplateBinding Foreground}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        Content="{TemplateBinding Content}"
+                        Content="{TemplateBinding Header}"
                         FontSize="12.5"
+                        Foreground="{TemplateBinding Foreground}"
                         IsChecked="{Binding IsMenuOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" />
-					<Popup
+                    <Popup
                         x:Name="MenuPopup"
-                        Width="500"
-                        MinHeight="300"
-                        HorizontalOffset="0"
+                        Width="{Binding $parent[Ribbon].Bounds.Width}"
                         IsLightDismissEnabled="True"
+                        ClipToBounds="True"
+                        MaxHeight="{Binding $parent[TopLevel].Height}"
+                        Placement="RightEdgeAlignedTop"
                         IsOpen="{Binding IsMenuOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
-                        Placement="BottomEdgeAlignedLeft"
-                        PlacementTarget="{Binding #ContentButton}"
-                        VerticalOffset="-30">
-						<Border
+                        PlacementTarget="{Binding  #MenuPopupToggle}">
+                        <Border
                             x:Name="MenuRootBorder"
                             Background="{DynamicResource MenuFlyoutPresenterBackground}"
                             BorderBrush="{DynamicResource MenuFlyoutPresenterBorderBrush}"
                             BorderThickness="{DynamicResource MenuFlyoutPresenterBorderThemeThickness}"
                             CornerRadius="{DynamicResource OverlayCornerRadius}"
                             TextBlock.Foreground="{DynamicResource ThemeForegroundBrush}">
-							<!--  BoxShadow="0 4 10 #40000000"  -->
-							<DockPanel>
-								<DockPanel
-                                    Name="MenuRightColumnDockPanel"
-                                    Width="200"
-                                    DockPanel.Dock="Right">
-									<Grid
-                                        Height="30"
-                                        DockPanel.Dock="Top"
-                                        IsVisible="{Binding !HasSelectedItem, RelativeSource={RelativeSource Mode=TemplatedParent}}">
-										<TextBlock
-                                            Margin="10,0"
-                                            VerticalAlignment="Center"
-                                            FontWeight="DemiBold"
-                                            Text="{TemplateBinding RightColumnHeader}" />
-									</Grid>
-									<Panel>
-										<ItemsControl
-                                            x:Name="PART_RightColumnItemsPresenter"
-                                            IsVisible="{Binding !HasSelectedItem, RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                            ItemTemplate="{TemplateBinding RightColumnItemTemplate}"
-                                            ItemsPanel="{TemplateBinding RightColumnItemsPanel}"
-                                            ItemsSource="{TemplateBinding RightColumnItems}" />
-										<ItemsControl
-                                            x:Name="SelectedSubItemsPresenter"
-                                            IsVisible="{TemplateBinding HasSelectedItem}"
-                                            ItemsSource="{TemplateBinding SelectedSubItems}" />
-									</Panel>
-									<!--  ListBox Classes="RibbonMenuPlacesList" Items="{Binding MenuPlacesItems, RelativeSource={RelativeSource Mode=TemplatedParent}}"/  -->
-								</DockPanel>
-								<Border
-                                    Background="{DynamicResource SystemControlBackgroundAltHighBrush}"
-                                    BoxShadow="4 0 10 #40000000"
-                                    CornerRadius="4,0,0,4">
-									<DockPanel>
-										<!--Menu Classes="RibbonMenuMenu" Items="{Binding MenuItems, RelativeSource={RelativeSource Mode=TemplatedParent}}" Padding="0,30,0,0" />
-                  <ToggleButton Name="BackButton" FontWeight="SemiBold" Classes="RibbonToggleButton" IsChecked="{Binding !IsChecked, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="{Binding Bounds.Width, ElementName=MenuButton, Mode=OneWay}">
-                    <Grid Width="24" Height="24">
-                      <Ellipse Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" StrokeThickness="2" />
-                      <Grid Width="14" Height="10">
-                        <Rectangle Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" Height="2" VerticalAlignment="Center" />
-                        <Path Data="M 5 0 L 0 5 L 5 10" Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}" StrokeThickness="2" HorizontalAlignment="Left" />
-                      </Grid>
-                    </Grid>
-                  </ToggleButton-->
-										<ToggleButton
-                                            x:Name="BackButton"
-                                            Width="{Binding #ContentButton.Bounds.Width}"
-                                            Height="{Binding #ContentButton.Bounds.Height}"
-                                            Padding="{TemplateBinding Padding}"
-                                            HorizontalContentAlignment="Center"
-                                            VerticalContentAlignment="Center"
-                                            BorderThickness="{TemplateBinding BorderThickness}"
-                                            ClickMode="Press"
-                                            DockPanel.Dock="Top"
-                                            IsChecked="{Binding !IsMenuOpen, RelativeSource={RelativeSource Mode=TemplatedParent}}">
-											<Panel Width="24" Height="24">
-												<Ellipse Stroke="{Binding $parent[ToggleButton].Foreground}" StrokeThickness="1" />
-												<Panel Width="14" Height="10">
-													<Rectangle
-                                                        Height="1"
-                                                        VerticalAlignment="Center"
-                                                        Fill="{Binding $parent[ToggleButton].Foreground}" />
-													<Path
-                                                        HorizontalAlignment="Left"
-                                                        Data="M 5 0 L 0 5 L 5 10"
-                                                        Stroke="{Binding $parent[ToggleButton].Foreground}"
-                                                        StrokeThickness="1" />
-												</Panel>
-											</Panel>
-										</ToggleButton>
-										<ItemsPresenter x:Name="PART_ItemsPresenter" />
-									</DockPanel>
-								</Border>
-							</DockPanel>
-						</Border>
-					</Popup>
-				</Panel>
-			</ControlTemplate>
-		</Setter>
-	</Style>
-	<Style Selector="local|Ribbon[Orientation=Horizontal] local|RibbonMenu">
-		<Setter Property="Padding" Value="16,4" />
-	</Style>
-	<Style Selector="local|Ribbon[Orientation=Vertical] local|RibbonMenu">
-		<Setter Property="Padding" Value="4" />
-	</Style>
-	<Style Selector="local|Ribbon local|RibbonMenu /template/ ToggleButton#ContentButton:not(:pointerover):not(:pressed):not(:checked)">
-		<Setter Property="Foreground" Value="{Binding $parent[local:Ribbon].Foreground}" />
-		<Setter Property="Background" Value="Transparent" />
-		<Setter Property="BorderBrush" Value="Transparent" />
-	</Style>
-	<Style Selector="local|Ribbon local|RibbonMenu /template/ ToggleButton#BackButton:not(:pointerover):not(:pressed):not(:checked)">
-		<Setter Property="Background" Value="Transparent" />
-		<Setter Property="BorderBrush" Value="Transparent" />
-	</Style>
-	<!--Style Selector="local|RibbonMenu /template/ Popup#MenuPopup > PopupRoot">
-    <Setter Property="TransparencyLevelHint" Value="Transparent" />
-  </Style-->
-	<!--<Style Selector="local|RibbonMenu:not(:focus-within) /template/ Popup#MenuPopup">
-    <Setter Property="IsOpen" Value="False" />
-  </Style>-->
+                            <Grid RowDefinitions="Auto,*">
+                                <ToggleButton Grid.Row="0"
+                                              x:Name="BackButton"
+                                              Width="{Binding  #MenuPopupToggle.Bounds.Width}"
+                                              Height="{Binding #MenuPopupToggle.Bounds.Height}"
+                                              Padding="{TemplateBinding Padding}"
+                                              HorizontalContentAlignment="Center"
+                                              VerticalContentAlignment="Center"
+                                              BorderThickness="{TemplateBinding BorderThickness}"
+                                              ClickMode="Press"
+                                              DockPanel.Dock="Top"
+                                              IsChecked="{Binding !IsMenuOpen, RelativeSource={RelativeSource Mode=TemplatedParent}}">
+                                    <Panel Width="24" Height="24">
+                                        <Ellipse Stroke="{Binding $parent[ToggleButton].Foreground}"
+                                                 StrokeThickness="1" />
+                                        <Panel Width="14" Height="10">
+                                            <Rectangle
+                                                Height="1"
+                                                VerticalAlignment="Center"
+                                                Fill="{Binding $parent[ToggleButton].Foreground}" />
+                                            <Path
+                                                HorizontalAlignment="Left"
+                                                Data="M 5 0 L 0 5 L 5 10"
+                                                Stroke="{Binding $parent[ToggleButton].Foreground}"
+                                                StrokeThickness="1" />
+                                        </Panel>
+                                    </Panel>
+                                </ToggleButton>
+                                <TabControl Grid.Row="1" x:Name="PART_TabControl" TabStripPlacement="Left"
+                                            ItemsSource="{TemplateBinding ItemsCollection}" >
+                                    <TabControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <DockPanel
+                                                Margin="{TemplateBinding Padding}"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Center">
+                                                <ContentPresenter
+                                                    Margin="0,0,4,0"
+                                                    Background="Transparent"
+                                                    Content="{Binding Icon,RelativeSource={RelativeSource AncestorType=RibbonMenuItem}}"
+                                                    DockPanel.Dock="Left" />
+                                                <ContentPresenter
+                                                    VerticalAlignment="Center"
+                                                    HorizontalContentAlignment="Left"
+                                                    VerticalContentAlignment="Center"
+                                                    Background="Transparent"
+                                                    Content="{Binding Header,RelativeSource={RelativeSource AncestorType=RibbonMenuItem}}" />
+                                            </DockPanel>
+                                        </DataTemplate>
+                                    </TabControl.ItemTemplate>
+                                </TabControl>
+                            </Grid>
 
-	<Style Selector="local|RibbonMenuItem">
-		<Setter Property="Template">
-			<ControlTemplate>
-				<DockPanel>
-					<ToggleButton
-                        x:Name="ToggleButton"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        DockPanel.Dock="Right"
-                        IsChecked="{TemplateBinding IsSelected}"
-                        IsVisible="{TemplateBinding HasItems}">
-						<Path
-                            Data="M 0 0 L 5 5 L 0 10"
-                            Stroke="{Binding $parent[ToggleButton].Foreground}"
-                            StrokeThickness="1" />
-					</ToggleButton>
-					<Button
+                        </Border>
+                    </Popup>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="local|Ribbon[Orientation=Horizontal] local|RibbonMenu">
+        <Setter Property="Padding" Value="16,4" />
+    </Style>
+    <Style Selector="local|Ribbon[Orientation=Vertical] local|RibbonMenu">
+        <Setter Property="Padding" Value="4" />
+    </Style>
+    <Style
+        Selector="local|Ribbon local|RibbonMenu /template/ ToggleButton#ContentButton:not(:pointerover):not(:pressed):not(:checked)">
+        <Setter Property="Foreground" Value="{Binding $parent[local:Ribbon].Foreground}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+    </Style>
+    <Style
+        Selector="local|Ribbon local|RibbonMenu /template/ ToggleButton#BackButton:not(:pointerover):not(:pressed):not(:checked)">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+    </Style>
+    
+
+
+    <!--<Style Selector="local|RibbonMenuItem">
+        <Setter Property="Theme">
+            <Dat>
+                <DockPanel>
+                    <Button
                         x:Name="PART_ContentButton"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
@@ -173,39 +144,35 @@
                         VerticalContentAlignment="Center"
                         Command="{TemplateBinding Command}"
                         CommandParameter="{TemplateBinding CommandParameter}">
-						<DockPanel
-                            Margin="{TemplateBinding Padding}"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Center">
-							<ContentPresenter
-                                Margin="0,0,4,0"
-                                Background="Transparent"
-                                Content="{TemplateBinding Icon}"
-                                DockPanel.Dock="Left" />
-							<ContentPresenter
-                                VerticalAlignment="Center"
-                                HorizontalContentAlignment="Left"
-                                VerticalContentAlignment="Center"
-                                Background="Transparent"
-                                Content="{TemplateBinding Header}" />
-						</DockPanel>
-					</Button>
-				</DockPanel>
-			</ControlTemplate>
-		</Setter>
-	</Style>
-	<Style Selector="local|RibbonMenuItem[HasItems=True] /template/ ToggleButton#ToggleButton /template/ ContentPresenter#PART_ContentPresenter">
-		<Setter Property="CornerRadius" Value="0,3,3,0" />
-	</Style>
-	<Style Selector="local|RibbonMenuItem[HasItems=True] /template/ Button#PART_ContentButton /template/ ContentPresenter#PART_ContentPresenter">
-		<Setter Property="CornerRadius" Value="3,0,0,3" />
-	</Style>
-	<Style Selector="local|RibbonMenuItem[IsSelected=False]:not(:pointerover) /template/ :is(Button):not(:pointerover):not(:pressed):not(:checked)">
-		<Setter Property="Background" Value="Transparent" />
-		<Setter Property="BorderBrush" Value="Transparent" />
-	</Style>
+                    </Button>
+                    <DockPanel
+                        Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center">
+                        <ContentPresenter
+                            Margin="0,0,4,0"
+                            Background="Transparent"
+                            Content="{TemplateBinding Icon}"
+                            DockPanel.Dock="Left" />
+                        <ContentPresenter
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Left"
+                            VerticalContentAlignment="Center"
+                            Background="Transparent"
+                            Content="{TemplateBinding Header}" />
+                    </DockPanel>
+                </DockPanel>
+            </D>
+        </Setter>
+    </Style>
 
-	<!--Style Selector="local|RibbonMenu:checked /template/ ContentPresenter">
+    <Style
+        Selector="local|RibbonMenuItem[IsSelected=False]:not(:pointerover) /template/ :is(Button):not(:pointerover):not(:pressed):not(:checked)">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+    </Style>-->
+
+    <!--Style Selector="local|RibbonMenu:checked /template/ ContentPresenter">
     <Setter Property="Background" Value="{DynamicResource ThemeControlHighBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
     <Setter Property="TextBlock.Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
@@ -311,7 +278,7 @@
     </Setter>
   </Style-->
 
-	<!--Style Selector="local|RibbonMenu /template/ Menu.RibbonMenuMenu MenuItem:pointerover /template/ Border#root">
+    <!--Style Selector="local|RibbonMenu /template/ Menu.RibbonMenuMenu MenuItem:pointerover /template/ Border#root">
     <Setter Property="Background" Value="{DynamicResource ThemeControlHighlightMidBrush}" />
   </Style>
 

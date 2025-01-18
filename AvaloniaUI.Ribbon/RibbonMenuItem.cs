@@ -8,18 +8,66 @@ using System;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Input;
+using Avalonia.Automation;
+using Avalonia.Automation.Peers;
+using Avalonia.Controls.Mixins;
+using Avalonia.Markup.Xaml.Templates;
 
 namespace AvaloniaUI.Ribbon
 {
 
     [TemplatePart("PART_ContentButton", typeof(Button))]
-    public class RibbonMenuItem : HeaderedItemsControl
+    public class RibbonMenuItem : TabItem
     {
-        static RibbonMenuItem()
+        protected override AutomationPeer OnCreateAutomationPeer() => new ListItemAutomationPeer(this);
+        
+        private void UpdateHeader(AvaloniaPropertyChangedEventArgs obj)
         {
-            ItemsSourceProperty.Changed.AddClassHandler<RibbonMenuItem>((x, e) => x.ItemsChanged(e));
+            if (Header == null)
+            {
+                if (obj.NewValue is HeaderedContentControl headered)
+                {
+                    if (Header != headered.Header)
+                    {
+                        SetCurrentValue(HeaderProperty, headered.Header);
+                    }
+                }
+                else
+                {
+                    if (!(obj.NewValue is Control))
+                    {
+                        SetCurrentValue(HeaderProperty, obj.NewValue);
+                    }
+                }
+            }
+            else
+            {
+                if (Header == obj.OldValue)
+                {
+                    SetCurrentValue(HeaderProperty, obj.NewValue);
+                }
+            }
         }
 
+        private void RibbonMenuItemActivated(RoutedEventArgs args)
+        {
+            SetCurrentValue(IsSelectedProperty, true);
+            args.Handled = true;
+        }
+    
+        protected override Type StyleKeyOverride => typeof(RibbonMenuItem);
+
+        static RibbonMenuItem()
+        {
+            SelectableMixin.Attach<RibbonMenuItem>(IsSelectedProperty);
+            PressedMixin.Attach<RibbonMenuItem>();
+            FocusableProperty.OverrideDefaultValue(typeof(RibbonMenuItem), true);
+            DataContextProperty.Changed.AddClassHandler<RibbonMenuItem>((x, e) => x.UpdateHeader(e));
+            AutomationProperties.ControlTypeOverrideProperty.OverrideDefaultValue<RibbonMenuItem>(AutomationControlType.TabItem);
+            AutomationProperties.IsOffscreenBehaviorProperty.OverrideDefaultValue<RibbonMenuItem>(IsOffscreenBehavior.FromClip);
+        }
+        
+        
         public static readonly StyledProperty<object> IconProperty = AvaloniaProperty.Register<RibbonMenuItem, object>(nameof(Icon));
 
         public object Icon
@@ -27,46 +75,7 @@ namespace AvaloniaUI.Ribbon
             get => GetValue(IconProperty);
             set => SetValue(IconProperty, value);
         }
-
-        public static readonly StyledProperty<bool> IsSubmenuOpenProperty = AvaloniaProperty.Register<RibbonMenuItem, bool>(nameof(IsSubmenuOpen));
-
-        public bool IsSubmenuOpen
-        {
-            get => GetValue(IsSubmenuOpenProperty);
-            set => SetValue(IsSubmenuOpenProperty, value);
-        }
-
-        public static readonly StyledProperty<bool> HasItemsProperty = AvaloniaProperty.Register<RibbonMenuItem, bool>(nameof(HasItems));
-
-        public bool HasItems
-        {
-            get => GetValue(HasItemsProperty);
-            set => SetValue(HasItemsProperty, value);
-        }
-
-        public static readonly StyledProperty<bool> IsSelectedProperty = AvaloniaProperty.Register<RibbonMenuItem, bool>(nameof(IsSelected));
-
-        public bool IsSelected
-        {
-            get => GetValue(IsSelectedProperty);
-            set => SetValue(IsSelectedProperty, value);
-        }
-
-        private void ItemsChanged(AvaloniaPropertyChangedEventArgs args)
-        {
-            HasItems = Items.Any();
-            if (args.OldValue is INotifyCollectionChanged oldSource)
-                oldSource.CollectionChanged -= ItemsCollectionChanged;
-            if (args.NewValue is INotifyCollectionChanged newSource)
-            {
-                newSource.CollectionChanged += ItemsCollectionChanged;
-            }
-        }
-
-        private void ItemsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            HasItems = Items.Any();
-        }
+        
 
         public static readonly StyledProperty<ICommand> CommandProperty = Button.CommandProperty.AddOwner<RibbonMenuItem>();
 
@@ -97,12 +106,14 @@ namespace AvaloniaUI.Ribbon
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
-
-            e.NameScope.Get<Button>("PART_ContentButton").Click += (_, _) =>
-            {
-                var f = new RoutedEventArgs(ClickEvent);
-                RaiseEvent(f);
-            };
+            
+            var button =  e.NameScope.Find<Button>("PART_ContentButton");
+            if (button !=null)
+               button.Click += (_, _) =>
+                {
+                    var f = new RoutedEventArgs(ClickEvent);
+                    RaiseEvent(f);
+                };
         }
     }
 }
