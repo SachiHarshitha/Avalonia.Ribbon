@@ -2,7 +2,6 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:AvaloniaUI.Ribbon.Converters;assembly=AvaloniaUI.Ribbon"
-    xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon"
     xmlns:sys="clr-namespace:System;assembly=netstandard"
     xmlns:windows="clr-namespace:AvaloniaUI.Ribbon.Windows;assembly=AvaloniaUI.Ribbon.Windows">
     <Styles.Resources>
@@ -11,16 +10,16 @@
     <Design.PreviewWith>
         <Panel Width="200">
             <windows:DesktopRibbon VerticalAlignment="Top">
-                <local:RibbonTab Header="Tab">
-                    <local:RibbonTab.Groups>
-                        <local:RibbonGroupBox Header="Group" />
-                    </local:RibbonTab.Groups>
-                </local:RibbonTab>
+                <RibbonTab Header="Tab">
+                    <RibbonTab.Groups>
+                        <RibbonGroupBox Header="Group" />
+                    </RibbonTab.Groups>
+                </RibbonTab>
             </windows:DesktopRibbon>
         </Panel>
     </Design.PreviewWith>
 
-    <Style Selector="windows|DesktopRibbon">
+    <Style Selector="windows|DesktopRibbon[Orientation=Horizontal]">
         <Setter Property="HeaderBackground" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
         <Setter Property="HeaderForeground" Value="{DynamicResource ButtonForeground}" />
         <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
@@ -135,7 +134,7 @@
                                 Content="{TemplateBinding SelectedContent}"
                                 ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                 IsVisible="False" />
-                            <ContentControl Name="PART_GroupsPresenterHolder" HorizontalAlignment="Stretch">
+                            <ContentControl Name="PART_GroupsPresenterHolder" HorizontalAlignment="Stretch" Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
                                 <ItemsControl
                                     Name="PART_SelectedGroupsHost"
                                     Height="96"
@@ -160,10 +159,11 @@
                                     </ItemsControl.ContextMenu>
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <local:RibbonGroupsStackPanel
+                                            <RibbonGroupsStackPanel
                                                 x:Name="PART_ItemsPanel"
                                                 Width="{Binding $parent[ItemsControl].Bounds.Width}"
                                                 Margin="0"
+                                                Background="{TemplateBinding Background}"
                                                 HorizontalAlignment="Left"
                                                 VerticalAlignment="Stretch"
                                                 Orientation="Horizontal" />
@@ -182,9 +182,7 @@
             </ItemsPanelTemplate>
         </Setter>
     </Style>
-    <!--Style Selector="windows|DesktopRibbon[Orientation=Horizontal]">
-    <Setter Property="Margin" Value="0,0,0,-4" />
-  </Style-->
+    
     <Style Selector="windows|DesktopRibbon[Orientation=Vertical]">
         <Setter Property="Margin" Value="0,0,-8,0" />
         <Setter Property="Template">
@@ -273,7 +271,7 @@
                                     Content="{TemplateBinding SelectedContent}"
                                     ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                     IsVisible="False" />
-                                <ContentControl Name="PART_GroupsPresenterHolder" VerticalAlignment="Stretch">
+                                <ContentControl Name="PART_GroupsPresenterHolder" VerticalAlignment="Stretch" Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
                                     <ItemsControl
                                         Name="PART_SelectedGroupsHost"
                                         Width="138"
@@ -297,12 +295,13 @@
                                         </ItemsControl.ContextMenu>
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <local:RibbonGroupsStackPanel
+                                                <RibbonGroupsStackPanel
                                                     x:Name="PART_ItemsPanel"
                                                     Height="{Binding $parent[ItemsControl].Bounds.Height}"
                                                     Margin="0"
                                                     HorizontalAlignment="Stretch"
                                                     VerticalAlignment="Top"
+                                                    Background="{TemplateBinding Background}"
                                                     Orientation="Vertical" />
                                             </ItemsPanelTemplate>
                                         </ItemsControl.ItemsPanel>

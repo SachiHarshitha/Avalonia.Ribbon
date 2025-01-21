@@ -35,9 +35,10 @@
 	<!-- Control Theme -->
 	<ControlTheme x:Key="{x:Type local:RibbonButton}" TargetType="local:RibbonButton">
 		<Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
+		<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
 		<Setter Property="Template">
 			<ControlTemplate>
-				<Border Classes="RibbonButtonBackgroundBorder" Background="Transparent" BorderBrush="Transparent" Padding="{TemplateBinding Padding}" CornerRadius="{DynamicResource ControlCornerRadius}" BorderThickness="{TemplateBinding BorderThickness}">
+				<Border Classes="RibbonButtonBackgroundBorder"  Background="Transparent" BorderBrush="Transparent" Padding="{TemplateBinding Padding}" CornerRadius="{DynamicResource ControlCornerRadius}" BorderThickness="{TemplateBinding BorderThickness}">
 					<DockPanel>
 						<TemplatedControl Template="{TemplateBinding Icon}" DockPanel.Dock="Left" Width="16" Height="16" />
 						<ContentPresenter Classes="MediumContentPresenter" Content="{TemplateBinding Content}" Margin="3,0,0,0" />
@@ -60,40 +61,44 @@
 			<Setter Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
 			<Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushDisabled}" />
 		</Style>
-		<Style Selector="^:not(local|RibbonButton[Size=Large])">
+		<Style Selector="^local|RibbonButton:not(local|RibbonButton[Size=Large])">
 			<Setter Property="Padding" Value="3" />
 		</Style>
-		<Style Selector="local|RibbonButton[Size=Large]">
+		<Style Selector="^local|RibbonButton[Size=Large]">
 			<Setter Property="Padding" Value="9,4" />
 			<Setter Property="MaxWidth" Value="66" />
+			<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
 			<Setter Property="Height" Value="72" />
 			<Setter Property="Template">
 				<ControlTemplate>
-					<Border Classes="RibbonButtonBackgroundBorder">
+					<Border Classes="RibbonButtonBackgroundBorder" Padding="{TemplateBinding Padding}" CornerRadius="{DynamicResource ControlCornerRadius}">
 						<DockPanel VerticalAlignment="Stretch">
-							<TemplatedControl Template="{TemplateBinding LargeIcon}" DockPanel.Dock="Top" Width="32" Height="32" />
-							<ContentPresenter Content="{TemplateBinding Content}" Margin="0,3,0,0" VerticalAlignment="Stretch" />
+							<TemplatedControl Template="{TemplateBinding LargeIcon}" DockPanel.Dock="Top" Width="32" Height="32"  Foreground="{TemplateBinding Foreground}" />
+							<ContentPresenter Content="{TemplateBinding Content}" Margin="0,3,0,0" VerticalAlignment="Stretch" Foreground="{TemplateBinding Foreground}"  />
 						</DockPanel>
 					</Border>
 				</ControlTemplate>
 			</Setter>
 		</Style>
-		<Style Selector="local|RibbonButton[Size=Large] /template/ ContentPresenter TextBlock">
+		<Style Selector="^local|RibbonButton[Size=Large] /template/ ContentPresenter TextBlock">
 			<Setter Property="TextWrapping" Value="Wrap" />
 			<Setter Property="TextAlignment" Value="Center" />
+			<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
 			<Setter Property="Margin" Value="0,-3" />
 			<Setter Property="VerticalAlignment" Value="Center" />
 		</Style>
-		<Style Selector="local|RibbonButton[Size=Medium]">
+		<Style Selector="^local|RibbonButton[Size=Medium]">
 			<Setter Property="Height" Value="24" />
+			<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
 		</Style>
-		<Style Selector="local|RibbonButton[Size=Small]">
+		<Style Selector="^local|RibbonButton[Size=Small]">
 			<Setter Property="Width" Value="24" />
 			<Setter Property="Height" Value="24" />
+			<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
 			<Setter Property="Template">
 				<ControlTemplate>
-					<Border Classes="RibbonButtonBackgroundBorder">
-						<TemplatedControl Template="{TemplateBinding Icon}" Width="16" Height="16" />
+					<Border Classes="RibbonButtonBackgroundBorder" Padding="{TemplateBinding Padding}" CornerRadius="{DynamicResource ControlCornerRadius}">
+						<TemplatedControl  Foreground="{TemplateBinding Foreground}" Template="{TemplateBinding Icon}" Width="16" Height="16" />
 					</Border>
 				</ControlTemplate>
 			</Setter>

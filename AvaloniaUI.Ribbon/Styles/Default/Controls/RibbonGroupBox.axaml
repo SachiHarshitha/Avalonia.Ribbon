@@ -128,7 +128,7 @@
                                         x:Name="PART_ItemsPanel"
                                         HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
-                                        DisplayMode="{TemplateBinding DisplayMode}" />
+                                        DisplayMode="{Binding DisplayMode, RelativeSource={RelativeSource TemplatedParent}}" />
 								</ItemsPanelTemplate>
 							</ItemsPresenter.ItemsPanel>
 						</ItemsPresenter>

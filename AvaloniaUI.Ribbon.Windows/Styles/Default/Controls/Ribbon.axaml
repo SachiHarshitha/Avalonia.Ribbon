@@ -20,7 +20,7 @@
         </Panel>
     </Design.PreviewWith>
 
-    <Style Selector="windows|DesktopRibbon">
+    <Style Selector="windows|DesktopRibbon[Orientation=Horizontal]">
         <Setter Property="HeaderBackground" Value="{DynamicResource ThemeBackgroundBrush}" />
         <Setter Property="HeaderForeground" Value="{DynamicResource ThemeForegroundBrush}" />
         <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}" />
@@ -131,7 +131,7 @@
                                 Content="{TemplateBinding SelectedContent}"
                                 ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                 IsVisible="False" />
-                            <ContentControl Name="PART_GroupsPresenterHolder" HorizontalAlignment="Stretch">
+                            <ContentControl Name="PART_GroupsPresenterHolder" HorizontalAlignment="Stretch" Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
                                 <ItemsControl
                                     Name="PART_SelectedGroupsHost"
                                     Height="90"
@@ -178,9 +178,7 @@
             </ItemsPanelTemplate>
         </Setter>
     </Style>
-    <!--Style Selector="windows|DesktopRibbon[Orientation=Horizontal]">
-    <Setter Property="Margin" Value="0,0,0,-4" />
-  </Style-->
+
     <Style Selector="windows|DesktopRibbon[Orientation=Vertical]">
         <!--  Setter Property="Margin" Value="0,0,-4,0"/  -->
         <Setter Property="Template">
@@ -262,7 +260,7 @@
                                 Content="{TemplateBinding SelectedContent}"
                                 ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                 IsVisible="False" />
-                            <ContentControl Name="PART_GroupsPresenterHolder" VerticalAlignment="Stretch">
+                            <ContentControl Name="PART_GroupsPresenterHolder" VerticalAlignment="Stretch" Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
                                 <ItemsControl
                                     Name="PART_SelectedGroupsHost"
                                     Width="138"

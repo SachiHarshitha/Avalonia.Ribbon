@@ -59,8 +59,8 @@
 
     <Style Selector="local|RibbonGroupBox">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="{DynamicResource SystemControlForegroundChromeHighBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SystemControlForegroundChromeMediumBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseMediumBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
@@ -126,7 +126,7 @@
                                 HorizontalContentAlignment="Center"
                                 Content="{TemplateBinding Header}"
                                 FontSize="11"
-                                TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                Foreground="{TemplateBinding Foreground}" />
                         </DockPanel>
                         <ItemsPresenter
                             x:Name="PART_ItemsPresenter"
@@ -139,7 +139,7 @@
                                         x:Name="PART_ItemsPanel"
                                         HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
-                                        DisplayMode="{TemplateBinding DisplayMode}" />
+                                        DisplayMode="{Binding DisplayMode, RelativeSource={RelativeSource TemplatedParent}}" />
                                 </ItemsPanelTemplate>
                             </ItemsPresenter.ItemsPanel>
                         </ItemsPresenter>

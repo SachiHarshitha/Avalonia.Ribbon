@@ -5,7 +5,7 @@
                 <ResourceInclude Source="/Styles/Fluent/Res.axaml" />
                 <ResourceInclude Source="avares://AvaloniaUI.Ribbon/Controls/SplitButtonControl.axaml" />
                 <ResourceInclude Source="avares://AvaloniaUI.Ribbon/Controls/RibbonGallery.axaml" />
-                <ResourceInclude Source="avares://AvaloniaUI.Ribbon/Controls/GalleryItem.axaml" />
+                <ResourceInclude Source="avares://AvaloniaUI.Ribbon/Controls/RibbonButton.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
@@ -13,7 +13,9 @@
     <!--StyleInclude Source="/Styles/Fluent/Controls/Gallery.axaml" /-->
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonTab.axaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonMenu.axaml" />
+    <!--
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonButton.axaml" />
+    -->
     <!--StyleInclude Source="/Styles/Fluent/Controls/RibbonSplitButton.axaml" /-->
     <StyleInclude Source="/Styles/Fluent/Controls/Ribbon.axaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonDropDownButton.axaml" />

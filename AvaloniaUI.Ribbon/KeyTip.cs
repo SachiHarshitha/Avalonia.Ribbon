@@ -27,7 +27,7 @@ namespace AvaloniaUI.Ribbon
         private static void KeyTip_Opened(object sender, EventArgs e)
         {
             var sned = sender as Popup;
-            sned.Host?.ConfigurePosition(sned.PlacementTarget, sned.Placement, new Point(sned.HorizontalOffset, sned.VerticalOffset));
+            //TODO: sned.Host?.ConfigurePosition(sned.PlacementTarget, sned.Placement, new Point(sned.HorizontalOffset, sned.VerticalOffset));
         }
 
         public static Popup GetKeyTip(Control element)

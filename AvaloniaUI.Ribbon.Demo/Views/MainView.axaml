@@ -1,0 +1,43 @@
+<UserControl
+    x:Class="AvaloniaUI.Ribbon.Demo.Views.MainView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:AvaloniaUI.Ribbon.Demo.ViewModels"
+    xmlns:views="clr-namespace:AvaloniaUI.Ribbon.Demo.Views"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+	<Design.DataContext>
+		<viewModels:MainViewModel />
+	</Design.DataContext>
+	<DockPanel LastChildFill="True">
+		<views:RibbonView
+            x:Name="PART_Ribbon"
+            DataContext="{Binding}"
+            Orientation="{Binding RibbonOrientation}">
+			<Interaction.Behaviors>
+				<DataTriggerBehavior
+                    Binding="{Binding RibbonOrientation}"
+                    ComparisonCondition="Equal"
+                    Value="{x:Static Orientation.Horizontal}">
+					<ChangePropertyAction
+                        PropertyName="DockPanel.Dock"
+                        TargetObject="{Binding #PART_Ribbon}"
+                        Value="{x:Static Dock.Top}" />
+				</DataTriggerBehavior>
+				<DataTriggerBehavior
+                    Binding="{Binding RibbonOrientation}"
+                    ComparisonCondition="Equal"
+                    Value="{x:Static Orientation.Vertical}">
+					<ChangePropertyAction
+                        PropertyName="DockPanel.Dock"
+                        TargetObject="{Binding #PART_Ribbon}"
+                        Value="{x:Static Dock.Left}" />
+				</DataTriggerBehavior>
+			</Interaction.Behaviors>
+		</views:RibbonView>
+		<views:DocumentView DataContext="{Binding}" />
+	</DockPanel>
+</UserControl>

@@ -77,6 +77,7 @@ namespace AvaloniaUI.Ribbon.Windows
             get => GetValue(QuickAccessToolbarProperty);
             set => SetValue(QuickAccessToolbarProperty, value);
         }
+        
 
         #endregion Properties
 

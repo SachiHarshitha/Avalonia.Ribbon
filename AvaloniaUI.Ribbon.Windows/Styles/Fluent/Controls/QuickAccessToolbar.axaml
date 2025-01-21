@@ -7,6 +7,7 @@
     xmlns:windows="clr-namespace:AvaloniaUI.Ribbon.Windows;assembly=AvaloniaUI.Ribbon.Windows"
     x:DataType="local:QuickAccessToolbar">
     <Style Selector="local|QuickAccessToolbar">
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
         <Setter Property="Height" Value="30" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Margin" Value="0" />

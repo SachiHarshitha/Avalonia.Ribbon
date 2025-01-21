@@ -326,7 +326,11 @@ namespace AvaloniaUI.Ribbon
         {
             base.OnApplyTemplate(e);
             _popup = e.NameScope.Find<Popup>("PART_CollapsedContentPopup");
-
+            if (_popup != null)
+            {
+                _popup.Opened -= OnCollapsedRibbon_Open;
+                _popup.Opened += OnCollapsedRibbon_Open;
+            }
             _groupsHost = e.NameScope.Find<ItemsControl>("PART_SelectedGroupsHost");
             _mainPresenter = e.NameScope.Find<ContentControl>("PART_GroupsPresenterHolder");
             _flyoutPresenter = e.NameScope.Find<ContentControl>("PART_PopupGroupsPresenterHolder");
@@ -426,6 +430,23 @@ namespace AvaloniaUI.Ribbon
                     }
                 };
             }*/
+        }
+
+        /// <summary>
+        /// Handle ribbon collapsed popup open 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnCollapsedRibbon_Open(object sender, EventArgs e)
+        {
+            var popup = sender as Popup;
+            if (popup == null) return;
+            
+            Console.Write(popup.HorizontalOffset);
+            Console.Write(popup.VerticalOffset);
+            Console.Write(popup.PlacementRect);
+            Console.Write(popup.PlacementTarget);
+            
         }
 
         protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)

@@ -7,6 +7,7 @@
 		<Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderLowBrush}" />
 		<Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
+		<Setter Property="FontSize" Value="{DynamicResource FontSizeNormal}" />
 		<Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
 		<Setter Property="Height" Value="34" />
 		<Setter Property="Content" Value="{DynamicResource AvaloniaRibbon.File}" />

@@ -1,0 +1,63 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaUI.Ribbon.Demo.ViewModels"
+             xmlns:views="clr-namespace:AvaloniaUI.Ribbon.Demo.Views"
+             xmlns:extensions1="clr-namespace:AvaloniaUI.Ribbon.Demo.Extensions"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaUI.Ribbon.Demo.Views.DocumentView"
+             x:DataType="vm:MainViewModel">
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+    <DockPanel LastChildFill="True">
+        <StackPanel
+            Margin="25"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Vertical"
+            Spacing="10">
+			<StackPanel Orientation="Horizontal">
+				<StackPanel Orientation="Vertical">
+					<Label FontWeight="Bold">Theme</Label>
+					<ToggleSwitch
+						x:Name="LightsToggleSwitch"
+						IsChecked="{Binding SwitchTheme}"
+						OffContent="Lights off"
+						OnContent="Lights on" />
+				</StackPanel>
+				<Line IsVisible="True" Width="5" Margin="20, 0" Height="40" Fill="Gray"/>            
+				<StackPanel Orientation="Vertical">
+					<Label FontWeight="Bold">Ribbon Orientation</Label>
+					<ToggleSwitch
+						x:Name="OrientationToggleSwitch"
+						IsChecked="{Binding SwitchOrientation}"
+						OffContent="Vertical"
+						OnContent="Horizontal" />
+				</StackPanel>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="LAST ACTION: " />
+				<TextBlock Text="{Binding LastActionText}" />
+			</StackPanel>
+			<StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+				<TextBlock
+                    VerticalAlignment="Center"
+                    FontSize="13"
+                    Text="System Decorations Mode : " />
+				<ComboBox
+                    Width="200"
+                    DisplayMemberBinding="{Binding Value}"
+                    ItemsSource="{Binding Source={extensions1:Enumeration {x:Type SystemDecorations}}}"
+                    SelectedValue="{Binding SystemDecorations, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=RibbonWindow}, Mode=TwoWay}"
+                    SelectedValueBinding="{Binding Value}" />
+			</StackPanel>
+			<!--  CheckBox x:Name="LightsOnCheckBox" Content="Lights" IsChecked="True"/  -->
+			<CheckBox Content="Show Contextual tab group 1" IsChecked="{Binding ShowContextualGroup1, Mode=OneWay}" />
+			<CheckBox Content="Show Contextual tab group 2" IsChecked="{Binding ShowContextualGroup2}" />
+			<CheckBox Content="Show Contextual tab group 3, which has a very long name so you can easily see that its only tab's width does not prohibit the group from getting wider as needed" IsChecked="{Binding ShowContextualGroup3}" />
+			<!--  Button x:Name="TestItemsButton" Content="Test"/  -->
+		</StackPanel>
+    </DockPanel>
+</UserControl>

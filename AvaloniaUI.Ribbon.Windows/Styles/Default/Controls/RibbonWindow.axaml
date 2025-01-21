@@ -69,30 +69,17 @@
 	</Style>
 
 	<Style Selector="windows|RibbonWindow[Orientation=Horizontal] /template/ ContentPresenter#PART_RibbonPresenter">
-		<Setter Property="Grid.Row" Value="0" />
-		<Setter Property="Grid.RowSpan" Value="2" />
-		<Setter Property="Grid.ColumnSpan" Value="2" />
+		<Setter Property="DockPanel.Dock" Value="Top" />
 	</Style>
 	<Style Selector="windows|RibbonWindow[Orientation=Vertical] /template/ ContentPresenter#PART_RibbonPresenter">
-		<Setter Property="Grid.Row" Value="1" />
-		<Setter Property="Grid.RowSpan" Value="2" />
+		<Setter Property="DockPanel.Dock" Value="Left" />
 	</Style>
-
-	<Style Selector="windows|RibbonWindow[Orientation=Horizontal] /template/ ContentPresenter#PART_ContentPresenter">
-		<Setter Property="Grid.Row" Value="2" />
-		<Setter Property="Grid.ColumnSpan" Value="2" />
-	</Style>
-	<Style Selector="windows|RibbonWindow[Orientation=Vertical] /template/ ContentPresenter#PART_ContentPresenter">
-		<Setter Property="Grid.Row" Value="1" />
-		<Setter Property="Grid.RowSpan" Value="2" />
-		<Setter Property="Grid.Column" Value="1" />
-	</Style>
-	<!--Style Selector="windows|RibbonWindow /template/ Rectangle#TitlebarFill2">
+	<Style Selector="windows|RibbonWindow /template/ Rectangle#TitlebarFill2">
     <Setter Property="IsVisible" Value="False" />
   </Style>
   <Style Selector="windows|RibbonWindow[SystemDecorations=Full][Orientation=Vertical] /template/ Rectangle#TitlebarFill2">
     <Setter Property="IsVisible" Value="True" />
-  </Style-->
+  </Style>
 
 	<Style Selector="windows|RibbonWindow[LeftSideCaptionButtons=False] /template/ Grid#CaptionButtons">
 		<Setter Property="HorizontalAlignment" Value="Right" />

@@ -157,6 +157,7 @@
                                                 Width="{Binding $parent[ItemsControl].Bounds.Width}"
                                                 Margin="0"
                                                 HorizontalAlignment="Left"
+                                                Background="{DynamicResource SystemControlForegroundChromeMediumBrush}"
                                                 VerticalAlignment="Stretch"
                                                 Orientation="Horizontal" />
                                         </ItemsPanelTemplate>

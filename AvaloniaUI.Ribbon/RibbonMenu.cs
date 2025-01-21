@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Runtime.InteropServices;
+
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Chrome;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Primitives.PopupPositioning;
 using Avalonia.Controls.Templates;
 using Avalonia.Interactivity;
+using Avalonia.Layout;
 using Avalonia.VisualTree;
+
 using AvaloniaUI.Ribbon.Contracts;
 
 namespace AvaloniaUI.Ribbon;
@@ -53,6 +59,7 @@ public sealed class RibbonMenu : ItemsControl, IRibbonMenu
 
     // Private fields to hold the grouped items for top and bottom docks
     private IEnumerable<IGrouping<string, RibbonMenuItem>> _bottomDockedGroupedItems;
+
     private IEnumerable<IGrouping<string, RibbonMenuItem>> _topDockedGroupedItems;
 
     static RibbonMenu()
@@ -121,6 +128,7 @@ public sealed class RibbonMenu : ItemsControl, IRibbonMenu
             menuPopup.Opened -= Popup_Opened;
             menuPopup.Opened += Popup_Opened;
         }
+        Console.WriteLine($"{menuPopup}, Menu popup is found.");
 
         // Update grouped items and reset item hover events
         UpdateGroupedItems();
@@ -141,21 +149,35 @@ public sealed class RibbonMenu : ItemsControl, IRibbonMenu
 
         var descendants = topLevel.GetVisualDescendants();
         var titleBar = descendants.FirstOrDefault(x => x is TitleBar);
-        if (titleBar != null)
-            menuPopup.Height = topLevel.Bounds.Height - titleBar.Bounds.Height;
+        var ribbon = descendants.FirstOrDefault(x => x is Ribbon) as Ribbon;
+        if (ribbon == null) return;
 
-        var ribbon = descendants.FirstOrDefault(x => x is Ribbon);
-        if (ribbon != null) return;
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            menuPopup.Height = topLevel.Bounds.Height - titleBar?.Bounds.Height ?? 0;
+            menuPopup.Placement = PlacementMode.LeftEdgeAlignedTop;
+            if (ribbon.Orientation == Orientation.Horizontal)
+            {
+                menuPopup.Width = ribbon.Bounds.Width;
+                menuPopup.HorizontalOffset = -1 * menuPopup.PlacementTarget?.Bounds.Width ?? 0;
+            }
+            else
+            {
+                menuPopup.Width = topLevel.Bounds.Width;
+                menuPopup.HorizontalOffset = -40;
+            }
+            if (titleBar != null)
+            {
+            }
+        }
+        else
+        {
+            menuPopup.Height = topLevel.ClientSize.Height;
+            menuPopup.Width = topLevel.ClientSize.Width;
+        }
 
-        // Adjust positioning based on ribbon and popup coordinates
-        var buttonPoint = ribbon.PointToScreen(ribbon.Bounds.TopLeft);
-        var popupPoint = menuPopup.PointToScreen(menuPopup.Bounds.TopLeft);
-        var xDif = buttonPoint.X - popupPoint.X;
-        var difference = buttonPoint.Y - popupPoint.Y;
-
-        var toggle = descendants.FirstOrDefault(x => x.Name == "MenuPopupToggle");
-        if (toggle == null) return;
-        menuPopup.HorizontalOffset = -1 * toggle.Bounds.Width;
+        // Set the horizontal offset
+        //menuPopup.HorizontalOffset = -1 * menuPopup.PlacementTarget?.Bounds.Width ?? 0;
     }
 
     /// <summary>

@@ -34,13 +34,14 @@
 
     <Style Selector="local|RibbonToggleButton">
         <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Classes="RibbonToggleButtonBackgroundBorder">
                     <DockPanel>
-                        <TemplatedControl Template="{TemplateBinding Icon}" DockPanel.Dock="Left" />
-                        <ContentPresenter Classes="MediumContentPresenter" Content="{TemplateBinding Content}"
-                                          Margin="3,0,0,0" />
+                        <TemplatedControl Foreground="{TemplateBinding Foreground}" Template="{TemplateBinding Icon}" DockPanel.Dock="Left" />
+                        <ContentPresenter  Foreground="{TemplateBinding Foreground}" Classes="MediumContentPresenter" Content="{TemplateBinding Content}"
+                                           Margin="3,0,0,0" />
                     </DockPanel>
                 </Border>
             </ControlTemplate>
@@ -64,13 +65,14 @@
         <Setter Property="Padding" Value="9,4" />
         <Setter Property="MaxWidth" Value="66" />
         <Setter Property="Height" Value="72" />
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Classes="RibbonToggleButtonBackgroundBorder">
                     <DockPanel VerticalAlignment="Stretch">
-                        <TemplatedControl Template="{TemplateBinding LargeIcon}" DockPanel.Dock="Top" />
-                        <ContentPresenter Content="{TemplateBinding Content}" Margin="0,3,0,0"
-                                          VerticalAlignment="Stretch" />
+                        <TemplatedControl  Foreground="{TemplateBinding Foreground}" Template="{TemplateBinding LargeIcon}" DockPanel.Dock="Top" />
+                        <ContentPresenter  Foreground="{TemplateBinding Foreground}" Content="{TemplateBinding Content}" Margin="0,3,0,0"
+                                           VerticalAlignment="Stretch" />
                     </DockPanel>
                 </Border>
             </ControlTemplate>
@@ -88,10 +90,11 @@
     <Style Selector="local|RibbonToggleButton[Size=Small]">
         <Setter Property="Width" Value="24" />
         <Setter Property="Height" Value="24" />
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Classes="RibbonToggleButtonBackgroundBorder">
-                    <TemplatedControl Template="{TemplateBinding Icon}" />
+                    <TemplatedControl  Foreground="{TemplateBinding Foreground}" Template="{TemplateBinding Icon}" />
                 </Border>
             </ControlTemplate>
         </Setter>

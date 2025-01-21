@@ -24,7 +24,6 @@ namespace AvaloniaUI.Ribbon.Windows
         public static readonly StyledProperty<QuickAccessToolbar> QuickAccessToolbarProperty = DesktopRibbon.QuickAccessToolbarProperty.AddOwner<RibbonWindow>();
         public static readonly StyledProperty<DesktopRibbon> RibbonProperty = AvaloniaProperty.Register<RibbonWindow, DesktopRibbon>("Ribbon", null);
         public static readonly StyledProperty<IBrush> TitleBarBackgroundProperty = AvaloniaProperty.Register<RibbonWindow, IBrush>(nameof(TitleBarBackground));
-
         public static readonly StyledProperty<IBrush> TitleBarForegroundProperty = AvaloniaProperty.Register<RibbonWindow, IBrush>(nameof(TitleBarForeground));
 
         private bool _titlebarSecondClick = false;
@@ -88,6 +87,7 @@ namespace AvaloniaUI.Ribbon.Windows
             get => GetValue(OrientationProperty);
             set => SetValue(OrientationProperty, value);
         }
+        
 
         public QuickAccessToolbar QuickAccessToolbar
         {
@@ -100,7 +100,8 @@ namespace AvaloniaUI.Ribbon.Windows
             get => GetValue(RibbonProperty);
             set => SetValue(RibbonProperty, value);
         }
-
+        
+        
         public IBrush TitleBarBackground
         {
             get => GetValue(TitleBarBackgroundProperty);

@@ -1,0 +1,108 @@
+<RibbonWindow xmlns="https://github.com/avaloniaui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:views="clr-namespace:AvaloniaUI.Ribbon.Demo.Views"
+              xmlns:viewModels="clr-namespace:AvaloniaUI.Ribbon.Demo.ViewModels"
+              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+              x:Class="AvaloniaUI.Ribbon.Demo.Views.MainWindow"
+              Icon="/Assets/avalonia-logo.ico"
+              Title="AvaloniaUI.Ribbon.Demo">
+	<Design.DataContext>
+		<viewModels:MainViewModel />
+	</Design.DataContext>
+	<RibbonWindow.TitleBarBackground>
+		<VisualBrush
+            AlignmentX="Left"
+            AlignmentY="Top"
+            Stretch="UniformToFill">
+			<VisualBrush.Visual>
+				<Panel
+                    Width="{Binding #MainWindow.Bounds.Width}"
+                    Height="{Binding #MainWindow.Bounds.Height}"
+                    Background="{DynamicResource FillBrush}">
+					<Panel.Resources>
+						<SolidColorBrush x:Key="FillBrush">#C02B579A</SolidColorBrush>
+						<SolidColorBrush x:Key="LineBrush">#FF274F8C</SolidColorBrush>
+						<!--  16000000  -->
+					</Panel.Resources>
+					<Panel.Styles>
+						<Style Selector="Path">
+							<Setter Property="Stroke" Value="{DynamicResource LineBrush}" />
+							<Setter Property="StrokeThickness" Value="4" />
+							<Setter Property="StrokeJoin" Value="Round" />
+						</Style>
+
+						<Style Selector="Ellipse">
+							<Setter Property="Fill" Value="{DynamicResource FillBrush}" />
+							<Setter Property="Stroke" Value="{DynamicResource LineBrush}" />
+							<Setter Property="StrokeThickness" Value="3" />
+							<Setter Property="Width" Value="10" />
+							<Setter Property="Height" Value="10" />
+						</Style>
+					</Panel.Styles>
+					<Canvas
+                        Width="456"
+                        Height="60"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        ClipToBounds="True">
+						<Path Data="M 14 6 L 194 6 L 249 45 L 340 45 L 362 21 L 480 21" />
+						<Ellipse Canvas.Left="9" Canvas.Top="1" />
+						<Ellipse Canvas.Left="168" Canvas.Top="1" />
+
+						<Path Data="M 5 50 L 93 50 L 117 33 L 208 33 L 233 50 L 394 50 L 436 -1" />
+						<Ellipse Canvas.Left="0" Canvas.Top="45" />
+						<Ellipse Canvas.Left="194" Canvas.Top="28" />
+
+						<Ellipse
+                            Canvas.Left="13"
+                            Canvas.Top="11"
+                            Width="36"
+                            Height="36"
+                            Fill="Transparent"
+                            StrokeThickness="6" />
+						<Path
+                            Data="M 26 36 L 26 24 L 38 24"
+                            StrokeJoin="Miter"
+                            StrokeThickness="5" />
+						<Path
+                            Data="M 26 24 L 38 36"
+                            StrokeJoin="Miter"
+                            StrokeThickness="5" />
+
+						<Ellipse
+                            Canvas.Left="232"
+                            Canvas.Top="-19"
+                            Width="55"
+                            Height="55"
+                            Fill="Transparent"
+                            StrokeThickness="6" />
+						<Path
+                            Data="M 249 -4 L 269 -4 L 269 16"
+                            StrokeJoin="Miter"
+                            StrokeThickness="6" />
+						<Path
+                            Data="M 269 -4 L 249 16"
+                            StrokeJoin="Miter"
+                            StrokeThickness="6" />
+					</Canvas>
+				</Panel>
+			</VisualBrush.Visual>
+		</VisualBrush>
+	</RibbonWindow.TitleBarBackground>
+	<RibbonWindow.QuickAccessToolbar>
+		<QuickAccessToolbar>
+			<QuickAccessToolbar.RecommendedItems>
+				<QuickAccessRecommendation Item="{Binding #RibbonSplitButton1}" />
+				<QuickAccessRecommendation Item="{Binding #RibbonSplitButton2}" />
+				<QuickAccessRecommendation Item="{Binding #RibbonSplitButton3}" />
+			</QuickAccessToolbar.RecommendedItems>
+			<!--  QuickAccessItem Item="{Binding #RibbonButton1}" /  -->
+		</QuickAccessToolbar>
+	</RibbonWindow.QuickAccessToolbar>
+	<RibbonWindow.Ribbon>
+		<views:DesktopRibbonView Orientation="{Binding RibbonOrientation}" DataContext="{Binding }"/>
+	</RibbonWindow.Ribbon>
+    <views:DocumentView />
+</RibbonWindow>
