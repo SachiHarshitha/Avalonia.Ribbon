@@ -9,35 +9,35 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-	<Design.DataContext>
-		<viewModels:MainViewModel />
-	</Design.DataContext>
-	<DockPanel LastChildFill="True">
-		<views:RibbonView
+    <Design.DataContext>
+        <viewModels:MainViewModel />
+    </Design.DataContext>
+    <DockPanel LastChildFill="True">
+        <views:RibbonView
             x:Name="PART_Ribbon"
             DataContext="{Binding}"
             Orientation="{Binding RibbonOrientation}">
-			<Interaction.Behaviors>
-				<DataTriggerBehavior
+            <Interaction.Behaviors>
+                <DataTriggerBehavior
                     Binding="{Binding RibbonOrientation}"
                     ComparisonCondition="Equal"
                     Value="{x:Static Orientation.Horizontal}">
-					<ChangePropertyAction
+                    <ChangePropertyAction
                         PropertyName="DockPanel.Dock"
                         TargetObject="{Binding #PART_Ribbon}"
                         Value="{x:Static Dock.Top}" />
-				</DataTriggerBehavior>
-				<DataTriggerBehavior
+                </DataTriggerBehavior>
+                <DataTriggerBehavior
                     Binding="{Binding RibbonOrientation}"
                     ComparisonCondition="Equal"
                     Value="{x:Static Orientation.Vertical}">
-					<ChangePropertyAction
+                    <ChangePropertyAction
                         PropertyName="DockPanel.Dock"
                         TargetObject="{Binding #PART_Ribbon}"
                         Value="{x:Static Dock.Left}" />
-				</DataTriggerBehavior>
-			</Interaction.Behaviors>
-		</views:RibbonView>
-		<views:DocumentView DataContext="{Binding}" />
-	</DockPanel>
+                </DataTriggerBehavior>
+            </Interaction.Behaviors>
+        </views:RibbonView>
+        <views:DocumentView DataContext="{Binding}" />
+    </DockPanel>
 </UserControl>

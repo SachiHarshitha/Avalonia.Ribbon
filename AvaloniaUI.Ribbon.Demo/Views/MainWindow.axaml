@@ -364,7 +364,7 @@
     </RibbonWindow.QuickAccessToolbar>
     <RibbonWindow.Ribbon>
         <DesktopRibbon Background="Transparent" Focusable="True" Orientation="{Binding RibbonOrientation}"
-                       DataContext="{Binding }">
+                       DataContext="{Binding}">
             <DesktopRibbon.Resources>
                 <ControlTemplate x:Key="Icon1">
                     <Panel Width="14" Height="15">
@@ -661,23 +661,26 @@
                 </Style>
             </DesktopRibbon.Styles>
             <DesktopRibbon.HelpPaneContent>
-                <Button
-                    Name="HelpButton"
-                    HorizontalAlignment="Stretch"
-                    Classes="RibbonHelpButton"
-                    Command="{Binding HelpCommand}"
-                    DockPanel.Dock="Bottom"
-                    Focusable="False"
-                    ToolTip.Tip="{DynamicResource AvaloniaRibbon.GetHelp}">
-                    <TextBlock
-                        Height="10"
-                        Margin="0,-1"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Foreground="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"
-                        Text="?"
-                        TextAlignment="Center" />
-                </Button>
+                <StackPanel Orientation="{Binding RibbonOrientation}" VerticalAlignment="Center">
+                    <RibbonComboBox Content="ComboBox" Height="24" />
+                    <Button
+                        Name="HelpButton" Height="24"
+                        HorizontalAlignment="Stretch"
+                        Classes="RibbonHelpButton"
+                        Command="{Binding HelpCommand}"
+                        DockPanel.Dock="Bottom"
+                        Focusable="False"
+                        ToolTip.Tip="{DynamicResource AvaloniaRibbon.GetHelp}">
+                        <TextBlock
+                            Height="10"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"
+                            Text="?"
+                            TextAlignment="Center" />
+                    </Button>
+                </StackPanel>
+
             </DesktopRibbon.HelpPaneContent>
             <DesktopRibbon.Menu>
                 <RibbonMenu
@@ -765,7 +768,7 @@
                                 MaxSize="Small"
                                 MinSize="Small"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
-                                Size="Small" 
+                                Size="Small"
                                 ToolTip.Tip="Small" />
                         </RibbonGroupBox>
                         <RibbonGroupBox
@@ -907,7 +910,7 @@
                         </RibbonGroupBox>
                     </RibbonTab.Groups>
                 </RibbonTab>
-    
+
                 <RibbonTab KeyTip.KeyTipKeys="G" Header="Galleries">
                     <RibbonTab.Groups>
                         <RibbonGroupBox

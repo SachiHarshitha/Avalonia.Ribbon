@@ -413,7 +413,6 @@
                         Size="Small"
                         ToolTip.Tip="Small" />
                 </RibbonGroupBox>
-
                 <RibbonGroupBox
                     KeyTip.KeyTipKeys="B"
                     Command="{Binding OnClickCommand}"

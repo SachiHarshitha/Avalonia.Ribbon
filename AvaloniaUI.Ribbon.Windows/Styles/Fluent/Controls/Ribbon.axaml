@@ -63,27 +63,29 @@
                                     x:Name="PART_MenuPresenter"
                                     Content="{TemplateBinding Menu}"
                                     DockPanel.Dock="Left" />
-                                <ContentPresenter
-                                    Content="{TemplateBinding HelpPaneContent}"
-                                    DockPanel.Dock="Right"
-                                    ToolTip.Tip="{DynamicResource AvaloniaRibbon.GetHelp}" />
-                                <ToggleButton
-                                    Name="ExpandCollapseToggleButton"
-                                    VerticalAlignment="Stretch"
-                                    Classes="RibbonToggleButton"
-                                    DockPanel.Dock="Right"
-                                    Focusable="False"
-                                    IsChecked="{Binding IsCollapsed, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
-                                    ToolTip.Tip="{DynamicResource AvaloniaRibbon.MinimizeRibbon}">
-                                    <Path
-                                        Width="8"
-                                        Height="4"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Classes="RibbonExpandCollapsePath"
-                                        Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}"
-                                        StrokeThickness="1" />
-                                </ToggleButton>
+                                <DockPanel DockPanel.Dock="Right" LastChildFill="True">
+                                    <ToggleButton
+                                        Name="ExpandCollapseToggleButton"
+                                        VerticalAlignment="Stretch"
+                                        Classes="RibbonToggleButton"
+                                        DockPanel.Dock="Right"
+                                        Focusable="False"
+                                        IsChecked="{Binding IsCollapsed, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                                        ToolTip.Tip="{DynamicResource AvaloniaRibbon.MinimizeRibbon}">
+                                        <Path
+                                            Width="8"
+                                            Height="4"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Classes="RibbonExpandCollapsePath"
+                                            Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}"
+                                            StrokeThickness="1" />
+                                    </ToggleButton>
+                                    <ContentPresenter
+                                        Content="{TemplateBinding HelpPaneContent}"
+                                        ToolTip.Tip="{DynamicResource AvaloniaRibbon.GetHelp}" />
+                                </DockPanel>
+                              
                                 <Border
                                     x:Name="TabHeadersClipBorder"
                                     Margin="0,-34,0,0"
@@ -210,27 +212,29 @@
                                 MinHeight="30"
                                 Content="{TemplateBinding Menu}"
                                 DockPanel.Dock="Top" />
-                            <ContentPresenter
-                                Content="{TemplateBinding HelpPaneContent}"
-                                DockPanel.Dock="Bottom"
-                                ToolTip.Tip="{DynamicResource AvaloniaRibbon.GetHelp}" />
-                            <ToggleButton
-                                Name="ExpandCollapseToggleButton"
-                                HorizontalAlignment="Stretch"
-                                Classes="RibbonToggleButton"
-                                DockPanel.Dock="Bottom"
-                                Focusable="False"
-                                IsChecked="{Binding IsCollapsed, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
-                                ToolTip.Tip="{DynamicResource AvaloniaRibbon.MinimizeRibbon}">
-                                <Path
-                                    Width="4"
-                                    Height="8"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Classes="RibbonExpandCollapsePath"
-                                    Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}"
-                                    StrokeThickness="1" />
-                            </ToggleButton>
+                            <DockPanel DockPanel.Dock="Bottom" LastChildFill="True">
+                                <ToggleButton
+                                    Name="ExpandCollapseToggleButton"
+                                    HorizontalAlignment="Stretch"
+                                    Classes="RibbonToggleButton"
+                                    DockPanel.Dock="Bottom"
+                                    Focusable="False"
+                                    IsChecked="{Binding IsCollapsed, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                                    ToolTip.Tip="{DynamicResource AvaloniaRibbon.MinimizeRibbon}">
+                                    <Path
+                                        Width="4"
+                                        Height="8"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Classes="RibbonExpandCollapsePath"
+                                        Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ToggleButton}}"
+                                        StrokeThickness="1" />
+                                </ToggleButton>
+                                <ContentPresenter
+                                    Content="{TemplateBinding HelpPaneContent}"
+                                    ToolTip.Tip="{DynamicResource AvaloniaRibbon.GetHelp}" />
+                            </DockPanel>
+
                             <LayoutTransformControl VerticalAlignment="Top">
                                 <LayoutTransformControl.LayoutTransform>
                                     <RotateTransform Angle="-90" />
