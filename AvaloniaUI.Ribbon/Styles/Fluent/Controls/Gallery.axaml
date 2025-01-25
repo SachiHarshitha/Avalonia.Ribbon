@@ -4,92 +4,92 @@
     xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
     <Design.PreviewWith>
         <Grid Height="90">
-            <local:Gallery>
-                <local:GalleryItem Content="Item 1">
-                    <local:GalleryItem.Icon>
+            <Gallery>
+                <GalleryItem Content="Item 1">
+                    <GalleryItem.Icon>
                         <ControlTemplate>
                             <Rectangle Width="16" Height="16" Fill="Red" />
                         </ControlTemplate>
-                    </local:GalleryItem.Icon>
-                </local:GalleryItem>
-                <local:GalleryItem Content="Item 2">
-                    <local:GalleryItem.Icon>
+                    </GalleryItem.Icon>
+                </GalleryItem>
+                <GalleryItem Content="Item 2">
+                    <GalleryItem.Icon>
                         <ControlTemplate>
                             <Rectangle Width="16" Height="16" Fill="OrangeRed" />
                         </ControlTemplate>
-                    </local:GalleryItem.Icon>
-                </local:GalleryItem>
-                <local:GalleryItem Content="Item 3">
-                    <local:GalleryItem.Icon>
+                    </GalleryItem.Icon>
+                </GalleryItem>
+                <GalleryItem Content="Item 3">
+                    <GalleryItem.Icon>
                         <ControlTemplate>
                             <Rectangle Width="16" Height="16" Fill="Orange" />
                         </ControlTemplate>
-                    </local:GalleryItem.Icon>
-                </local:GalleryItem>
-                <local:GalleryItem Content="Item 4">
-                    <local:GalleryItem.Icon>
+                    </GalleryItem.Icon>
+                </GalleryItem>
+                <GalleryItem Content="Item 4">
+                    <GalleryItem.Icon>
                         <ControlTemplate>
                             <Rectangle Width="16" Height="16" Fill="Yellow" />
                         </ControlTemplate>
-                    </local:GalleryItem.Icon>
-                </local:GalleryItem>
-                <local:GalleryItem Content="Item 5">
-                    <local:GalleryItem.Icon>
+                    </GalleryItem.Icon>
+                </GalleryItem>
+                <GalleryItem Content="Item 5">
+                    <GalleryItem.Icon>
                         <ControlTemplate>
                             <Rectangle Width="16" Height="16" Fill="GreenYellow" />
                         </ControlTemplate>
-                    </local:GalleryItem.Icon>
-                </local:GalleryItem>
-                <local:GalleryItem Content="Item 6">
-                    <local:GalleryItem.Icon>
+                    </GalleryItem.Icon>
+                </GalleryItem>
+                <GalleryItem Content="Item 6">
+                    <GalleryItem.Icon>
                         <ControlTemplate>
                             <Rectangle Width="16" Height="16" Fill="YellowGreen" />
                         </ControlTemplate>
-                    </local:GalleryItem.Icon>
-                </local:GalleryItem>
-                <local:GalleryItem Content="Item 7">
-                    <local:GalleryItem.Icon>
+                    </GalleryItem.Icon>
+                </GalleryItem>
+                <GalleryItem Content="Item 7">
+                    <GalleryItem.Icon>
                         <ControlTemplate>
                             <Rectangle Width="16" Height="16" Fill="Green" />
                         </ControlTemplate>
-                    </local:GalleryItem.Icon>
-                </local:GalleryItem>
-                <local:GalleryItem Content="Item 8">
-                    <local:GalleryItem.Icon>
+                    </GalleryItem.Icon>
+                </GalleryItem>
+                <GalleryItem Content="Item 8">
+                    <GalleryItem.Icon>
                         <ControlTemplate>
                             <Rectangle Width="16" Height="16" Fill="Turquoise" />
                         </ControlTemplate>
-                    </local:GalleryItem.Icon>
-                </local:GalleryItem>
-                <local:GalleryItem Content="Item 9">
-                    <local:GalleryItem.Icon>
+                    </GalleryItem.Icon>
+                </GalleryItem>
+                <GalleryItem Content="Item 9">
+                    <GalleryItem.Icon>
                         <ControlTemplate>
                             <Rectangle Width="16" Height="16" Fill="Cyan" />
                         </ControlTemplate>
-                    </local:GalleryItem.Icon>
-                </local:GalleryItem>
-                <local:GalleryItem Content="Item 10">
-                    <local:GalleryItem.Icon>
+                    </GalleryItem.Icon>
+                </GalleryItem>
+                <GalleryItem Content="Item 10">
+                    <GalleryItem.Icon>
                         <ControlTemplate>
                             <Rectangle Width="16" Height="16" Fill="SkyBlue" />
                         </ControlTemplate>
-                    </local:GalleryItem.Icon>
-                </local:GalleryItem>
-                <local:GalleryItem Content="Item 11">
-                    <local:GalleryItem.Icon>
+                    </GalleryItem.Icon>
+                </GalleryItem>
+                <GalleryItem Content="Item 11">
+                    <GalleryItem.Icon>
                         <ControlTemplate>
                             <Rectangle Width="16" Height="16" Fill="Blue" />
                         </ControlTemplate>
-                    </local:GalleryItem.Icon>
-                </local:GalleryItem>
-                <local:GalleryItem Content="Item 12">
-                    <local:GalleryItem.Icon>
+                    </GalleryItem.Icon>
+                </GalleryItem>
+                <GalleryItem Content="Item 12">
+                    <GalleryItem.Icon>
                         <ControlTemplate>
                             <Rectangle Width="16" Height="16" Fill="BlueViolet" />
                         </ControlTemplate>
-                    </local:GalleryItem.Icon>
-                </local:GalleryItem>
-            </local:Gallery>
+                    </GalleryItem.Icon>
+                </GalleryItem>
+            </Gallery>
         </Grid>
     </Design.PreviewWith>
 
@@ -111,7 +111,7 @@
               <ScrollViewer.Template>
                 <ControlTemplate>
                   <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,Auto">
-                    <local:GalleryScrollContentPresenter Name="PART_ContentPresenter"
+                    <GalleryScrollContentPresenter Name="PART_ContentPresenter"
                                             Background="{TemplateBinding Background}"
                                             CanHorizontallyScroll="{TemplateBinding CanHorizontallyScroll}"
                                             CanVerticallyScroll="{TemplateBinding CanVerticallyScroll}"
@@ -125,7 +125,7 @@
                           CanHorizontallyScroll="{TemplateBinding CanHorizontallyScroll}"
                           CanVerticallyScroll="{TemplateBinding CanVerticallyScroll}" />
                       </ScrollContentPresenter.GestureRecognizers>
-                    </local:GalleryScrollContentPresenter>
+                    </GalleryScrollContentPresenter>
                     <ScrollBar Name="horizontalScrollBar"
                                IsVisible="False"
                                Focusable="False" />
@@ -197,13 +197,13 @@
                                     </StackPanel>
                                 </ToggleButton>
                             </UniformGrid>
-                            <local:GalleryScrollContentPresenter x:Name="PART_ScrollContentPresenter"
-                                                                 CanVerticallyScroll="True"
-                                                                 Margin="{TemplateBinding Padding}">
-                                <local:GalleryScrollContentPresenter.Content>
+                            <GalleryScrollContentPresenter x:Name="PART_ScrollContentPresenter"
+                                                           CanVerticallyScroll="True"
+                                                           Margin="{TemplateBinding Padding}">
+                                <GalleryScrollContentPresenter.Content>
                                     <ContentControl x:Name="PART_ItemsPresenterHolder" />
-                                </local:GalleryScrollContentPresenter.Content>
-                            </local:GalleryScrollContentPresenter>
+                                </GalleryScrollContentPresenter.Content>
+                            </GalleryScrollContentPresenter>
                         </DockPanel>
                     </Border>
                     <Popup Placement="Center"
@@ -276,7 +276,7 @@
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Padding" Value="2,1" />
-        <Setter Property="Height" Value="{Binding $parent[local:Gallery].ItemHeight}" />
+        <Setter Property="Height" Value="{Binding $parent[Gallery].ItemHeight}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border x:Name="BackgroundBorder" Background="{TemplateBinding Background}"
@@ -300,7 +300,7 @@
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Padding" Value="2,1" />
-        <Setter Property="Height" Value="{Binding $parent[local:Gallery].ItemHeight}" />
+        <Setter Property="Height" Value="{Binding $parent[Gallery].ItemHeight}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border x:Name="BackgroundBorder" Background="{TemplateBinding Background}"

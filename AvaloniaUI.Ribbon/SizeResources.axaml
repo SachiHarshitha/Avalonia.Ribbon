@@ -8,6 +8,7 @@
     <!-- Single Control component sizes  -->
     <sys:Double x:Key="SmallControlWidth">24</sys:Double>
     <sys:Double x:Key="LargeControlHeight">72</sys:Double>
+    <sys:Double x:Key="MediumControlHeight">28</sys:Double>
     <sys:Double x:Key="SmallControlHeight">24</sys:Double>
 
 

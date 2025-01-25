@@ -4,31 +4,31 @@
     xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
     <Design.PreviewWith>
         <Grid Height="90">
-            <local:RibbonGroupBox Header="Group">
+            <RibbonGroupBox Header="Group">
                 <StackPanel Orientation="Horizontal" Spacing="10">
-                    <local:RibbonToggleButton Content="Large Ribbon Toggle Button">
-                        <local:RibbonToggleButton.LargeIcon>
+                    <RibbonToggleButton Content="Large Ribbon Toggle Button">
+                        <RibbonToggleButton.LargeIcon>
                             <ControlTemplate>
                                 <Image Source="/Assets/settings.png" Width="32" Height="32" />
                             </ControlTemplate>
-                        </local:RibbonToggleButton.LargeIcon>
-                    </local:RibbonToggleButton>
-                    <local:RibbonToggleButton Size="Medium" Content="Medium Ribbon Toggle Button">
-                        <local:RibbonToggleButton.Icon>
+                        </RibbonToggleButton.LargeIcon>
+                    </RibbonToggleButton>
+                    <RibbonToggleButton Size="Medium" Content="Medium Ribbon Toggle Button">
+                        <RibbonToggleButton.Icon>
                             <ControlTemplate>
                                 <Image Source="/Assets/settings.png" Width="16" Height="16" />
                             </ControlTemplate>
-                        </local:RibbonToggleButton.Icon>
-                    </local:RibbonToggleButton>
-                    <local:RibbonToggleButton Size="Small" Content="Small Ribbon Toggle Button">
-                        <local:RibbonToggleButton.Icon>
+                        </RibbonToggleButton.Icon>
+                    </RibbonToggleButton>
+                    <RibbonToggleButton Size="Small" Content="Small Ribbon Toggle Button">
+                        <RibbonToggleButton.Icon>
                             <ControlTemplate>
                                 <Image Source="/Assets/settings.png" Width="16" Height="16" />
                             </ControlTemplate>
-                        </local:RibbonToggleButton.Icon>
-                    </local:RibbonToggleButton>
+                        </RibbonToggleButton.Icon>
+                    </RibbonToggleButton>
                 </StackPanel>
-            </local:RibbonGroupBox>
+            </RibbonGroupBox>
         </Grid>
     </Design.PreviewWith>
 
@@ -52,7 +52,7 @@
             <ControlTemplate>
                 <ToggleButton Classes="quickAccessButton" Command="{Binding Command}" IsChecked="{Binding IsChecked}"
                               CommandParameter="{Binding CommandParameter}" ToolTip.Tip="{Binding ToolTip.Tip}"
-                              local:KeyTip.KeyTipKeys="{Binding KeyTip.Tip}" MinWidth="45" Height="34"
+                              KeyTip.KeyTipKeys="{Binding KeyTip.Tip}" MinWidth="45" Height="34"
                               Focusable="False">
                     <TemplatedControl Template="{Binding QuickAccessIcon}" Width="16" Height="16" />
                 </ToggleButton>

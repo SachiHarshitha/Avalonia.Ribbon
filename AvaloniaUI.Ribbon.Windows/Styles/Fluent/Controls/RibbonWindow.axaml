@@ -104,7 +104,7 @@
                                 VerticalAlignment="Center"
                                 Classes="IconImage"
                                 IsHitTestVisible="False"
-                                Source="{Binding Icon, RelativeSource={RelativeSource AncestorType=local:RibbonWindow}, Converter={StaticResource WindowIconToImageConverter}}" />
+                                Source="{Binding Icon, RelativeSource={RelativeSource AncestorType=RibbonWindow}, Converter={StaticResource WindowIconToImageConverter}}" />
                         </Panel>
                         <Border
                             x:Name="PART_Background"
@@ -294,7 +294,7 @@
     </Style>
     <Style Selector="windows|RibbonWindow /template/ Grid#CaptionButtons Button:not(:pointerover):not(:pressed)">
         <Setter Property="Foreground"
-                Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RibbonWindow}}" />
+                Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=RibbonWindow}}" />
     </Style>
     <Style
         Selector="windows|RibbonWindow /template/ Grid#CaptionButtons Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">

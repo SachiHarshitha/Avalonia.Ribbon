@@ -7,4 +7,6 @@ public interface ICanAddToQuickAccess
     IControlTemplate QuickAccessTemplate { get; set; }
 
     bool CanAddToQuickAccess { get; set; }
+
+    public IControlTemplate QuickAccessIcon { get; set; }
 }

@@ -5,58 +5,64 @@
     xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
     <Design.PreviewWith>
         <Grid Width="200">
-            <local:Ribbon>
-                <local:RibbonTab>
-                    <local:RibbonTab.Groups>
-                        <local:RibbonGroupBox
+            <Ribbon>
+                <RibbonTab>
+                    <RibbonTab.Groups>
+                        <RibbonGroupBox
                             Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Grid}}}"
                             Header="Text or something">
-                            <local:RibbonButton
+                            <RibbonButton
                                 Content="Button"
                                 MaxSize="Medium"
                                 MinSize="Medium">
-                                <local:RibbonButton.Icon>
+                                <RibbonButton.Icon>
                                     <ControlTemplate>
                                         <Rectangle
                                             Width="16"
                                             Height="16"
                                             Fill="Red" />
                                     </ControlTemplate>
-                                </local:RibbonButton.Icon>
-                            </local:RibbonButton>
-                            <local:RibbonButton
+                                </RibbonButton.Icon>
+                            </RibbonButton>
+                            <RibbonButton
                                 Content="Button"
                                 MaxSize="Medium"
                                 MinSize="Medium">
-                                <local:RibbonButton.Icon>
+                                <RibbonButton.Icon>
                                     <ControlTemplate>
                                         <Rectangle
                                             Width="16"
                                             Height="16"
                                             Fill="Red" />
                                     </ControlTemplate>
-                                </local:RibbonButton.Icon>
-                            </local:RibbonButton>
-                            <local:RibbonButton
+                                </RibbonButton.Icon>
+                            </RibbonButton>
+                            <RibbonButton
                                 Content="Button"
                                 MaxSize="Medium"
                                 MinSize="Medium">
-                                <local:RibbonButton.Icon>
+                                <RibbonButton.Icon>
                                     <ControlTemplate>
                                         <Rectangle
                                             Width="16"
                                             Height="16"
                                             Fill="Red" />
                                     </ControlTemplate>
-                                </local:RibbonButton.Icon>
-                            </local:RibbonButton>
-                        </local:RibbonGroupBox>
-                    </local:RibbonTab.Groups>
-                </local:RibbonTab>
-            </local:Ribbon>
+                                </RibbonButton.Icon>
+                            </RibbonButton>
+                        </RibbonGroupBox>
+                    </RibbonTab.Groups>
+                </RibbonTab>
+            </Ribbon>
         </Grid>
     </Design.PreviewWith>
-
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="/SizeResources.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
     <Style Selector="local|RibbonGroupBox">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource SystemControlForegroundChromeMediumBrush}" />
@@ -67,12 +73,12 @@
         <!--  Setter Property="Height" Value="{Binding Path=Height, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Panel}, Mode=OneWay}"/  -->
         <Setter Property="Template">
             <ControlTemplate>
-                <Panel Background="{TemplateBinding Background}">
-                    <Rectangle
-                        x:Name="Separator"
-                        MinWidth="1"
-                        MinHeight="1"
-                        Fill="{TemplateBinding BorderBrush}" />
+                <DockPanel LastChildFill="True" Background="{TemplateBinding Background}">
+                    <Border DockPanel.Dock="Right"
+                            x:Name="Separator"
+                            BorderThickness="0.5" Margin="4,0"
+                            Height="{StaticResource LargeControlHeight}"
+                            BorderBrush="{DynamicResource SystemControlHighlightAltBaseLowBrush}" />
                     <DockPanel>
                         <DockPanel Margin="6,0,6,1" DockPanel.Dock="Bottom">
                             <Button
@@ -135,7 +141,7 @@
                             VerticalAlignment="Stretch">
                             <ItemsPresenter.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <local:RibbonGroupWrapPanel
+                                    <RibbonGroupWrapPanel
                                         x:Name="PART_ItemsPanel"
                                         HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
@@ -144,7 +150,7 @@
                             </ItemsPresenter.ItemsPanel>
                         </ItemsPresenter>
                     </DockPanel>
-                </Panel>
+                </DockPanel>
             </ControlTemplate>
         </Setter>
     </Style>

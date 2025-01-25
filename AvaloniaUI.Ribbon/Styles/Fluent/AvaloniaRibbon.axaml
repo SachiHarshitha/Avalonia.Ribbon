@@ -6,6 +6,7 @@
                 <ResourceInclude Source="avares://AvaloniaUI.Ribbon/Controls/SplitButtonControl.axaml" />
                 <ResourceInclude Source="avares://AvaloniaUI.Ribbon/Controls/RibbonGallery.axaml" />
                 <ResourceInclude Source="avares://AvaloniaUI.Ribbon/Controls/RibbonButton.axaml" />
+                <ResourceInclude Source="/Styles/Fluent/Controls/RibbonComboBox.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
@@ -23,4 +24,16 @@
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonGroupBox.axaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/KeyTip.axaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonContextualTabGroup.axaml" />
+
+    <Style Selector="SplitButtonControl[Size=Large]">
+        <Setter Property="Theme" Value="{StaticResource LargeSplitButton}" />
+    </Style>
+
+    <Style Selector="SplitButtonControl[Size=Medium]">
+        <Setter Property="Theme" Value="{StaticResource MediumSplitButton}" />
+    </Style>
+
+    <Style Selector="SplitButtonControl[Size=Small]">
+        <Setter Property="Theme" Value="{StaticResource SmallSplitButton}" />
+    </Style>
 </Styles>

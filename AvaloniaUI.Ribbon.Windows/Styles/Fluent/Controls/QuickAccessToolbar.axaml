@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:AvaloniaUI.Ribbon.Windows;assembly=AvaloniaUI.Ribbon.Windows"
     xmlns:windows="clr-namespace:AvaloniaUI.Ribbon.Windows;assembly=AvaloniaUI.Ribbon.Windows"
-    x:DataType="local:QuickAccessToolbar">
+    x:DataType="QuickAccessToolbar">
     <Style Selector="local|QuickAccessToolbar">
         <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
         <Setter Property="Height" Value="30" />
@@ -55,9 +55,9 @@
                                 <ContextMenu.Styles>
                                     <Style Selector="MenuItem:not(.quickAccessFixedItem)">
                                         <Setter Property="Command"
-                                                Value="{Binding $parent[local:QuickAccessToolbar].MoreFlyoutMenuItemCommand}" />
+                                                Value="{Binding $parent[QuickAccessToolbar].MoreFlyoutMenuItemCommand}" />
                                         <Setter Property="CommandParameter" Value="{Binding Item}" />
-                                        <Setter Property="local:QuickAccessToolbar.IsChecked"
+                                        <Setter Property="QuickAccessToolbar.IsChecked"
                                                 Value="{Binding IsChecked}" />
                                     </Style>
                                     <Style Selector="MenuItem">
@@ -66,7 +66,7 @@
                                     </Style>
                                 </ContextMenu.Styles>
                                 <ContextMenu.DataTemplates>
-                                    <DataTemplate DataType="{x:Type local:QuickAccessRecommendation}">
+                                    <DataTemplate DataType="{x:Type QuickAccessRecommendation}">
                                         <TextBlock Text="{Binding Item.Content}" />
                                     </DataTemplate>
                                 </ContextMenu.DataTemplates>
@@ -113,7 +113,7 @@
     </Style>
     <Style
         Selector="windows|RibbonWindow local|QuickAccessToolbar /template/ ToggleButton#PART_MoreButton:not(:pointerover):not(:pressed):not(:checked)">
-        <Setter Property="Foreground" Value="{Binding $parent[local:RibbonWindow].TitleBarForeground}" />
+        <Setter Property="Foreground" Value="{Binding $parent[RibbonWindow].TitleBarForeground}" />
     </Style>
     <Style
         Selector="windows|RibbonWindow[IsActive=False] local|QuickAccessToolbar /template/ ToggleButton#PART_MoreButton:not(:pointerover):not(:pressed):not(:checked) &gt; StackPanel">
@@ -131,7 +131,7 @@
                     <TemplatedControl
                         Grid.Column="0"
                         DataContext="{TemplateBinding Item}"
-                        Foreground="{Binding $parent[local:RibbonWindow].TitleBarForeground}"
+                        Foreground="{Binding $parent[RibbonWindow].TitleBarForeground}"
                         Template="{Binding Item.QuickAccessTemplate, RelativeSource={RelativeSource Mode=TemplatedParent}}">
                         <TemplatedControl.ContextMenu>
                             <ContextMenu>
@@ -148,7 +148,7 @@
                         Padding="0"
                         HorizontalAlignment="Center"
                         Background="Transparent"
-                        BorderBrush="{Binding $parent[local:RibbonWindow].TitleBarForeground}"
+                        BorderBrush="{Binding $parent[RibbonWindow].TitleBarForeground}"
                         BorderThickness="1"
                         Opacity="0.5" />
                 </Grid>

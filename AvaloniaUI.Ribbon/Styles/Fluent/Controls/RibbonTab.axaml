@@ -3,14 +3,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
     <Design.PreviewWith>
-        <local:RibbonTab Header="Test" />
+        <RibbonTab Header="Test" />
     </Design.PreviewWith>
 
     <Style Selector="local|RibbonTab">
         <Setter Property="FontSize" Value="12.5" />
         <Setter Property="Height" Value="30" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{Binding $parent[local:Ribbon].Foreground}" />
+        <Setter Property="Foreground" Value="{Binding $parent[Ribbon].Foreground}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="10,0" />
@@ -66,7 +66,7 @@
     <Setter Property="Height" Value="{Binding #PART_ContentPresenter.Bounds.Height}"/-->
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Stroke" Value="{Binding $parent[local:RibbonTab].Foreground}" />
+        <Setter Property="Stroke" Value="{Binding $parent[RibbonTab].Foreground}" />
         <Setter Property="ZIndex" Value="-1" />
     </Style>
     <Style Selector="local|RibbonTab[IsSelected=False]:not(:pointerover) /template/ Rectangle.textEmphasis">
@@ -82,7 +82,7 @@
     </Style>
 
     <Style Selector="local|RibbonTab[IsContextual=True] /template/ Border#SelectedBorder">
-        <Setter Property="Background" Value="{Binding $parent[local:RibbonContextualTabGroup].Background}" />
+        <Setter Property="Background" Value="{Binding $parent[RibbonContextualTabGroup].Background}" />
     </Style>
     <Style Selector="local|RibbonTab[IsContextual=False] /template/ Border#SelectedBorder">
         <Setter Property="Background" Value="{DynamicResource TabItemHeaderSelectedPipeFill}" />

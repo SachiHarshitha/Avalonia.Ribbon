@@ -9,13 +9,13 @@
     </Styles.Resources>
     <Design.PreviewWith>
         <Panel Width="200">
-            <local:Ribbon VerticalAlignment="Top">
-                <local:RibbonTab Header="Tab">
-                    <local:RibbonTab.Groups>
-                        <local:RibbonGroupBox Header="Group" />
-                    </local:RibbonTab.Groups>
-                </local:RibbonTab>
-            </local:Ribbon>
+            <Ribbon VerticalAlignment="Top">
+                <RibbonTab Header="Tab">
+                    <RibbonTab.Groups>
+                        <RibbonGroupBox Header="Group" />
+                    </RibbonTab.Groups>
+                </RibbonTab>
+            </Ribbon>
         </Panel>
     </Design.PreviewWith>
 
@@ -168,7 +168,7 @@
                                     </ItemsControl.ContextMenu>
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <local:RibbonGroupsStackPanel
+                                            <RibbonGroupsStackPanel
                                                 x:Name="PART_ItemsPanel"
                                                 Width="{Binding $parent[ItemsControl].Bounds.Width}"
                                                 Margin="0"
@@ -308,7 +308,7 @@
                                         </ItemsControl.ContextMenu>
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <local:RibbonGroupsStackPanel
+                                                <RibbonGroupsStackPanel
                                                     x:Name="PART_ItemsPanel"
                                                     Height="{Binding $parent[ItemsControl].Bounds.Height}"
                                                     Margin="0"

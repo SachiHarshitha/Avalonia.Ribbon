@@ -9,7 +9,7 @@ using AvaloniaUI.Ribbon.Models;
 
 namespace AvaloniaUI.Ribbon;
 
-public class RibbonButton : Button, IRibbonControl, ICanAddToQuickAccess
+public class RibbonButton : Button, IRibbonInputControl, ICanAddToQuickAccess
 {
     public static readonly StyledProperty<bool> CanAddToQuickAccessProperty =
         AvaloniaProperty.Register<RibbonButton, bool>(nameof(CanAddToQuickAccess), true);

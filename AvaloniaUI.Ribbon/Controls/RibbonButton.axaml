@@ -8,42 +8,43 @@
     <!-- Designer Preview -->
     <Design.PreviewWith>
         <Grid Height="90">
-            <local:RibbonGroupBox Header="Group">
+            <RibbonGroupBox Header="Group">
                 <StackPanel Orientation="Horizontal" Spacing="10">
-                    <local:RibbonButton Content="Large Ribbon Button">
-                        <local:RibbonButton.LargeIcon>
+                    <RibbonButton Content="Large Ribbon Button">
+                        <RibbonButton.LargeIcon>
                             <ControlTemplate>
                                 <Image Source="/Assets/settings.png" Width="32" Height="32" />
                             </ControlTemplate>
-                        </local:RibbonButton.LargeIcon>
-                    </local:RibbonButton>
-                    <local:RibbonButton Size="Medium" Content="Medium Ribbon Button">
-                        <local:RibbonButton.Icon>
+                        </RibbonButton.LargeIcon>
+                    </RibbonButton>
+                    <RibbonButton Size="Medium" Content="Medium Ribbon Button">
+                        <RibbonButton.Icon>
                             <ControlTemplate>
                                 <Image Source="/Assets/settings.png" Width="16" Height="16" />
                             </ControlTemplate>
-                        </local:RibbonButton.Icon>
-                    </local:RibbonButton>
-                    <local:RibbonButton Size="Small" Content="Small Ribbon Button">
-                        <local:RibbonButton.Icon>
+                        </RibbonButton.Icon>
+                    </RibbonButton>
+                    <RibbonButton Size="Small" Content="Small Ribbon Button">
+                        <RibbonButton.Icon>
                             <ControlTemplate>
                                 <Image Source="/Assets/settings.png" Width="16" Height="16" />
                             </ControlTemplate>
-                        </local:RibbonButton.Icon>
-                    </local:RibbonButton>
+                        </RibbonButton.Icon>
+                    </RibbonButton>
                 </StackPanel>
-            </local:RibbonGroupBox>
+            </RibbonGroupBox>
         </Grid>
     </Design.PreviewWith>
     <!-- Control Theme -->
-    <ControlTheme x:Key="{x:Type local:RibbonButton}" TargetType="local:RibbonButton">
+    <ControlTheme x:Key="{x:Type RibbonButton}" TargetType="RibbonButton">
         <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
         <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
-                <Border Classes="RibbonButtonBackgroundBorder" Background="Transparent" BorderBrush="Transparent"
-                        Padding="{TemplateBinding Padding}" CornerRadius="{DynamicResource ControlCornerRadius}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                <DataValidationErrors>
+                    <Border Classes="RibbonButtonBackgroundBorder" Background="Transparent" BorderBrush="Transparent"
+                            Padding="{TemplateBinding Padding}" CornerRadius="{DynamicResource ControlCornerRadius}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                     <DockPanel>
                         <TemplatedControl Template="{TemplateBinding Icon}" DockPanel.Dock="Left" Width="16"
                                           Height="16" />
@@ -51,13 +52,14 @@
                                           Margin="3,0,0,0" />
                     </DockPanel>
                 </Border>
+                </DataValidationErrors>
             </ControlTemplate>
         </Setter>
         <Setter Property="QuickAccessTemplate">
             <ControlTemplate>
                 <Button Classes="quickAccessButton" Command="{Binding Command}"
                         CommandParameter="{Binding CommandParameter}" ToolTip.Tip="{Binding ToolTip.Tip}"
-                        local:KeyTip.KeyTipKeys="{Binding KeyTip.Tip}" MinWidth="45" Height="34" Focusable="False">
+                        KeyTip.KeyTipKeys="{Binding KeyTip.Tip}" MinWidth="45" Height="34" Focusable="False">
                     <TemplatedControl Template="{Binding QuickAccessIcon}" Width="16" Height="16" />
                 </Button>
             </ControlTemplate>
@@ -80,15 +82,19 @@
             <Setter Property="Height" Value="{StaticResource LargeControlHeight}" />
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Border Classes="RibbonButtonBackgroundBorder" Padding="{TemplateBinding Padding}"
-                            CornerRadius="{DynamicResource ControlCornerRadius}">
-                        <DockPanel VerticalAlignment="Stretch">
-                            <TemplatedControl Template="{TemplateBinding LargeIcon}" DockPanel.Dock="Top" Width="32"
-                                              Height="32" Foreground="{TemplateBinding Foreground}" />
-                            <ContentPresenter Content="{TemplateBinding Content}" Margin="0,3,0,0"
-                                              VerticalAlignment="Stretch" Foreground="{TemplateBinding Foreground}" />
-                        </DockPanel>
-                    </Border>
+                    <DataValidationErrors>
+                        <Border Classes="RibbonButtonBackgroundBorder" Padding="{TemplateBinding Padding}"
+                                CornerRadius="{DynamicResource ControlCornerRadius}">
+                            <DockPanel VerticalAlignment="Stretch">
+                                <TemplatedControl Template="{TemplateBinding LargeIcon}" DockPanel.Dock="Top"
+                                                  Width="32"
+                                                  Height="32" Foreground="{TemplateBinding Foreground}" />
+                                <ContentPresenter Content="{TemplateBinding Content}" Margin="0,3,0,0"
+                                                  VerticalAlignment="Stretch" Foreground="{TemplateBinding Foreground}" />
+                            </DockPanel>
+                        </Border>
+                    </DataValidationErrors>
+                    
                 </ControlTemplate>
             </Setter>
         </Style>
@@ -109,11 +115,15 @@
             <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Border Classes="RibbonButtonBackgroundBorder" Padding="{TemplateBinding Padding}"
-                            CornerRadius="{DynamicResource ControlCornerRadius}">
-                        <TemplatedControl Foreground="{TemplateBinding Foreground}" Template="{TemplateBinding Icon}"
-                                          Width="16" Height="16" />
-                    </Border>
+                    <DataValidationErrors>
+                        <Border Classes="RibbonButtonBackgroundBorder" Padding="{TemplateBinding Padding}"
+                                CornerRadius="{DynamicResource ControlCornerRadius}">
+                            <TemplatedControl Foreground="{TemplateBinding Foreground}"
+                                              Template="{TemplateBinding Icon}"
+                                              Width="16" Height="16" />
+                        </Border>
+                    </DataValidationErrors>
+                    
                 </ControlTemplate>
             </Setter>
         </Style>

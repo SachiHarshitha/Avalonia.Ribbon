@@ -733,8 +733,7 @@
                                 Icon="{DynamicResource Icon1}"
                                 LargeIcon="{DynamicResource Icon1Large}"
                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}"
-                                Size="Large"
-                                Theme="{StaticResource LargeSplitButton}">
+                                Size="Large">
                                 <SplitButtonControl.Flyout>
                                     <MenuFlyout Placement="Bottom">
                                         <MenuItem Header="Item 1">
@@ -753,7 +752,7 @@
                                 Icon="{DynamicResource Icon2}"
                                 LargeIcon="{DynamicResource Icon2Large}"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
-                                Theme="{StaticResource MediumSplitButton}" />
+                                Size="Medium" />
                             <SplitButtonControl
                                 x:Name="RibbonSplitButton3"
                                 Icon="{DynamicResource Icon2}"
@@ -761,7 +760,7 @@
                                 MaxSize="Small"
                                 MinSize="Small"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}"
-                                Theme="{StaticResource SmallSplitButton}"
+                                Size="Small" 
                                 ToolTip.Tip="Small" />
                         </RibbonGroupBox>
 
@@ -1068,7 +1067,6 @@
                         </RibbonGroupBox>
                     </RibbonTab.Groups>
                 </RibbonTab>
-
                 <RibbonTab KeyTip.KeyTipKeys="G" Header="Galleries">
                     <RibbonTab.Groups>
                         <RibbonGroupBox
@@ -1447,6 +1445,42 @@
                             </Gallery>
                         </RibbonGroupBox>
                     </RibbonTab.Groups>
+                </RibbonTab>
+                <RibbonTab Header="Other Controls">
+                    <RibbonTab.Groups>
+                        <RibbonGroupBox Header="ComboBox">
+                            <RibbonGroupWrapPanel Orientation="Vertical">
+                                <RibbonGroupWrapPanel Orientation="Horizontal">
+                                    <RibbonComboBox Icon="{StaticResource Icon1QuickAccess}" Content="With Icon"
+                                                    Size="Large">
+                                        <ComboBoxItem>TEST</ComboBoxItem>
+                                        <ComboBoxItem>ONE</ComboBoxItem>
+                                        <ComboBoxItem>TWO</ComboBoxItem>
+                                    </RibbonComboBox>
+                                    <RibbonComboBox Content="Without Icon" Size="Large">
+                                        <ComboBoxItem>TEST</ComboBoxItem>
+                                        <ComboBoxItem>THREE</ComboBoxItem>
+                                        <ComboBoxItem>FOUR</ComboBoxItem>
+                                    </RibbonComboBox>
+
+                                </RibbonGroupWrapPanel>
+                                <RibbonComboBox Size="Large" HorizontalAlignment="Center">
+                                    <RibbonComboBox.Content>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TemplatedControl Template="{StaticResource Icon2QuickAccess}" />
+                                            <Label>Custom Content</Label>
+                                        </StackPanel>
+                                    </RibbonComboBox.Content>
+                                    <ComboBoxItem>TEST</ComboBoxItem>
+                                    <ComboBoxItem>THREE</ComboBoxItem>
+                                    <ComboBoxItem>FOUR</ComboBoxItem>
+                                </RibbonComboBox>
+                            </RibbonGroupWrapPanel>
+
+
+                        </RibbonGroupBox>
+                    </RibbonTab.Groups>
+                  
                 </RibbonTab>
                 <RibbonTab Header="Invisible tab" IsVisible="False" />
                 <RibbonContextualTabGroup

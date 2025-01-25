@@ -8,9 +8,9 @@
         <Setter Property="Padding" Value="3" />
         <Setter Property="QuickAccessTemplate">
             <ControlTemplate>
-                <local:RibbonSplitButton
+                <RibbonSplitButton
                     Height="34"
-                    local:KeyTip.KeyTipKeys="{Binding KeyTip.Tip}"
+                    KeyTip.KeyTipKeys="{Binding KeyTip.Tip}"
                     Classes="quickAccessButton"
                     Command="{Binding Command}"
                     CommandParameter="{Binding CommandParameter}"

@@ -120,7 +120,7 @@
     </Style>
     <Style
         Selector="local|Ribbon local|RibbonMenu /template/ ToggleButton#ContentButton:not(:pointerover):not(:pressed):not(:checked)">
-        <Setter Property="Foreground" Value="{Binding $parent[local:Ribbon].Foreground}" />
+        <Setter Property="Foreground" Value="{Binding $parent[Ribbon].Foreground}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
     </Style>
@@ -207,14 +207,14 @@
     <Setter Property="Padding" Value="0" />
   </Style>
   <Style Selector="local|Ribbon local|RibbonMenu">
-    <Setter Property="IsChecked" Value="{Binding IsMenuOpen, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:Ribbon}}, Mode=TwoWay}" />
+    <Setter Property="IsChecked" Value="{Binding IsMenuOpen, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Ribbon}}, Mode=TwoWay}" />
   </Style>
   <Style Selector="local|Ribbon local|RibbonMenu /template/ ContentPresenter">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
   </Style>
   <Style Selector="local|RibbonWindow local|Ribbon local|RibbonMenu">
-    <Setter Property="Foreground" Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:RibbonWindow}}" />
+    <Setter Property="Foreground" Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=RibbonWindow}}" />
   </Style>
   <Style Selector="local|RibbonWindow[IsActive=False] local|Ribbon local|RibbonMenu:not(:pointerover):not(:pressed):not(:checked) /template/ ContentPresenter#PART_ContentPresenter">
     <Setter Property="Opacity" Value="0.5" />
