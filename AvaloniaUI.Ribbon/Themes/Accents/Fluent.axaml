@@ -3,15 +3,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sys="clr-namespace:System;assembly=netstandard">
 
-	<SolidColorBrush x:Key="AccentBrushLow" Color="{DynamicResource SystemAccentColor}" />
-	<SolidColorBrush x:Key="AccentBrushMed" Color="{DynamicResource SystemAccentColorLight1}" />
-	<SolidColorBrush x:Key="AccentBrushHigh" Color="{DynamicResource SystemAccentColorDark1}" />
-	<SolidColorBrush x:Key="AccentForegroundBrush" Color="{DynamicResource SystemAltHighColor}" />
-	<SolidColorBrush x:Key="AccentBrushIndicator" Color="{DynamicResource SystemAccentColor}" />
-	<SolidColorBrush x:Key="TEST1" Color="Red" />
-	<SolidColorBrush x:Key="TEST2" Color="Green" />
-	<SolidColorBrush x:Key="TEST3" Color="Blue" />
-	<SolidColorBrush x:Key="TEST4" Color="Yellow" />
+    <SolidColorBrush x:Key="AccentBrushLow" Color="{DynamicResource SystemAccentColor}" />
+    <SolidColorBrush x:Key="AccentBrushMed" Color="{DynamicResource SystemAccentColorLight1}" />
+    <SolidColorBrush x:Key="AccentBrushHigh" Color="{DynamicResource SystemAccentColorDark1}" />
+    <SolidColorBrush x:Key="AccentForegroundBrush" Color="{DynamicResource SystemAltHighColor}" />
+    <SolidColorBrush x:Key="AccentBrushIndicator" Color="{DynamicResource SystemAccentColor}" />
+    <SolidColorBrush x:Key="TEST1" Color="Red" />
+    <SolidColorBrush x:Key="TEST2" Color="Green" />
+    <SolidColorBrush x:Key="TEST3" Color="Blue" />
+    <SolidColorBrush x:Key="TEST4" Color="Yellow" />
 
-	<sys:Double x:Key="FontSizeNormal">12</sys:Double>
+    <sys:Double x:Key="FontSizeNormal">12</sys:Double>
 </ResourceDictionary>

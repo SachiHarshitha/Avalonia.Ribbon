@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Runtime.InteropServices;
-
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Chrome;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
-using Avalonia.Controls.Primitives.PopupPositioning;
 using Avalonia.Controls.Templates;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.VisualTree;
-
 using AvaloniaUI.Ribbon.Contracts;
 
 namespace AvaloniaUI.Ribbon;
@@ -128,6 +124,7 @@ public sealed class RibbonMenu : ItemsControl, IRibbonMenu
             menuPopup.Opened -= Popup_Opened;
             menuPopup.Opened += Popup_Opened;
         }
+
         Console.WriteLine($"{menuPopup}, Menu popup is found.");
 
         // Update grouped items and reset item hover events
@@ -166,6 +163,7 @@ public sealed class RibbonMenu : ItemsControl, IRibbonMenu
                 menuPopup.Width = topLevel.Bounds.Width;
                 menuPopup.HorizontalOffset = -40;
             }
+
             if (titleBar != null)
             {
             }

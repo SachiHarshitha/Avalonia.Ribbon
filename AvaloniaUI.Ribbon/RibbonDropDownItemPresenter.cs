@@ -1,18 +1,16 @@
+using System;
 using Avalonia.Controls;
 
-using System;
+namespace AvaloniaUI.Ribbon;
 
-namespace AvaloniaUI.Ribbon
+public class RibbonDropDownItemPresenter : Button
 {
-    public class RibbonDropDownItemPresenter : Button
+    /*public static readonly StyledProperty<IControlTemplate> IconProperty = RibbonControlItem.IconProperty.AddOwner<RibbonControlItemPresenter>();
+    public IControlTemplate Icon
     {
-        /*public static readonly StyledProperty<IControlTemplate> IconProperty = RibbonControlItem.IconProperty.AddOwner<RibbonControlItemPresenter>();
-        public IControlTemplate Icon
-        {
-            get => GetValue(IconProperty);
-            set => SetValue(IconProperty, value);
-        }*/
+        get => GetValue(IconProperty);
+        set => SetValue(IconProperty, value);
+    }*/
 
-        protected override Type StyleKeyOverride => typeof(RibbonDropDownItemPresenter);
-    }
+    protected override Type StyleKeyOverride => typeof(RibbonDropDownItemPresenter);
 }

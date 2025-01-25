@@ -1,41 +1,38 @@
-﻿using Avalonia.Controls;
-using Avalonia.Data.Converters;
-
-using System;
+﻿using System;
 using System.Globalization;
 using System.IO;
-
+using Avalonia.Controls;
+using Avalonia.Data.Converters;
 using Bitmap = Avalonia.Media.Imaging.Bitmap;
 
-namespace AvaloniaUI.Ribbon.Windows.Converters
+namespace AvaloniaUI.Ribbon.Windows.Converters;
+
+public class WindowIconToImageConverter : IValueConverter
 {
-    public class WindowIconToImageConverter : IValueConverter
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        if (value != null)
         {
-            if (value != null)
+            var wIcon = value as WindowIcon;
+            var stream = new MemoryStream();
+            wIcon.Save(stream);
+            stream.Position = 0;
+            try
             {
-                var wIcon = value as WindowIcon;
-                MemoryStream stream = new MemoryStream();
-                wIcon.Save(stream);
-                stream.Position = 0;
-                try
-                {
-                    var bitmap = new Bitmap(stream);
-                    return bitmap;
-                }
-                catch (ArgumentNullException)
-                {
-                    return null;
-                }
+                var bitmap = new Bitmap(stream);
+                return bitmap;
             }
-            else
+            catch (ArgumentNullException)
+            {
                 return null;
+            }
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
+        return null;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        throw new NotImplementedException();
     }
 }

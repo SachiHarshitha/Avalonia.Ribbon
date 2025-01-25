@@ -1,50 +1,51 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Library</OutputType>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <RootNamespace>AvaloniaUI.Ribbon</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Version>2.0.1-beta</Version>
-    <Authors>Splitwirez, Alban Mazerolles, Rubal Walia, Sachith Liyanagama</Authors>
-    <PackageId>AvaloniaUIRibbon</PackageId>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Splitwirez/AvaloniaRibbon</PackageProjectUrl>
-    <Description>Ribbon UI for Avalonia</Description>
-    <RepositoryType>Git</RepositoryType>
-    <RepositoryUrl>https://github.com/Splitwirez/AvaloniaRibbon.git</RepositoryUrl>
-    <PackageLicenseUrl></PackageLicenseUrl>
-    <AssemblyName>AvaloniaUI.Ribbon</AssemblyName>
-    <LangVersion>latest</LangVersion>
-	<PackageTags>ribbon;avalonia;avaloniaui;avalonia ui;ribbon;ribbonui;ribbon ui;crossplat;crossplatform;cross platform;xplat;xplatform</PackageTags>
-	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <!--owners? requireLicenseAcceptance? releaseNotes? copyright?-->
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Update="**\*.axaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <AvaloniaResource Include="**\*.axaml">
-      <SubType>Designer</SubType>
-    </AvaloniaResource>
-    <AvaloniaResource Include="Assets\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <AvaloniaResource Remove="Controls\GalleryItem.axaml" />
-    <AvaloniaResource Remove="Controls\InRibbonGallery.axaml" />
-    <AvaloniaResource Remove="Controls\RibbonButton.axaml" />
-    <AvaloniaResource Remove="Controls\RibbonGallery.axaml" />
-    <AvaloniaResource Remove="Controls\SplitButtonControl.axaml" />
-    <AvaloniaResource Remove="RibbonControl.axaml" />
-    <AvaloniaResource Remove="Themes\Accents\Fluent.axaml" />
-    <AvaloniaResource Remove="Themes\Accents\Simple.axaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Avalonia" Version="11.2.3" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <AvaloniaXaml Update="Controls\SplitButtonControl.axaml">
-      <Generator>MSBuild:Compile</Generator>
-    </AvaloniaXaml>
-  </ItemGroup>
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+        <RootNamespace>AvaloniaUI.Ribbon</RootNamespace>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <Version>2.0.1-beta</Version>
+        <Authors>Splitwirez, Alban Mazerolles, Rubal Walia, Sachith Liyanagama</Authors>
+        <PackageId>AvaloniaUIRibbon</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/Splitwirez/AvaloniaRibbon</PackageProjectUrl>
+        <Description>Ribbon UI for Avalonia</Description>
+        <RepositoryType>Git</RepositoryType>
+        <RepositoryUrl>https://github.com/Splitwirez/AvaloniaRibbon.git</RepositoryUrl>
+        <PackageLicenseUrl></PackageLicenseUrl>
+        <AssemblyName>AvaloniaUI.Ribbon</AssemblyName>
+        <LangVersion>latest</LangVersion>
+        <PackageTags>ribbon;avalonia;avaloniaui;avalonia ui;ribbon;ribbonui;ribbon ui;crossplat;crossplatform;cross platform;xplat;xplatform</PackageTags>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <!--owners? requireLicenseAcceptance? releaseNotes? copyright?-->
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Update="**\*.axaml.cs">
+            <DependentUpon>%(Filename)</DependentUpon>
+        </Compile>
+        <AvaloniaResource Include="**\*.axaml">
+            <SubType>Designer</SubType>
+        </AvaloniaResource>
+        <AvaloniaResource Include="Assets\**"/>
+    </ItemGroup>
+    <ItemGroup>
+        <AvaloniaResource Remove="Controls\GalleryItem.axaml"/>
+        <AvaloniaResource Remove="Controls\InRibbonGallery.axaml"/>
+        <AvaloniaResource Remove="Controls\RibbonButton.axaml"/>
+        <AvaloniaResource Remove="Controls\RibbonGallery.axaml"/>
+        <AvaloniaResource Remove="Controls\SplitButtonControl.axaml"/>
+        <AvaloniaResource Remove="RibbonControl.axaml"/>
+        <AvaloniaResource Remove="Themes\Accents\Fluent.axaml"/>
+        <AvaloniaResource Remove="Themes\Accents\Simple.axaml"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.2.3"/>
+        <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.3"/>
+        <PackageReference Include="Avalonia.Xaml.Interactions" Version="11.2.0.7"/>
+    </ItemGroup>
+    <ItemGroup>
+        <AvaloniaXaml Update="Controls\SplitButtonControl.axaml">
+            <Generator>MSBuild:Compile</Generator>
+        </AvaloniaXaml>
+    </ItemGroup>
 </Project>

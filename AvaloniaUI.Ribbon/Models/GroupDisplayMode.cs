@@ -1,9 +1,9 @@
-﻿namespace AvaloniaUI.Ribbon.Models
+﻿namespace AvaloniaUI.Ribbon.Models;
+
+public enum GroupDisplayMode
 {
-    public enum GroupDisplayMode
-    {
-        Large,
-        Small/*,
-        Flyout*/
-    }
+    Large,
+
+    Small /*,
+    Flyout*/
 }

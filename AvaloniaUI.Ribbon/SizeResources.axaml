@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!-- Common sizes  -->
+    <sys:Double x:Key="DefaultControlHeight">64</sys:Double>
+    <sys:Double x:Key="MaxControlWidth">66</sys:Double>
+
+    <!-- Single Control component sizes  -->
+    <sys:Double x:Key="SmallControlWidth">24</sys:Double>
+    <sys:Double x:Key="LargeControlHeight">72</sys:Double>
+    <sys:Double x:Key="SmallControlHeight">24</sys:Double>
+
+
+    <!-- Container component sizes  -->
+    <sys:Double x:Key="LargeContainerWidth">345</sys:Double>
+    <sys:Double x:Key="MediumContainerWidth">230</sys:Double>
+    <sys:Double x:Key="SmallContainerWidth">115</sys:Double>
+
+    <sys:Int32 x:Key="LargeContainerColumns">3</sys:Int32>
+    <sys:Int32 x:Key="MediumContainerColumns">2</sys:Int32>
+    <sys:Int32 x:Key="SmallContainerColumns">1</sys:Int32>
+
+    <!-- Ribbon Gallary Item sizes  -->
+    <sys:Double x:Key="LargeGalleryItemHeight">62</sys:Double>
+    <sys:Double x:Key="MediumGalleryItemHeight">31</sys:Double>
+    <sys:Double x:Key="SmallGalleryItemHeight">31</sys:Double>
+
+
+</ResourceDictionary>

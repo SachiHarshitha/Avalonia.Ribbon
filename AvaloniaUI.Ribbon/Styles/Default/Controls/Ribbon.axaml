@@ -31,11 +31,16 @@
                     <DockPanel.Resources>
                         <PathGeometry x:Key="TabHeadersClipBorderClip">
                             <PathFigure IsClosed="True" StartPoint="0,0">
-                                <LineSegment Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='-67,0,TR'}" />
-                                <LineSegment Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='-67,30,TR'}" />
-                                <LineSegment Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='0,30,TR'}" />
-                                <LineSegment Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='0,0,BR'}" />
-                                <LineSegment Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='0,0,BL'}" />
+                                <LineSegment
+                                    Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='-67,0,TR'}" />
+                                <LineSegment
+                                    Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='-67,30,TR'}" />
+                                <LineSegment
+                                    Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='0,30,TR'}" />
+                                <LineSegment
+                                    Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='0,0,BR'}" />
+                                <LineSegment
+                                    Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='0,0,BL'}" />
                             </PathFigure>
                         </PathGeometry>
                     </DockPanel.Resources>
@@ -130,7 +135,8 @@
                                 Content="{TemplateBinding SelectedContent}"
                                 ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                 IsVisible="False" />
-                            <ContentControl Background="{DynamicResource SystemControlForegroundChromeMediumBrush}" Name="PART_GroupsPresenterHolder" HorizontalAlignment="Stretch">
+                            <ContentControl Background="{DynamicResource SystemControlForegroundChromeMediumBrush}"
+                                            Name="PART_GroupsPresenterHolder" HorizontalAlignment="Stretch">
                                 <ItemsControl
                                     Name="PART_SelectedGroupsHost"
                                     Height="90"
@@ -143,11 +149,14 @@
                                         <ContextMenu x:Name="PART_ContentAreaContextMenu">
                                             <ContextMenu.Styles>
                                                 <Style Selector="MenuItem">
-                                                    <Setter Property="Template" Value="{DynamicResource CheckableMenuItemControlTemplate}" />
+                                                    <Setter Property="Template"
+                                                            Value="{DynamicResource CheckableMenuItemControlTemplate}" />
                                                 </Style>
                                             </ContextMenu.Styles>
-                                            <MenuItem x:Name="PART_PinLastHoveredControlToQuickAccess" Header="{DynamicResource AvaloniaRibbon.AddToQAT}" />
-                                            <MenuItem x:Name="PART_CollapseRibbon" Header="{DynamicResource AvaloniaRibbon.MinimizeRibbon}" />
+                                            <MenuItem x:Name="PART_PinLastHoveredControlToQuickAccess"
+                                                      Header="{DynamicResource AvaloniaRibbon.AddToQAT}" />
+                                            <MenuItem x:Name="PART_CollapseRibbon"
+                                                      Header="{DynamicResource AvaloniaRibbon.MinimizeRibbon}" />
                                         </ContextMenu>
                                     </ItemsControl.ContextMenu>
                                     <ItemsControl.ItemsPanel>
@@ -259,7 +268,8 @@
                                 Content="{TemplateBinding SelectedContent}"
                                 ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                 IsVisible="False" />
-                            <ContentControl Name="PART_GroupsPresenterHolder" VerticalAlignment="Stretch" Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
+                            <ContentControl Name="PART_GroupsPresenterHolder" VerticalAlignment="Stretch"
+                                            Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
                                 <ItemsControl
                                     Name="PART_SelectedGroupsHost"
                                     Width="138"
@@ -271,11 +281,14 @@
                                         <ContextMenu x:Name="PART_ContentAreaContextMenu">
                                             <ContextMenu.Styles>
                                                 <Style Selector="MenuItem">
-                                                    <Setter Property="Template" Value="{DynamicResource CheckableMenuItemControlTemplate}" />
+                                                    <Setter Property="Template"
+                                                            Value="{DynamicResource CheckableMenuItemControlTemplate}" />
                                                 </Style>
                                             </ContextMenu.Styles>
-                                            <MenuItem x:Name="PART_PinLastHoveredControlToQuickAccess" Header="{DynamicResource AvaloniaRibbon.AddToQAT}" />
-                                            <MenuItem x:Name="PART_CollapseRibbon" Header="{DynamicResource AvaloniaRibbon.MinimizeRibbon}" />
+                                            <MenuItem x:Name="PART_PinLastHoveredControlToQuickAccess"
+                                                      Header="{DynamicResource AvaloniaRibbon.AddToQAT}" />
+                                            <MenuItem x:Name="PART_CollapseRibbon"
+                                                      Header="{DynamicResource AvaloniaRibbon.MinimizeRibbon}" />
                                         </ContextMenu>
                                     </ItemsControl.ContextMenu>
                                     <ItemsControl.ItemsPanel>
@@ -317,24 +330,30 @@
         </Style>
 
     </Style>
-    <Style Selector="local|Ribbon /template/ ToggleButton#ExpandCollapseToggleButton:not(:pointerover):not(:pressed):checked /template/ ContentPresenter">
+    <Style
+        Selector="local|Ribbon /template/ ToggleButton#ExpandCollapseToggleButton:not(:pointerover):not(:pressed):checked /template/ ContentPresenter">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
     </Style>
-    <Style Selector="local|Ribbon /template/ ToggleButton#ExpandCollapseToggleButton:not(:pressed):checked:pointerover /template/ ContentPresenter">
+    <Style
+        Selector="local|Ribbon /template/ ToggleButton#ExpandCollapseToggleButton:not(:pressed):checked:pointerover /template/ ContentPresenter">
         <Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
     </Style>
-    <Style Selector="local|Ribbon[Orientation=Horizontal][IsCollapsed=False] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
+    <Style
+        Selector="local|Ribbon[Orientation=Horizontal][IsCollapsed=False] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
         <Setter Property="Data" Value="M0,5 L4.5,.5 9,5 6,5 4.5,3.5 3,5 z" />
     </Style>
-    <Style Selector="local|Ribbon[Orientation=Horizontal][IsCollapsed=True] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
+    <Style
+        Selector="local|Ribbon[Orientation=Horizontal][IsCollapsed=True] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
         <Setter Property="Data" Value="M0,0 L3,0 4.5,1.5 6,0 9,0 4.5,4.5 z" />
     </Style>
-    <Style Selector="local|Ribbon[Orientation=Vertical][IsCollapsed=False] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
+    <Style
+        Selector="local|Ribbon[Orientation=Vertical][IsCollapsed=False] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
         <Setter Property="Data" Value="M5,0 L.5,4.5 5,9 5,6 3.5,4.5 5,3 z" />
     </Style>
-    <Style Selector="local|Ribbon[Orientation=Vertical][IsCollapsed=True] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
+    <Style
+        Selector="local|Ribbon[Orientation=Vertical][IsCollapsed=True] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
         <Setter Property="Data" Value="M0,0 L0,3 1.5,4.5 0,6 0,9 4.5,4.5 z" />
     </Style>
     <!--Style Selector="local|Ribbon[IsCollapsed=True] /template/ ItemsControl#PART_SelectedGroupsHost">
@@ -435,11 +454,13 @@
         <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush3}" />
     </Style>
 
-    <Style Selector="local|Ribbon /template/ Popup Menu.RibbonMenuMenu MenuItem:selected:pointerover /template/ Border#root">
+    <Style
+        Selector="local|Ribbon /template/ Popup Menu.RibbonMenuMenu MenuItem:selected:pointerover /template/ Border#root">
         <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush3}" />
     </Style>
 
-    <Style Selector="local|Ribbon /template/ Popup Menu.RibbonMenuMenu MenuItem:selected:focus:pointerover /template/ Border#root">
+    <Style
+        Selector="local|Ribbon /template/ Popup Menu.RibbonMenuMenu MenuItem:selected:focus:pointerover /template/ Border#root">
         <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}" />
     </Style>
     <Style Selector="local|Ribbon /template/ Popup Menu.RibbonMenuMenu MenuItem[IsPointerOver=True]">

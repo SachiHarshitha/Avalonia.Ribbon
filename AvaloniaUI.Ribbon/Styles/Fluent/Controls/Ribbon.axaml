@@ -20,6 +20,7 @@
     </Design.PreviewWith>
 
     <Style Selector="local|Ribbon[Orientation=Horizontal]">
+        <Setter Property="Focusable" Value="True" />
         <Setter Property="HeaderBackground" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
         <Setter Property="HeaderForeground" Value="{DynamicResource ButtonForeground}" />
         <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
@@ -140,7 +141,9 @@
                                 Content="{TemplateBinding SelectedContent}"
                                 ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                 IsVisible="False" />
-                            <ContentControl Name="PART_GroupsPresenterHolder" Background="{DynamicResource SystemControlForegroundChromeMediumBrush}" HorizontalAlignment="Stretch">
+                            <ContentControl Name="PART_GroupsPresenterHolder"
+                                            Background="{DynamicResource SystemControlForegroundChromeMediumBrush}"
+                                            HorizontalAlignment="Stretch">
                                 <ItemsControl
                                     Name="PART_SelectedGroupsHost"
                                     Height="96"
@@ -192,6 +195,7 @@
     <Setter Property="Margin" Value="0,0,0,-4" />
   </Style-->
     <Style Selector="local|Ribbon[Orientation=Vertical]">
+        <Setter Property="Focusable" Value="True" />
         <Setter Property="Margin" Value="0,0,-8,0" />
         <Setter Property="Template">
             <ControlTemplate>
@@ -279,7 +283,8 @@
                                     Content="{TemplateBinding SelectedContent}"
                                     ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                     IsVisible="False" />
-                                <ContentControl Name="PART_GroupsPresenterHolder" VerticalAlignment="Stretch" Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
+                                <ContentControl Name="PART_GroupsPresenterHolder" VerticalAlignment="Stretch"
+                                                Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
                                     <ItemsControl
                                         Name="PART_SelectedGroupsHost"
                                         Width="138"

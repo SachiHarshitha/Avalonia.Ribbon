@@ -1,16 +1,16 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:AvaloniaUI.Ribbon.Controls">
-  <Design.PreviewWith>
-    <controls:InRibbonGallery />
-  </Design.PreviewWith>
+    <Design.PreviewWith>
+        <controls:InRibbonGallery />
+    </Design.PreviewWith>
 
-  <Style Selector="controls|InRibbonGallery">
-    <!-- Set Defaults -->
-    <Setter Property="Template">
-      <ControlTemplate>
-        <TextBlock Text="Templated Control" />
-      </ControlTemplate>
-    </Setter>
-  </Style>
+    <Style Selector="controls|InRibbonGallery">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <TextBlock Text="Templated Control" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
 </Styles>

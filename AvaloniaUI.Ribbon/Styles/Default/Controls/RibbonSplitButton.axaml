@@ -146,7 +146,8 @@
     <Style Selector="local|RibbonSplitButton local|RibbonButton /template/ Image">
         <Setter Property="Margin" Value="0" />
     </Style>
-    <Style Selector="local|RibbonSplitButton[IsDropDownOpen=False] /template/ ToggleButton#toggle:not(:pointerover):not(:pressed):not(:checked)">
+    <Style
+        Selector="local|RibbonSplitButton[IsDropDownOpen=False] /template/ ToggleButton#toggle:not(:pointerover):not(:pressed):not(:checked)">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
     </Style>
@@ -173,7 +174,8 @@
         <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
     </Style>
 
-    <Style Selector="local|RibbonSplitButton /template/ Button#RibbonSplitButtonTopButton:not(:pointerover):not(:pressed)">
+    <Style
+        Selector="local|RibbonSplitButton /template/ Button#RibbonSplitButtonTopButton:not(:pointerover):not(:pressed)">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
     </Style>

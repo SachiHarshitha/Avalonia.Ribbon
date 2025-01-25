@@ -54,7 +54,7 @@
                     SelectedValueBinding="{Binding Value}" />
 			</StackPanel>
 			<!--  CheckBox x:Name="LightsOnCheckBox" Content="Lights" IsChecked="True"/  -->
-			<CheckBox Content="Show Contextual tab group 1" IsChecked="{Binding ShowContextualGroup1, Mode=OneWay}" />
+			<CheckBox Content="Show Contextual tab group 1" IsChecked="{Binding ShowContextualGroup1}" />
 			<CheckBox Content="Show Contextual tab group 2" IsChecked="{Binding ShowContextualGroup2}" />
 			<CheckBox Content="Show Contextual tab group 3, which has a very long name so you can easily see that its only tab's width does not prohibit the group from getting wider as needed" IsChecked="{Binding ShowContextualGroup3}" />
 			<!--  Button x:Name="TestItemsButton" Content="Test"/  -->

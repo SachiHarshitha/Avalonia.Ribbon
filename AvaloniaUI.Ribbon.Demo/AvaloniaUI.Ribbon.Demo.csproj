@@ -24,11 +24,4 @@
         <ProjectReference Include="..\AvaloniaUI.Ribbon.Windows\AvaloniaUI.Ribbon.Windows.csproj" />
         <ProjectReference Include="..\AvaloniaUI.Ribbon\AvaloniaUI.Ribbon.csproj"/>
     </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Views\DesktopRibbonView.axaml.cs">
-        <DependentUpon>DesktopRibbonView.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-    </ItemGroup>
 </Project>

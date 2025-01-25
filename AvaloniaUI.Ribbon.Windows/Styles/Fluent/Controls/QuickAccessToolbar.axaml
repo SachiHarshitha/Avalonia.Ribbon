@@ -1,9 +1,7 @@
 ﻿<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:col="clr-namespace:System.Collections"
     xmlns:local="clr-namespace:AvaloniaUI.Ribbon.Windows;assembly=AvaloniaUI.Ribbon.Windows"
-    xmlns:sys="clr-namespace:System;assembly=netstandard"
     xmlns:windows="clr-namespace:AvaloniaUI.Ribbon.Windows;assembly=AvaloniaUI.Ribbon.Windows"
     x:DataType="local:QuickAccessToolbar">
     <Style Selector="local|QuickAccessToolbar">
@@ -56,12 +54,15 @@
                                 </ContextMenu.Template>
                                 <ContextMenu.Styles>
                                     <Style Selector="MenuItem:not(.quickAccessFixedItem)">
-                                        <Setter Property="Command" Value="{Binding $parent[local:QuickAccessToolbar].MoreFlyoutMenuItemCommand}" />
+                                        <Setter Property="Command"
+                                                Value="{Binding $parent[local:QuickAccessToolbar].MoreFlyoutMenuItemCommand}" />
                                         <Setter Property="CommandParameter" Value="{Binding Item}" />
-                                        <Setter Property="local:QuickAccessToolbar.IsChecked" Value="{Binding IsChecked}" />
+                                        <Setter Property="local:QuickAccessToolbar.IsChecked"
+                                                Value="{Binding IsChecked}" />
                                     </Style>
                                     <Style Selector="MenuItem">
-                                        <Setter Property="Template" Value="{DynamicResource CheckableMenuItemControlTemplate}" />
+                                        <Setter Property="Template"
+                                                Value="{DynamicResource CheckableMenuItemControlTemplate}" />
                                     </Style>
                                 </ContextMenu.Styles>
                                 <ContextMenu.DataTemplates>
@@ -110,10 +111,12 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
     </Style>
-    <Style Selector="windows|RibbonWindow local|QuickAccessToolbar /template/ ToggleButton#PART_MoreButton:not(:pointerover):not(:pressed):not(:checked)">
+    <Style
+        Selector="windows|RibbonWindow local|QuickAccessToolbar /template/ ToggleButton#PART_MoreButton:not(:pointerover):not(:pressed):not(:checked)">
         <Setter Property="Foreground" Value="{Binding $parent[local:RibbonWindow].TitleBarForeground}" />
     </Style>
-    <Style Selector="windows|RibbonWindow[IsActive=False] local|QuickAccessToolbar /template/ ToggleButton#PART_MoreButton:not(:pointerover):not(:pressed):not(:checked) &gt; StackPanel">
+    <Style
+        Selector="windows|RibbonWindow[IsActive=False] local|QuickAccessToolbar /template/ ToggleButton#PART_MoreButton:not(:pointerover):not(:pressed):not(:checked) &gt; StackPanel">
         <Setter Property="Opacity" Value="0.5" />
     </Style>
 
@@ -132,7 +135,8 @@
                         Template="{Binding Item.QuickAccessTemplate, RelativeSource={RelativeSource Mode=TemplatedParent}}">
                         <TemplatedControl.ContextMenu>
                             <ContextMenu>
-                                <MenuItem x:Name="PART_RemoveFromQuickAccessToolbar" Header="Remove from quick access toolbar" />
+                                <MenuItem x:Name="PART_RemoveFromQuickAccessToolbar"
+                                          Header="Remove from quick access toolbar" />
                             </ContextMenu>
                         </TemplatedControl.ContextMenu>
                     </TemplatedControl>

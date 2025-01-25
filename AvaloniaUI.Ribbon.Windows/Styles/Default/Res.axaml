@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:col="clr-namespace:System.Collections"
     xmlns:local="clr-namespace:AvaloniaUI.Ribbon.Windows;assembly=AvaloniaUI.Ribbon.Windows"
     xmlns:sys="clr-namespace:System;assembly=netstandard">
     <ControlTemplate x:Key="CheckableMenuItemControlTemplate" TargetType="{x:Type MenuItem}">

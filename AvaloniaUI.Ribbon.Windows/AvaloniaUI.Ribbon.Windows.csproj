@@ -1,57 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-		<ProjectGuid>{F2F7E655-E83D-4024-B155-CA5FCE3A827B}</ProjectGuid>
-		<OutputType>Library</OutputType>
-		<Authors>Splitwirez, Alban Mazerolles, Rubal Walia, Sachith Liyanagama</Authors>
-		<AppDesignerFolder>Properties</AppDesignerFolder>
-		<RootNamespace>AvaloniaUI.Ribbon.Windows</RootNamespace>
-		<AssemblyName>AvaloniaUI.Ribbon.Windows</AssemblyName>
-		    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageId>AvaloniaUIRibbon.Windoows</PackageId>
-		<TargetFrameworks>netstandard2.0</TargetFrameworks>
-		<LangVersion>latest</LangVersion>
-		<FileAlignment>512</FileAlignment>
-		<Deterministic>true</Deterministic>
-			<PackageTags>ribbon;avalonia;avaloniaui;avalonia ui;ribbon;ribbonui;ribbon ui;crossplat;crossplatform;cross platform;xplat;xplatform</PackageTags>
-		<NuGetPackageImportStamp>
-		</NuGetPackageImportStamp>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<Optimize>false</Optimize>
-		<OutputPath>bin\Debug\</OutputPath>
-		<DefineConstants>DEBUG;TRACE</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<DebugType>pdbonly</DebugType>
-		<Optimize>true</Optimize>
-		<OutputPath>bin\Release\</OutputPath>
-		<DefineConstants>TRACE</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-	</PropertyGroup>
-	<ItemGroup>
-	  <PackageReference Include="Avalonia" Version="11.2.3" />
-	  <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.2.0.7" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\AvaloniaUI.Ribbon\AvaloniaUI.Ribbon.csproj">
-			<Project>{49d7dcc7-bd40-41d3-9f18-c653476e6aa2}</Project>
-			<Name>AvaloniaUI.Ribbon</Name>
-		</ProjectReference>
-	</ItemGroup>
-	<ItemGroup>
-		<Compile Update="**\*.axaml.cs">
-			<DependentUpon>%(Filename)</DependentUpon>
-		</Compile>
-		<AvaloniaResource Include="**\*.axaml">
-			<SubType>Designer</SubType>
-		</AvaloniaResource>
-	</ItemGroup>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{F2F7E655-E83D-4024-B155-CA5FCE3A827B}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <Authors>Splitwirez, Alban Mazerolles, Rubal Walia, Sachith Liyanagama</Authors>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>AvaloniaUI.Ribbon.Windows</RootNamespace>
+        <AssemblyName>AvaloniaUI.Ribbon.Windows</AssemblyName>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageId>AvaloniaUIRibbon.Windoows</PackageId>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+        <LangVersion>latest</LangVersion>
+        <FileAlignment>512</FileAlignment>
+        <Deterministic>true</Deterministic>
+        <PackageTags>ribbon;avalonia;avaloniaui;avalonia ui;ribbon;ribbonui;ribbon ui;crossplat;crossplatform;cross platform;xplat;xplatform</PackageTags>
+        <NuGetPackageImportStamp>
+        </NuGetPackageImportStamp>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.2.3"/>
+        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.2.0.7"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\AvaloniaUI.Ribbon\AvaloniaUI.Ribbon.csproj">
+            <Project>{49d7dcc7-bd40-41d3-9f18-c653476e6aa2}</Project>
+            <Name>AvaloniaUI.Ribbon</Name>
+        </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Update="**\*.axaml.cs">
+            <DependentUpon>%(Filename)</DependentUpon>
+        </Compile>
+        <AvaloniaResource Include="**\*.axaml">
+            <SubType>Designer</SubType>
+        </AvaloniaResource>
+    </ItemGroup>
 </Project>

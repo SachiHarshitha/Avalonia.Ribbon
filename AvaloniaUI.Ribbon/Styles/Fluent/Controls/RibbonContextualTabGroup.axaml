@@ -2,6 +2,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
+
     <Style Selector="local|Ribbon[Orientation=Horizontal] local|RibbonContextualTabGroup">
         <Setter Property="Height" Value="64" />
         <Setter Property="Margin" Value="0,-34,0,0" />
@@ -41,7 +42,7 @@
                         FontSize="11"
                         IsHitTestVisible="False"
                         Opacity="0.5"
-                        TextBlock.Foreground="{Binding $parent[local:Ribbon].HeaderForeground}" />
+                        TextBlock.Foreground="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
                     <ItemsPresenter
                         x:Name="PART_ItemsPresenter"
                         Grid.Row="1"
@@ -61,6 +62,7 @@
             </ControlTemplate>
         </Setter>
     </Style>
+
     <Style Selector="local|Ribbon[Orientation=Vertical] local|RibbonContextualTabGroup">
         <Setter Property="Height" Value="34" />
         <Setter Property="Padding" Value="0" />
@@ -83,7 +85,7 @@
                             Content="{TemplateBinding Header}"
                             FontSize="11"
                             Opacity="0.5"
-                            TextBlock.Foreground="{Binding $parent[local:Ribbon].Foreground}" />
+                            TextBlock.Foreground="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
                     </Panel>
                     <Panel>
                         <!--LayoutTransformControl IsHitTestVisible="False" HorizontalAlignment="Stretch" Margin="0,6,0,4">

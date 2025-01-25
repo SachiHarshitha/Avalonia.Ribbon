@@ -1,13 +1,12 @@
 ﻿using Avalonia.Controls.Presenters;
 using Avalonia.Input;
 
-namespace AvaloniaUI.Ribbon
+namespace AvaloniaUI.Ribbon;
+
+public class GalleryScrollContentPresenter : ScrollContentPresenter
 {
-    public class GalleryScrollContentPresenter : ScrollContentPresenter
+    protected override void OnPointerWheelChanged(PointerWheelEventArgs e)
     {
-        protected override void OnPointerWheelChanged(PointerWheelEventArgs e)
-        {
-            //base.OnPointerWheelChanged(e);
-        }
+        //base.OnPointerWheelChanged(e);
     }
 }

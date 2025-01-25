@@ -4,6 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:AvaloniaUI.Ribbon.Demo.ViewModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Focusable="True"
         Orientation="{Binding RibbonOrientation}"
         x:Class="AvaloniaUI.Ribbon.Demo.Views.RibbonView">
     <Design.DataContext>
@@ -321,7 +322,6 @@
         </Ribbon.HelpPaneContent>
         <Ribbon.Menu>
             <RibbonMenu
-                Width="50"
                 KeyTip.KeyTipKeys="F">
                 <RibbonMenuItem Header="New" Group="File" IsTopDocked="True">
                     <RibbonMenuItem.Icon>
@@ -720,7 +720,7 @@
                         KeyTip.KeyTipKeys="L"
                         Command="{Binding OnClickCommand}"
                         Header="Large gallery">
-                        <Gallery Theme="{StaticResource LargeGallery}">
+                        <Gallery Size="Large">
                             <GalleryItem Content="Item 1">
                                 <GalleryItem.LargeIcon>
                                     <ControlTemplate>
@@ -844,7 +844,7 @@
                         </Gallery>
                     </RibbonGroupBox>
                     <RibbonGroupBox KeyTip.KeyTipKeys="M" Header="Medium gallery">
-                        <Gallery Theme="{StaticResource MediumGallery}">
+                        <Gallery Size="Medium">
                             <GalleryItem Content="Item 1">
                                 <GalleryItem.Icon>
                                     <ControlTemplate>
@@ -968,7 +968,7 @@
                         </Gallery>
                     </RibbonGroupBox>
                     <RibbonGroupBox KeyTip.KeyTipKeys="S" Header="Small gallery">
-                        <Gallery Theme="{StaticResource SmallGallery}">
+                        <Gallery Size="Small">
                             <GalleryItem Content="Item 1">
                                 <GalleryItem.Icon>
                                     <ControlTemplate>

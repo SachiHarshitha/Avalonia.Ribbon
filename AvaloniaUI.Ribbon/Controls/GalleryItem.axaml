@@ -1,148 +1,150 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-					xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
-	<!-- Add Resources Here -->
-	<ControlTheme x:Key="LargeGalleryItem" TargetType="local:GalleryItem">
-		<Setter Property="BorderThickness" Value="0" />
-		<Setter Property="Padding" Value="2,1" />
-		<Setter Property="Height" Value="{Binding $parent[local:Gallery].ItemHeight}" />
-		<Setter Property="Template">
-			<ControlTemplate>
-				<Border x:Name="BackgroundBorder"
-						Background="{TemplateBinding Background}"
-                          BorderBrush="{TemplateBinding BorderBrush}"
-                          BorderThickness="{TemplateBinding BorderThickness}"
-                          CornerRadius="{TemplateBinding CornerRadius}"
-                          Padding="{TemplateBinding Padding}">
-					<DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-						<TemplatedControl Template="{TemplateBinding LargeIcon}" DockPanel.Dock="Top" Margin="0,3,0,0" />
-						<ContentPresenter Content="{TemplateBinding Content}" Margin="0,3,0,0" VerticalAlignment="Stretch" />
-					</DockPanel>
-				</Border>
-			</ControlTemplate>
-		</Setter>
+                    xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
+    <!-- Add Resources Here -->
+    <ControlTheme x:Key="LargeGalleryItem" TargetType="local:GalleryItem">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="2,1" />
+        <Setter Property="Height" Value="{Binding $parent[local:Gallery].ItemHeight}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="BackgroundBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Padding="{TemplateBinding Padding}">
+                    <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TemplatedControl Template="{TemplateBinding LargeIcon}" DockPanel.Dock="Top" Margin="0,3,0,0" />
+                        <ContentPresenter Content="{TemplateBinding Content}" Margin="0,3,0,0"
+                                          VerticalAlignment="Stretch" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
 
-		<!--  PointerOver State  -->
-		<Style Selector="^:pointerover /template/ Border#BackgroundBorder">
-			<Setter Property="Background" Value="{DynamicResource SystemControlHighlightListLowBrush}" />
-		</Style>
-		<Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
-			<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
-		</Style>
+        <!--  PointerOver State  -->
+        <Style Selector="^:pointerover /template/ Border#BackgroundBorder">
+            <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListLowBrush}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+        </Style>
 
-		<!--  Pressed State  -->
-		<Style Selector="^:pressed /template/ Border#BackgroundBorder">
-			<Setter Property="Background" Value="{DynamicResource SystemControlHighlightListMediumBrush}" />
-		</Style>
-		<Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
-			<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
-		</Style>
+        <!--  Pressed State  -->
+        <Style Selector="^:pressed /template/ Border#BackgroundBorder">
+            <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListMediumBrush}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+        </Style>
 
-		<!--  Selected State  -->
-		<Style Selector="^:selected">
+        <!--  Selected State  -->
+        <Style Selector="^:selected">
 
-			<Style Selector="^ /template/ Border#BackgroundBorder">
-				<Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />
-			</Style>
-			<Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
-				<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
-			</Style>
+            <Style Selector="^ /template/ Border#BackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
 
-			<!--  Selected Unfocused State  -->
-			<Style Selector="^:not(:focus) /template/ Border#BackgroundBorder">
-				<Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />
-			</Style>
-			<Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
-				<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
-			</Style>
+            <!--  Selected Unfocused State  -->
+            <Style Selector="^:not(:focus) /template/ Border#BackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
 
-			<!--  Selected PointerOver State  -->
-			<Style Selector="^:pointerover /template/ Border#BackgroundBorder">
-				<Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentMediumBrush}" />
-			</Style>
-			<Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
-				<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
-			</Style>
+            <!--  Selected PointerOver State  -->
+            <Style Selector="^:pointerover /template/ Border#BackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentMediumBrush}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
 
-			<!--  Selected Pressed State  -->
-			<Style Selector="^:pressed /template/ Border#BackgroundBorder">
-				<Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentHighBrush}" />
-			</Style>
-			<Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
-				<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
-			</Style>
-		</Style>
-	</ControlTheme>
+            <!--  Selected Pressed State  -->
+            <Style Selector="^:pressed /template/ Border#BackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentHighBrush}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
+        </Style>
+    </ControlTheme>
 
-	<ControlTheme x:Key="MediumGalleryItem" TargetType="local:GalleryItem">
-		<Setter Property="BorderThickness" Value="0" />
-		<Setter Property="Padding" Value="2,1" />
-		<Setter Property="Height" Value="{Binding $parent[local:Gallery].ItemHeight}" />
-		<Setter Property="Template">
-			<ControlTemplate>
-				<Border x:Name="BackgroundBorder"
-						Background="{TemplateBinding Background}"
-                          BorderBrush="{TemplateBinding BorderBrush}"
-                          BorderThickness="{TemplateBinding BorderThickness}"
-                          CornerRadius="{TemplateBinding CornerRadius}"
-                          Padding="{TemplateBinding Padding}">
-					<StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-						<TemplatedControl Template="{TemplateBinding Icon}" Margin="0,0,0,0" />
-						<ContentPresenter Content="{TemplateBinding Content}" Margin="3,0,0,0" VerticalAlignment="Stretch" />
-					</StackPanel>
-				</Border>
-			</ControlTemplate>
-		</Setter>
+    <ControlTheme x:Key="MediumGalleryItem" TargetType="local:GalleryItem">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="2,1" />
+        <Setter Property="Height" Value="{Binding $parent[local:Gallery].ItemHeight}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="BackgroundBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Padding="{TemplateBinding Padding}">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TemplatedControl Template="{TemplateBinding Icon}" Margin="0,0,0,0" />
+                        <ContentPresenter Content="{TemplateBinding Content}" Margin="3,0,0,0"
+                                          VerticalAlignment="Stretch" />
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
 
-		<!--  PointerOver State  -->
-		<Style Selector="^:pointerover /template/ Border#BackgroundBorder">
-			<Setter Property="Background" Value="{DynamicResource SystemControlHighlightListLowBrush}" />
-		</Style>
-		<Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
-			<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
-		</Style>
+        <!--  PointerOver State  -->
+        <Style Selector="^:pointerover /template/ Border#BackgroundBorder">
+            <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListLowBrush}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+        </Style>
 
-		<!--  Pressed State  -->
-		<Style Selector="^:pressed /template/ Border#BackgroundBorder">
-			<Setter Property="Background" Value="{DynamicResource SystemControlHighlightListMediumBrush}" />
-		</Style>
-		<Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
-			<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
-		</Style>
+        <!--  Pressed State  -->
+        <Style Selector="^:pressed /template/ Border#BackgroundBorder">
+            <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListMediumBrush}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+        </Style>
 
-		<!--  Selected State  -->
-		<Style Selector="^:selected">
+        <!--  Selected State  -->
+        <Style Selector="^:selected">
 
-			<Style Selector="^ /template/ Border#BackgroundBorder">
-				<Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />
-			</Style>
-			<Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
-				<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
-			</Style>
+            <Style Selector="^ /template/ Border#BackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
 
-			<!--  Selected Unfocused State  -->
-			<Style Selector="^:not(:focus) /template/ Border#BackgroundBorder">
-				<Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />
-			</Style>
-			<Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
-				<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
-			</Style>
+            <!--  Selected Unfocused State  -->
+            <Style Selector="^:not(:focus) /template/ Border#BackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
 
-			<!--  Selected PointerOver State  -->
-			<Style Selector="^:pointerover /template/ Border#BackgroundBorder">
-				<Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentMediumBrush}" />
-			</Style>
-			<Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
-				<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
-			</Style>
+            <!--  Selected PointerOver State  -->
+            <Style Selector="^:pointerover /template/ Border#BackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentMediumBrush}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
 
-			<!--  Selected Pressed State  -->
-			<Style Selector="^:pressed /template/ Border#BackgroundBorder">
-				<Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentHighBrush}" />
-			</Style>
-			<Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
-				<Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
-			</Style>
-		</Style>
-	</ControlTheme>
+            <!--  Selected Pressed State  -->
+            <Style Selector="^:pressed /template/ Border#BackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentHighBrush}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ ContentControl#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
+        </Style>
+    </ControlTheme>
 </ResourceDictionary>

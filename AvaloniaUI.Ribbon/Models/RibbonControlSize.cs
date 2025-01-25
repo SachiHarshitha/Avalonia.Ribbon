@@ -1,11 +1,8 @@
-﻿using System;
+﻿namespace AvaloniaUI.Ribbon.Models;
 
-namespace AvaloniaUI.Ribbon.Models
+public enum RibbonControlSize
 {
-    public enum RibbonControlSize
-    {
-        Small,
-        Medium,
-        Large
-    }
+    Small,
+    Medium,
+    Large
 }

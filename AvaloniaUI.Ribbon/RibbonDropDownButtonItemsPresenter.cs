@@ -1,17 +1,15 @@
-﻿using Avalonia.Controls.Presenters;
+﻿using System;
+using Avalonia.Controls.Presenters;
 
-using System;
+namespace AvaloniaUI.Ribbon;
 
-namespace AvaloniaUI.Ribbon
+//public class RibbonDropDownItem : GalleryItem { }
+public class RibbonDropDownButtonItemsPresenter : ItemsPresenter
 {
-    //public class RibbonDropDownItem : GalleryItem { }
-    public class RibbonDropDownButtonItemsPresenter : ItemsPresenter
+    /*protected override IItemContainerGenerator CreateItemContainerGenerator()
     {
-        /*protected override IItemContainerGenerator CreateItemContainerGenerator()
-        {
-            return new ItemContainerGenerator<RibbonDropDownItemPresenter>(this, RibbonDropDownItemPresenter.ContentProperty, RibbonDropDownItemPresenter.ContentTemplateProperty);
-        }*/
+        return new ItemContainerGenerator<RibbonDropDownItemPresenter>(this, RibbonDropDownItemPresenter.ContentProperty, RibbonDropDownItemPresenter.ContentTemplateProperty);
+    }*/
 
-        protected override Type StyleKeyOverride => typeof(ItemsPresenter);
-    }
+    protected override Type StyleKeyOverride => typeof(ItemsPresenter);
 }

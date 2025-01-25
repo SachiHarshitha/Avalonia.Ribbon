@@ -1,16 +1,6 @@
-﻿using Avalonia.Controls.Primitives;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace AvaloniaUI.Ribbon.Contracts;
 
-namespace AvaloniaUI.Ribbon.Contracts
+public interface IRibbonMenu
 {
-    public interface IRibbonMenu
-    {
-        bool IsMenuOpen
-        {
-            get;
-            set;
-        }
-    }
+    bool IsMenuOpen { get; set; }
 }

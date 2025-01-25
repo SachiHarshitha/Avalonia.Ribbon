@@ -22,6 +22,7 @@
             </ControlTemplate>
         </Setter>
     </Style>
+
     <Style Selector="local|RibbonDropDownButton.quickAccessButton:not(:pointerover):not(:pressed)">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />

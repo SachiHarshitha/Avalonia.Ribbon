@@ -19,7 +19,6 @@
     <!--StyleInclude Source="/Styles/Fluent/Controls/RibbonSplitButton.axaml" /-->
     <StyleInclude Source="/Styles/Fluent/Controls/Ribbon.axaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonDropDownButton.axaml" />
-    <StyleInclude Source="/Styles/Fluent/Controls/RibbonDropDownButtonItemPresenter.axaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonToggleButton.axaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/RibbonGroupBox.axaml" />
     <StyleInclude Source="/Styles/Fluent/Controls/KeyTip.axaml" />

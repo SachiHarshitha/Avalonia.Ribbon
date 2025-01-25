@@ -21,6 +21,7 @@
     </Design.PreviewWith>
 
     <Style Selector="windows|DesktopRibbon[Orientation=Horizontal]">
+        <Setter Property="Focusable" Value="True" />
         <Setter Property="HeaderBackground" Value="{DynamicResource ThemeBackgroundBrush}" />
         <Setter Property="HeaderForeground" Value="{DynamicResource ThemeForegroundBrush}" />
         <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}" />
@@ -32,11 +33,16 @@
                     <DockPanel.Resources>
                         <PathGeometry x:Key="TabHeadersClipBorderClip">
                             <PathFigure IsClosed="True" StartPoint="0,0">
-                                <LineSegment Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='-67,0,TR'}" />
-                                <LineSegment Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='-67,30,TR'}" />
-                                <LineSegment Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='0,30,TR'}" />
-                                <LineSegment Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='0,0,BR'}" />
-                                <LineSegment Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='0,0,BL'}" />
+                                <LineSegment
+                                    Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='-67,0,TR'}" />
+                                <LineSegment
+                                    Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='-67,30,TR'}" />
+                                <LineSegment
+                                    Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='0,30,TR'}" />
+                                <LineSegment
+                                    Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='0,0,BR'}" />
+                                <LineSegment
+                                    Point="{Binding #TabHeadersClipBorder.Bounds, Converter={StaticResource BoundsPointToAdjustedPointConverter}, ConverterParameter='0,0,BL'}" />
                             </PathFigure>
                         </PathGeometry>
                     </DockPanel.Resources>
@@ -131,7 +137,8 @@
                                 Content="{TemplateBinding SelectedContent}"
                                 ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                 IsVisible="False" />
-                            <ContentControl Name="PART_GroupsPresenterHolder" HorizontalAlignment="Stretch" Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
+                            <ContentControl Name="PART_GroupsPresenterHolder" HorizontalAlignment="Stretch"
+                                            Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
                                 <ItemsControl
                                     Name="PART_SelectedGroupsHost"
                                     Height="90"
@@ -144,10 +151,12 @@
                                         <ContextMenu x:Name="PART_ContentAreaContextMenu">
                                             <ContextMenu.Styles>
                                                 <Style Selector="MenuItem">
-                                                    <Setter Property="Template" Value="{DynamicResource CheckableMenuItemControlTemplate}" />
+                                                    <Setter Property="Template"
+                                                            Value="{DynamicResource CheckableMenuItemControlTemplate}" />
                                                 </Style>
                                             </ContextMenu.Styles>
-                                            <MenuItem x:Name="PART_PinLastHoveredControlToQuickAccess" Header="{DynamicResource AvaloniaRibbon.AddToQAT}" />
+                                            <MenuItem x:Name="PART_PinLastHoveredControlToQuickAccess"
+                                                      Header="{DynamicResource AvaloniaRibbon.AddToQAT}" />
                                             <MenuItem
                                                 x:Name="PART_CollapseRibbon"
                                                 windows:QuickAccessToolbar.IsChecked="{Binding IsCollapsed, RelativeSource={RelativeSource Mode=TemplatedParent}}"
@@ -180,6 +189,7 @@
     </Style>
 
     <Style Selector="windows|DesktopRibbon[Orientation=Vertical]">
+        <Setter Property="Focusable" Value="True" />
         <!--  Setter Property="Margin" Value="0,0,-4,0"/  -->
         <Setter Property="Template">
             <ControlTemplate>
@@ -260,7 +270,8 @@
                                 Content="{TemplateBinding SelectedContent}"
                                 ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                 IsVisible="False" />
-                            <ContentControl Name="PART_GroupsPresenterHolder" VerticalAlignment="Stretch" Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
+                            <ContentControl Name="PART_GroupsPresenterHolder" VerticalAlignment="Stretch"
+                                            Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
                                 <ItemsControl
                                     Name="PART_SelectedGroupsHost"
                                     Width="138"
@@ -272,10 +283,12 @@
                                         <ContextMenu x:Name="PART_ContentAreaContextMenu">
                                             <ContextMenu.Styles>
                                                 <Style Selector="MenuItem">
-                                                    <Setter Property="Template" Value="{DynamicResource CheckableMenuItemControlTemplate}" />
+                                                    <Setter Property="Template"
+                                                            Value="{DynamicResource CheckableMenuItemControlTemplate}" />
                                                 </Style>
                                             </ContextMenu.Styles>
-                                            <MenuItem x:Name="PART_PinLastHoveredControlToQuickAccess" Header="{DynamicResource AvaloniaRibbon.AddToQAT}" />
+                                            <MenuItem x:Name="PART_PinLastHoveredControlToQuickAccess"
+                                                      Header="{DynamicResource AvaloniaRibbon.AddToQAT}" />
                                             <MenuItem
                                                 x:Name="PART_CollapseRibbon"
                                                 windows:QuickAccessToolbar.IsChecked="{Binding IsCollapsed, RelativeSource={RelativeSource Mode=TemplatedParent}}"
@@ -302,17 +315,21 @@
         </Setter>
     </Style>
 
-    <Style Selector="windows|RibbonWindow[SystemDecorations=None] windows|DesktopRibbon[Orientation=Horizontal] /template/ Border#TabHeadersClipBorder">
+    <Style
+        Selector="windows|RibbonWindow[SystemDecorations=None] windows|DesktopRibbon[Orientation=Horizontal] /template/ Border#TabHeadersClipBorder">
         <Setter Property="Clip" Value="{DynamicResource TabHeadersClipBorderClip}" />
     </Style>
     <Style Selector="windows|DesktopRibbon /template/ Button.RibbonHelpButton">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
     </Style>
-    <Style Selector="windows|RibbonWindow windows|DesktopRibbon /template/ Button.RibbonHelpButton:not(:pointerover):not(:pressed)">
-        <Setter Property="Foreground" Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=windows:RibbonWindow}}" />
+    <Style
+        Selector="windows|RibbonWindow windows|DesktopRibbon /template/ Button.RibbonHelpButton:not(:pointerover):not(:pressed)">
+        <Setter Property="Foreground"
+                Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=windows:RibbonWindow}}" />
     </Style>
-    <Style Selector="windows|RibbonWindow[IsActive=False] windows|DesktopRibbon /template/ Button.RibbonHelpButton:not(:pointerover):not(:pressed)">
+    <Style
+        Selector="windows|RibbonWindow[IsActive=False] windows|DesktopRibbon /template/ Button.RibbonHelpButton:not(:pointerover):not(:pressed)">
         <Setter Property="Opacity" Value="0.5" />
     </Style>
     <Style Selector="windows|DesktopRibbon /template/ Button.RibbonHelpButton:pointerover">
@@ -324,34 +341,43 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
     </Style>
-    <Style Selector="windows|RibbonWindow windows|DesktopRibbon /template/ ToggleButton.RibbonToggleButton:not(:pointerover):not(:pressed)">
-        <Setter Property="Foreground" Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=windows:RibbonWindow}}" />
+    <Style
+        Selector="windows|RibbonWindow windows|DesktopRibbon /template/ ToggleButton.RibbonToggleButton:not(:pointerover):not(:pressed)">
+        <Setter Property="Foreground"
+                Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=windows:RibbonWindow}}" />
     </Style>
-    <Style Selector="windows|RibbonWindow[IsActive=False] windows|DesktopRibbon /template/ ToggleButton.RibbonToggleButton:not(:pointerover):not(:pressed):not(:checked)">
+    <Style
+        Selector="windows|RibbonWindow[IsActive=False] windows|DesktopRibbon /template/ ToggleButton.RibbonToggleButton:not(:pointerover):not(:pressed):not(:checked)">
         <Setter Property="Opacity" Value="0.5" />
     </Style>
     <Style Selector="windows|DesktopRibbon /template/ ToggleButton.RibbonToggleButton:pointerover">
         <Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderLowBrush}" />
     </Style>
-    <Style Selector="windows|DesktopRibbon /template/ ToggleButton#ExpandCollapseToggleButton:not(:pointerover):not(:pressed):checked /template/ ContentPresenter">
+    <Style
+        Selector="windows|DesktopRibbon /template/ ToggleButton#ExpandCollapseToggleButton:not(:pointerover):not(:pressed):checked /template/ ContentPresenter">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
     </Style>
-    <Style Selector="windows|DesktopRibbon /template/ ToggleButton#ExpandCollapseToggleButton:not(:pressed):checked:pointerover /template/ ContentPresenter">
+    <Style
+        Selector="windows|DesktopRibbon /template/ ToggleButton#ExpandCollapseToggleButton:not(:pressed):checked:pointerover /template/ ContentPresenter">
         <Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
     </Style>
-    <Style Selector="windows|DesktopRibbon[Orientation=Horizontal][IsCollapsed=False] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
+    <Style
+        Selector="windows|DesktopRibbon[Orientation=Horizontal][IsCollapsed=False] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
         <Setter Property="Data" Value="M0,5 L4.5,.5 9,5 6,5 4.5,3.5 3,5 z" />
     </Style>
-    <Style Selector="windows|DesktopRibbon[Orientation=Horizontal][IsCollapsed=True] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
+    <Style
+        Selector="windows|DesktopRibbon[Orientation=Horizontal][IsCollapsed=True] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
         <Setter Property="Data" Value="M0,0 L3,0 4.5,1.5 6,0 9,0 4.5,4.5 z" />
     </Style>
-    <Style Selector="windows|DesktopRibbon[Orientation=Vertical][IsCollapsed=False] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
+    <Style
+        Selector="windows|DesktopRibbon[Orientation=Vertical][IsCollapsed=False] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
         <Setter Property="Data" Value="M5,0 L.5,4.5 5,9 5,6 3.5,4.5 5,3 z" />
     </Style>
-    <Style Selector="windows|DesktopRibbon[Orientation=Vertical][IsCollapsed=True] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
+    <Style
+        Selector="windows|DesktopRibbon[Orientation=Vertical][IsCollapsed=True] /template/ ToggleButton.RibbonToggleButton Path.RibbonExpandCollapsePath">
         <Setter Property="Data" Value="M0,0 L0,3 1.5,4.5 0,6 0,9 4.5,4.5 z" />
     </Style>
     <!--Style Selector="windows|DesktopRibbon[IsCollapsed=True] /template/ ItemsControl#PART_SelectedGroupsHost">
@@ -440,23 +466,28 @@
         </Setter>
     </Style>
 
-    <Style Selector="windows|DesktopRibbon /template/ Popup Menu.RibbonMenuMenu MenuItem:pointerover /template/ Border#root">
+    <Style
+        Selector="windows|DesktopRibbon /template/ Popup Menu.RibbonMenuMenu MenuItem:pointerover /template/ Border#root">
         <Setter Property="Background" Value="{DynamicResource ThemeControlHighlightMidBrush}" />
     </Style>
 
-    <Style Selector="windows|DesktopRibbon /template/ Popup Menu.RibbonMenuMenu MenuItem:selected /template/ Border#root">
+    <Style
+        Selector="windows|DesktopRibbon /template/ Popup Menu.RibbonMenuMenu MenuItem:selected /template/ Border#root">
         <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush4}" />
     </Style>
 
-    <Style Selector="windows|DesktopRibbon /template/ Popup Menu.RibbonMenuMenu MenuItem:selected:focus /template/ Border#root">
+    <Style
+        Selector="windows|DesktopRibbon /template/ Popup Menu.RibbonMenuMenu MenuItem:selected:focus /template/ Border#root">
         <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush3}" />
     </Style>
 
-    <Style Selector="windows|DesktopRibbon /template/ Popup Menu.RibbonMenuMenu MenuItem:selected:pointerover /template/ Border#root">
+    <Style
+        Selector="windows|DesktopRibbon /template/ Popup Menu.RibbonMenuMenu MenuItem:selected:pointerover /template/ Border#root">
         <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush3}" />
     </Style>
 
-    <Style Selector="windows|DesktopRibbon /template/ Popup Menu.RibbonMenuMenu MenuItem:selected:focus:pointerover /template/ Border#root">
+    <Style
+        Selector="windows|DesktopRibbon /template/ Popup Menu.RibbonMenuMenu MenuItem:selected:focus:pointerover /template/ Border#root">
         <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}" />
     </Style>
     <Style Selector="windows|DesktopRibbon /template/ Popup Menu.RibbonMenuMenu MenuItem[IsPointerOver=True]">
@@ -472,7 +503,9 @@
         <Setter Property="Padding" Value="10" />
     </Style>
     <Style Selector="windows|RibbonWindow windows|DesktopRibbon">
-        <Setter Property="HeaderBackground" Value="{Binding TitleBarBackground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type windows:RibbonWindow}}}" />
-        <Setter Property="HeaderForeground" Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type windows:RibbonWindow}}}" />
+        <Setter Property="HeaderBackground"
+                Value="{Binding TitleBarBackground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type windows:RibbonWindow}}}" />
+        <Setter Property="HeaderForeground"
+                Value="{Binding TitleBarForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type windows:RibbonWindow}}}" />
     </Style>
 </Styles>

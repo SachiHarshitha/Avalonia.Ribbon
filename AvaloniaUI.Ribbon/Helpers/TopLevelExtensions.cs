@@ -13,7 +13,7 @@ public static class TopLevelExtensions
         var descendants = topLevel.GetVisualDescendants();
         var titleBar = descendants.FirstOrDefault(x => x is TitleBar);
 
-        
+
         return null;
     }
 }
