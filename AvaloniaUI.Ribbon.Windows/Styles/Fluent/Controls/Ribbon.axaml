@@ -242,6 +242,7 @@
 
                                 <ItemsPresenter
                                     Name="PART_ItemsPresenter"
+                                    ClipToBounds="True"
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch">
                                     <ItemsPresenter.ItemsPanel>

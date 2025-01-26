@@ -11,7 +11,6 @@ public class RibbonGroupBox : HeaderedItemsControl
     #region Fields
 
     private ICommand _command;
-
     #endregion
 
     static RibbonGroupBox()
@@ -77,4 +76,5 @@ public class RibbonGroupBox : HeaderedItemsControl
     }
 
     #endregion
+    
 }

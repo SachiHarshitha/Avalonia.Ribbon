@@ -3,10 +3,11 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Avalonia.Metadata;
+using AvaloniaUI.Ribbon.Contracts;
 
 namespace AvaloniaUI.Ribbon;
 
-public class RibbonDropDownItem : AvaloniaObject
+public class RibbonDropDownItem : AvaloniaObject, IRibbonCommand
 {
     #region Fields
 

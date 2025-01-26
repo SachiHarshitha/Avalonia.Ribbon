@@ -44,14 +44,6 @@ public class RibbonTab : TabItem, IKeyTipHandler
         var retVal = false;
         foreach (var g in Groups)
         {
-            if (KeyTip.HasKeyTipKey(g, key))
-            {
-                g.Command?.Execute(g.CommandParameter);
-                (Parent as Ribbon).Close();
-                retVal = true;
-                break;
-            }
-
             foreach (Control c in g.Items)
                 if (KeyTip.HasKeyTipKey(c, key))
                 {
@@ -62,7 +54,7 @@ public class RibbonTab : TabItem, IKeyTipHandler
                     }
                     else
                     {
-                        if (c is Button btn && btn.Command != null)
+                        if (c is IRibbonCommand btn && btn.Command != null)
                             btn.Command.Execute(btn.CommandParameter);
                         else
                             c.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
@@ -112,6 +104,11 @@ public class RibbonTab : TabItem, IKeyTipHandler
 
         KeyTip.SetShowChildKeyTipKeys(this, false);
         KeyDown -= RibbonTab_KeyDown;
+    }
+
+    public void Close()
+    {
+        KeyTip.SetShowChildKeyTipKeys(this, false);
     }
 
     #region Fields

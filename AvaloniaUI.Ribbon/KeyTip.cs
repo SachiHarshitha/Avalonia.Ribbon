@@ -33,7 +33,7 @@ public class KeyTip
     private static void KeyTip_Opened(object sender, EventArgs e)
     {
         var sned = sender as Popup;
-        //TODO: sned.Host?.ConfigurePosition(sned.PlacementTarget, sned.Placement, new Point(sned.HorizontalOffset, sned.VerticalOffset));
+        //sned.Host?.ConfigurePosition(sned.PlacementTarget, sned.Placement, new Point(sned.HorizontalOffset, sned.VerticalOffset));
     }
 
     public static Popup GetKeyTip(Control element)
@@ -48,7 +48,7 @@ public class KeyTip
         tipContent.Classes.Add("KeyTipContent");
         if (tipContent.Content != null)
             Debug.WriteLine("TEXT: " + tipContent.Content);
-
+        
         var tip = new Popup
         {
             PlacementTarget = element,
@@ -72,8 +72,13 @@ public class KeyTip
 
         tip[!Popup.HorizontalOffsetProperty] =
             tipContent.GetObservable(Control.BoundsProperty).Select(x => x.Width * -1).ToBinding();
-        tip[!Popup.VerticalOffsetProperty] = element.GetObservable(Control.BoundsProperty).Select(x => x.Height)
-            .CombineLatest(tipContent.GetObservable(Control.BoundsProperty), (x, y) => x - y.Height).ToBinding();
+
+        if (element is not RibbonGroupBox)
+            tip[!Popup.VerticalOffsetProperty] = element.GetObservable(Control.BoundsProperty).Select(x => x.Height)
+                .CombineLatest(tipContent.GetObservable(Control.BoundsProperty), (x, y) => x - y.Height).ToBinding();
+        else
+            tip[!Popup.VerticalOffsetProperty] = element.GetObservable(Control.BoundsProperty).Select(x => x.Height)
+                .CombineLatest(tipContent.GetObservable(Control.HeightProperty), (x, y) => x / 2 - y).ToBinding();
 
         ((ISetLogicalParent)tip).SetParent(element);
 

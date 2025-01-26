@@ -363,7 +363,8 @@
         </QuickAccessToolbar>
     </RibbonWindow.QuickAccessToolbar>
     <RibbonWindow.Ribbon>
-        <DesktopRibbon Background="Transparent" Focusable="True" Orientation="{Binding RibbonOrientation}"
+        <DesktopRibbon VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent"
+                       Focusable="True" Orientation="{Binding RibbonOrientation}"
                        DataContext="{Binding}">
             <DesktopRibbon.Resources>
                 <ControlTemplate x:Key="Icon1">
@@ -777,12 +778,14 @@
                             Header="RibbonButtons">
                             <RibbonButton
                                 Content="Large"
+                                KeyTip.KeyTipKeys="U"
                                 Icon="{DynamicResource Icon1}"
                                 LargeIcon="{DynamicResource Icon1Large}"
                                 MaxSize="Large"
                                 MinSize="Large"
                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
                             <RibbonButton
+                                KeyTip.KeyTipKeys="V"
                                 Content="Medium"
                                 Icon="{DynamicResource Icon2}"
                                 LargeIcon="{DynamicResource Icon2Large}"
@@ -790,6 +793,7 @@
                                 MinSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                             <RibbonButton
+                                KeyTip.KeyTipKeys="W"
                                 Icon="{DynamicResource Icon2}"
                                 LargeIcon="{DynamicResource Icon2Large}"
                                 MaxSize="Small"
@@ -803,6 +807,7 @@
                             Header="RibbonToggleButtons">
                             <RibbonToggleButton
                                 Content="Large"
+                                KeyTip.KeyTipKeys="X"
                                 Icon="{DynamicResource Icon1}"
                                 LargeIcon="{DynamicResource Icon1Large}"
                                 MaxSize="Large"
@@ -810,12 +815,14 @@
                                 QuickAccessIcon="{DynamicResource Icon1QuickAccess}" />
                             <RibbonToggleButton
                                 Content="Medium"
+                                KeyTip.KeyTipKeys="Y"
                                 Icon="{DynamicResource Icon2}"
                                 LargeIcon="{DynamicResource Icon2Large}"
                                 MaxSize="Medium"
                                 MinSize="Medium"
                                 QuickAccessIcon="{DynamicResource Icon2QuickAccess}" />
                             <RibbonToggleButton
+                                KeyTip.KeyTipKeys="Z"
                                 Icon="{DynamicResource Icon2}"
                                 LargeIcon="{DynamicResource Icon2Large}"
                                 MaxSize="Small"

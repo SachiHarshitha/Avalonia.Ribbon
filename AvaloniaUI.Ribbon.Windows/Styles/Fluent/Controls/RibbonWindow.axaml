@@ -57,6 +57,9 @@
                                             <ChangePropertyAction TargetObject="{Binding #PART_RibbonPresenter}"
                                                                   PropertyName="DockPanel.Dock"
                                                                   Value="{x:Static Dock.Top}" />
+                                            <ChangePropertyAction TargetObject="{Binding #PART_RibbonPresenter}"
+                                                                  PropertyName="VerticalAlignment"
+                                                                  Value="{x:Static VerticalAlignment.Top}" />
                                         </DataTriggerBehavior>
                                         <DataTriggerBehavior
                                             Binding="{Binding Ribbon.Orientation, RelativeSource={RelativeSource TemplatedParent}}"
@@ -64,6 +67,9 @@
                                             <ChangePropertyAction TargetObject="{Binding #PART_RibbonPresenter}"
                                                                   PropertyName="DockPanel.Dock"
                                                                   Value="{x:Static Dock.Left}" />
+                                            <ChangePropertyAction TargetObject="{Binding #PART_RibbonPresenter}"
+                                                                  PropertyName="VerticalAlignment"
+                                                                  Value="{x:Static VerticalAlignment.Stretch}" />
                                         </DataTriggerBehavior>
                                     </Interaction.Behaviors>
                                 </ContentPresenter>
@@ -121,100 +127,7 @@
             </ControlTemplate>
         </Setter>
     </Style>
-    <!--<Grid>
-          <Border Classes="OuterBorder">
-            <Grid x:Name="WindowGrid">
-              <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-              </Grid.RowDefinitions>
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-              </Grid.ColumnDefinitions>
-              <VisualLayerManager>
-                <VisualLayerManager.ChromeOverlayLayer>
-                  <Grid>
-                    <Border x:Name="TitlebarFill" Background="{TemplateBinding TitleBarBackground}" IsHitTestVisible="False" Grid.Row="0" Grid.ColumnSpan="2" />
-                    <Grid x:Name="CaptionButtons" ColumnDefinitions="*,*,*" Grid.Row="0" Grid.ColumnSpan="2" Width="135" Height="{Binding #PART_TitleBar.Height}" IsVisible="{Binding #PART_TitleBar.IsVisible}" VerticalAlignment="Top">
-                      <Button Name="PART_MinimizeButton">
-                        <Rectangle Width="10" Height="1" />
-                      </Button>
-                      <Button Name="PART_MaximizeButton">
-                        <Grid>
-                          <Rectangle Width="10" Height="10" />
-                          <Grid Width="10" Height="10">
-                            <Border BorderThickness="1" Width="7" Height="7" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
-                            <Grid Width="7" Height="7" HorizontalAlignment="Right" VerticalAlignment="Top">
-                              <Border BorderThickness="0,1,1,0" />
-                              <Rectangle HorizontalAlignment="Left" VerticalAlignment="Top" Width="2" Height="3" />
-                              <Rectangle HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="3" Height="2" />
-                            </Grid>
-                          </Grid>
-                        </Grid>
-                      </Button>
-                      <Button x:Name="PART_CloseButton">
-                        <Path Data="M 0 0 L 10 10 M 10 0 L 0 10" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                      </Button>
-                    </Grid>
-                    <Panel x:Name="PART_TitleBar" Grid.Row="0" Grid.ColumnSpan="2" Background="#01000000" VerticalAlignment="Top">
-                      <Image Classes="IconImage" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" Source="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource WindowIconToImageConverter}}" MaxWidth="16" MaxHeight="16" Margin="9,0" IsHitTestVisible="False" />
-                    </Panel>
-                  </Grid>
-                </VisualLayerManager.ChromeOverlayLayer>
-              </VisualLayerManager>
-
-              <ContentPresenter x:Name="PART_ContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Background="{TemplateBinding Background}" CornerRadius="0,0,3,3" />
-              <ContentPresenter x:Name="PART_RibbonPresenter" Content="{TemplateBinding Ribbon}" />
-
-              <ContentPresenter x:Name="PART_QuickAccessToolbarPresenter" Content="{TemplateBinding QuickAccessToolbar}" Grid.Row="0" Grid.ColumnSpan="2" Height="33" HorizontalAlignment="Left" VerticalAlignment="Top" />
-            </Grid>
-          </Border>
-          <Grid Name="ResizeGrid" ColumnDefinitions="8,*,8" RowDefinitions="8,*,8">
-            <Border Name="TopLeft" />
-            <Border
-                Name="TopRight"
-                Grid.Column="2" />
-            <Border
-                Name="BottomLeft"
-                Grid.Row="2" />
-            <Border
-                Name="BottomRight"
-                Grid.Row="2"
-                Grid.Column="2" />
-            <Border
-                Name="Top"
-                Grid.Column="1" />
-            <Border
-                Name="Right_top"
-                Grid.Row="0"
-                Grid.Column="2" />
-            <Border
-                Name="Right_mid"
-                Grid.Row="0"
-                Grid.Column="2" />
-            <Border
-                Name="Right_bottom"
-                Grid.Row="1"
-                Grid.Column="2" />
-            <Border
-                Name="Bottom"
-                Grid.Row="2"
-                Grid.Column="1" />
-            <Border
-                Name="Left_top"
-                Grid.Row="0" />
-            <Border
-                Name="Left_mid"
-                Grid.Row="0" />
-            <Border
-                Name="Left_bottom"
-                Grid.Row="1" />
-          </Grid>
-        </Grid>-->
-
-
+    
     <Style Selector="windows|RibbonWindow[SystemDecorations=Full] /template/ Panel#PART_TitleBar">
         <Setter Property="IsVisible" Value="True" />
         <Setter Property="Height" Value="33" />
@@ -223,13 +136,7 @@
     <Style Selector="windows|RibbonWindow[SystemDecorations=None] /template/ Panel#PART_TitleBar">
         <Setter Property="Height" Value="33" />
     </Style>
-
-    <Style Selector="RibbonWindow[Orientation=Horizontal] /template/ ContentPresenter#PART_RibbonPresenter">
-        <Setter Property="DockPanel.Dock" Value="Top" />
-    </Style>
-    <Style Selector="RibbonWindow[Orientation=Vertical] /template/ ContentPresenter#PART_RibbonPresenter">
-        <Setter Property="DockPanel.Dock" Value="Left" />
-    </Style>
+    
     <!--Style Selector="windows|RibbonWindow /template/ Rectangle#TitlebarFill2">
     <Setter Property="IsVisible" Value="False" />
   </Style>

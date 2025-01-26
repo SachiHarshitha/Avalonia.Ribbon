@@ -95,40 +95,6 @@ public class DesktopRibbon : Ribbon
             };
         }*/
     }
-
-    protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
-    {
-        base.OnAttachedToVisualTree(e);
-
-        if (e.Root is WindowBase wnd)
-            wnd.Deactivated += InputRoot_Deactivated;
-        if (e.Root is IInputRoot inputRoot)
-            inputRoot.AddHandler(PointerPressedEvent, InputRoot_PointerPressed, handledEventsToo: true);
-
-        RefreshTabs();
-        RefreshSelectedGroups();
-    }
-
-    protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
-    {
-        base.OnDetachedFromVisualTree(e);
-
-        if (e.Root is WindowBase wnd)
-            wnd.Deactivated -= InputRoot_Deactivated;
-        if (e.Root is IInputRoot inputRoot)
-            inputRoot.RemoveHandler(PointerPressedEvent, InputRoot_PointerPressed);
-    }
-
-    private void InputRoot_Deactivated(object sender, EventArgs e)
-    {
-        Close();
-    }
-
-    private void InputRoot_PointerPressed(object sender, PointerPressedEventArgs e)
-    {
-        if (IsCollapsedPopupOpen && !_groupsHost.IsPointerOver)
-            IsCollapsedPopupOpen = false;
-    }
-
+    
     #endregion Methods
 }

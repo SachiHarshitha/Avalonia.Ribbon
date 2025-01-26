@@ -7,6 +7,7 @@ using System.Reactive.Disposables;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
+using Avalonia.Controls.Platform;
 using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
@@ -88,10 +89,7 @@ public class Ribbon : TabControl, IRibbon
 
     public static readonly StyledProperty<bool> IsCollapsedProperty =
         AvaloniaProperty.Register<Ribbon, bool>(nameof(IsCollapsed));
-
-    public static readonly StyledProperty<bool> IsMenuOpenProperty =
-        AvaloniaProperty.Register<Ribbon, bool>(nameof(IsMenuOpen));
-
+    
     public static readonly DirectProperty<MenuBase, bool> IsOpenProperty =
         AvaloniaProperty.RegisterDirect<MenuBase, bool>(nameof(IsOpen), (Func<MenuBase, bool>)(o => o.IsOpen));
 
@@ -144,6 +142,8 @@ public class Ribbon : TabControl, IRibbon
     private CompositeDisposable _selectedItemSubscriptions;
 
     private ObservableCollection<Control> _tabs = new();
+    private InputPaneState _state;
+    private Rect _occludedRect;
 
     #endregion Fields
 
@@ -184,13 +184,7 @@ public class Ribbon : TabControl, IRibbon
         get => GetValue(IsCollapsedPopupOpenProperty);
         set => SetValue(IsCollapsedPopupOpenProperty, value);
     }
-
-    public bool IsMenuOpen
-    {
-        get => GetValue(IsMenuOpenProperty);
-        set => SetValue(IsMenuOpenProperty, value);
-    }
-
+    
     public bool IsOpen
     {
         get => _isOpen;
@@ -328,7 +322,7 @@ public class Ribbon : TabControl, IRibbon
             if (!tabKeyMatched && Menu != null)
                 if (KeyTip.HasKeyTipKey(Menu as Control, key))
                 {
-                    IsMenuOpen = true;
+                    Menu.IsMenuOpen = true;
                     if (Menu is IKeyTipHandler handler) handler.ActivateKeyTips(this, this);
                     retVal = true;
                 }
@@ -476,7 +470,7 @@ public class Ribbon : TabControl, IRibbon
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
-
+        
         if (e.Root is WindowBase wnd)
             wnd.Deactivated += InputRoot_Deactivated;
         if (e.Root is IInputRoot inputRoot)
@@ -498,9 +492,13 @@ public class Ribbon : TabControl, IRibbon
 
     protected override void OnKeyDown(KeyEventArgs e)
     {
-        if (IsFocused)
+        if (IsFocused || IsPointerOver)
         {
-            if (e.Key == Key.LeftAlt || e.Key == Key.RightAlt || e.Key == Key.F10 || e.Key == Key.Escape)
+            KeyTip.SetShowChildKeyTipKeys(this, false);
+
+            if (!IsOpen)
+                Open();
+            else if (e.Key == Key.LeftAlt || e.Key == Key.RightAlt || e.Key == Key.F10 || e.Key == Key.Escape)
                 Close();
             else
                 HandleKeyTipKeyPress(e.Key);
@@ -512,46 +510,7 @@ public class Ribbon : TabControl, IRibbon
         base.OnLostFocus(e);
         KeyTip.SetShowChildKeyTipKeys(this, false);
     }
-
-    protected override void OnPointerWheelChanged(PointerWheelEventArgs e)
-    {
-        var newIndex = SelectedIndex;
-
-        if (ItemCount > 1)
-        {
-            if ((Orientation == Orientation.Horizontal && e.Delta.Y > 0) ||
-                (Orientation == Orientation.Vertical && e.Delta.Y < 0))
-                /*while (newIndex > 0)
-                {
-                    newIndex--;
-                    var newTab = Items.OfType<RibbonTab>().ElementAt(newIndex);
-                    if (newTab.IsEffectivelyVisible && newTab.IsEnabled)
-                    {
-                        switchTabs = true;
-                        break;
-                    }
-                }*/
-                CycleTabs(false);
-            else if ((Orientation == Orientation.Horizontal && e.Delta.Y < 0) ||
-                     (Orientation == Orientation.Vertical && e.Delta.Y > 0))
-                /*while (newIndex < (ItemCount - 1))
-                {
-                    newIndex++;
-                    var newTab = Items.OfType<RibbonTab>().ElementAt(newIndex);
-                    if (newTab.IsEffectivelyVisible && newTab.IsEnabled)
-                    {
-                        switchTabs = true;
-                        break;
-                    }
-                }*/
-                CycleTabs(true);
-        }
-        /*if (switchTabs)
-            SelectedIndex = newIndex;*/
-
-        base.OnPointerWheelChanged(e);
-    }
-
+    
     private void HandleKeyTipControl(Control item)
     {
         item.RaiseEvent(new RoutedEventArgs(PointerPressedEvent));
@@ -622,7 +581,9 @@ public class Ribbon : TabControl, IRibbon
 
     private void SetChildKeyTipsVisibility(bool open)
     {
-        foreach (RibbonTab t in Items) KeyTip.GetKeyTip(t).IsOpen = open;
+        foreach (RibbonTab t in Items)
+            if (t.IsVisible)
+                KeyTip.GetKeyTip(t).IsOpen = open;
         if (Menu != null)
             KeyTip.GetKeyTip(Menu as Control).IsOpen = open;
     }

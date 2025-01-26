@@ -2,10 +2,11 @@
 using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
+using AvaloniaUI.Ribbon.Contracts;
 
 namespace AvaloniaUI.Ribbon;
 
-public class RibbonSplitButton : RibbonDropDownButton
+public class RibbonSplitButton : RibbonDropDownButton, IRibbonCommand
 {
     public static readonly StyledProperty<ICommand> CommandProperty;
     public static readonly StyledProperty<object> CommandParameterProperty;
